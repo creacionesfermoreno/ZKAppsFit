@@ -14,7 +14,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new LoadingForm());
+            //Application.Run(new LoadingForm());
+            Application.Run(new ScreenHome());
 
         }
     }

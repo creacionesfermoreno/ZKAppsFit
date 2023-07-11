@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +28,19 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public Label lblSerie_ { get; set; }
         public StatusBar lblMessage_ { get; set; }
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeft,
+            int nTop,
+            int nRight,
+            int nButtom,
+            int nWidthEllipse,
+            int nHeightEllipse
+        );
+
+      
+
         public ScreenHome()
         {
             InitializeComponent();
@@ -35,7 +50,15 @@ namespace ZKTecoFingerPrintScanner_Implementation
             managementZk = new ManagementZk(this);
             // managementZk.FingerprintCaptured += OnFingerprintCaptured;
             //managementZk.EventGeneral += OnEventGeneral;
-           // AdjustFormSize(80);
+            // AdjustFormSize(80);
+            btnMarkAsistence.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, btnMarkAsistence.Width, btnMarkAsistence.Height, 30, 30));
+
+            panelMA.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, panelMA.Width, panelMA.Height, 30, 30));
+
+            panelDeviseConnect.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, panelDeviseConnect.Width, panelDeviseConnect.Height, 20, 20));
         }
 
         private void AdjustFormSize(int percentage)
@@ -197,6 +220,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             lblMessageMem.BackColor = clear ? Color.White : (status == 1 ? Color.Green : Color.Gray);
         }
 
+        MaterialSkinManager skinManager = MaterialSkinManager.Instance;
 
         private bool isFirstLoad = true;
         private void ScreenHome_Load(object sender, EventArgs e)
@@ -205,7 +229,16 @@ namespace ZKTecoFingerPrintScanner_Implementation
             LoadingForm loading = new LoadingForm();
             loading.Opacity = 0;
             loading.Visible = false;
+            skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            Color customColor = Color.FromArgb(0, 80, 200);
 
+            skinManager.ColorScheme = new ColorScheme(
+                Primary.Blue900,
+                Primary.Blue600,
+                Primary.Blue600,
+                Accent.Amber700, 
+                TextShade.WHITE
+            );
 
             if (isFirstLoad)
             {
@@ -213,7 +246,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     //handle match
                     managementZk.SetMatchSearch(true);
-                    _ = LoadFingers();
+                   // _ = LoadFingers();
                 }
                 isFirstLoad = false;
             }
