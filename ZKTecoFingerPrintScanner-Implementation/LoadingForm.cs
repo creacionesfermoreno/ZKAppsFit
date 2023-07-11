@@ -38,6 +38,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     ScreenHome home = new ScreenHome();
                     DataSession.DKey = key;
                     DataSession.Unidad = isValid.Data.unidad;
+                    DataSession.Sede = isValid.Data.sede;
+                    DataSession.Rubro = isValid.Data.rubro;
+                    DataSession.Logo = isValid.Data.image;
+                    DataSession.Name = isValid.Data.name;
                     home.Show();
                     this.Hide();
                 }

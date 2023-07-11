@@ -15,10 +15,12 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
         public static int Sede { get; set; }
         public static string Name { get; set; }
         public static string Logo { get; set; }
+        public static string Rubro { get; set; }
     }
 
     public static class DataStatic
     {
+        public static Membresia MembresiasSelected { get; set; }
         public static List<Membresia> Membresias { get; set; }
         public static List<Asistence> Asistences { get; set; }
         public static List<Pago> Pagos { get; set; }

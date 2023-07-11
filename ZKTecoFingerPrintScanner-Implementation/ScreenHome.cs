@@ -26,7 +26,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public Label dev { get; set; }
 
         public Label lblSerie_ { get; set; }
+        public Label lblIntents_ { get; set; }
         public StatusBar lblMessage_ { get; set; }
+        public PictureBox picHuellaMA_ { get; set; }
+        public PictureBox PicRegister_ { get; set; }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -39,13 +42,16 @@ namespace ZKTecoFingerPrintScanner_Implementation
             int nHeightEllipse
         );
 
-      
+
 
         public ScreenHome()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             lblSerie_ = lblSerie;
+            picHuellaMA_ = picHuellaMA;
+            PicRegister_ = PicRegister;
+            lblIntents_ = lblIntents;
 
             managementZk = new ManagementZk(this);
             // managementZk.FingerprintCaptured += OnFingerprintCaptured;
@@ -105,6 +111,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         {
                             lblPlan.Text = DataStatic.Membresias[0].Descripcion.ToUpper();
                             MessageStatusMembresia(DataStatic.Membresias[0].ObtenerTiempoVencimiento, DataStatic.Membresias[0].Estado);
+
+
+                            
+
                         }
                         foreach (Membresia m in DataStatic.Membresias)
                         {
@@ -124,6 +134,16 @@ namespace ZKTecoFingerPrintScanner_Implementation
                               m.AsesorComercial,
                               m.CodigoSede);
                         }
+                        if (DataStatic.Membresias.Count > 0)
+                        {
+                            dgvMembresias.Rows[0].Selected = true;
+                            DataStatic.MembresiasSelected = DataStatic.Membresias[0];
+                            if (CheckBoxValue.IsChecked)
+                            {
+                                btnMarkAsistence.PerformClick();
+                            }
+                        }
+
                         Thread dataLoadThread = new Thread(LoadDataToGrids);
                         dataLoadThread.Start();
 
@@ -165,7 +185,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
                 foreach (Pago p in DataStatic.Pagos)
                 {
-                    dgvHpago.Rows.Add(p.Estado, p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
+                    dgvHpago.Rows.Add(p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
                 }
 
                 foreach (Cuota c in DataStatic.Cuotas)
@@ -215,7 +235,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
         private void MessageStatusMembresia(string message, int status, bool clear = false)
         {
             string finish = "😨 SU MEMBRESÍA FINALIZÓ 👎";
-            lblMessageMem.Text = status == 2 ? finish :message;
+            lblMessageMem.Text = status == 2 ? finish : message;
             lblMessageMem.ForeColor = Color.White;
             lblMessageMem.BackColor = clear ? Color.White : (status == 1 ? Color.Green : Color.Gray);
         }
@@ -236,7 +256,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 Primary.Blue900,
                 Primary.Blue600,
                 Primary.Blue600,
-                Accent.Amber700, 
+                Accent.Amber700,
                 TextShade.WHITE
             );
 
@@ -246,11 +266,33 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     //handle match
                     managementZk.SetMatchSearch(true);
-                   // _ = LoadFingers();
+                    _ = LoadFingers();
                 }
                 isFirstLoad = false;
             }
+            //date format 
+            DateFormat();
 
+            //loadData 
+            loadInitialData();
+
+        }
+
+        private void loadInitialData()
+        {
+            lblGym.Text = DataSession.Name;
+            lblRubro.Text = DataSession.Rubro;
+            if (!string.IsNullOrEmpty(DataSession.Logo))
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] imageData = webClient.DownloadData(DataSession.Logo);
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        picGymLogo.Image = Image.FromStream(ms);
+                    }
+                }
+            }
         }
 
         public async Task LoadFingers()
@@ -269,6 +311,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 if (result.Success)
                 {
                     SocioData.SetListaUsers(result.Data);
+                    lbldev.Text = $"Total de Huellas cargadas:{SocioData.socios.Count}";
                 }
                 else
                 {
@@ -438,26 +481,20 @@ namespace ZKTecoFingerPrintScanner_Implementation
         {
 
         }
-        public async void getConfiguration()
+        public void getConfiguration()
         {
-            if (!string.IsNullOrEmpty(DataSession.DKey) && string.IsNullOrEmpty(DataSession.Name))
+            if (!string.IsNullOrEmpty(DataSession.DKey) && !string.IsNullOrEmpty(DataSession.Name))
             {
-                AppsFitService serv = new AppsFitService();
-                var isValid = await serv.VerifyDkey(new { DefaultKeyEmpresa = DataSession.DKey });
-                if (isValid.Success)
+                txtCbusiness.Text = DataSession.Unidad.ToString();
+                txtCsede.Text = DataSession.Sede.ToString();
+                txtCng.Text = DataSession.Unidad.ToString();
+                txtCKey.Text = DataSession.DKey.ToString();
+
+                if (!string.IsNullOrEmpty(DataSession.Logo))
                 {
-                    DataItem item = (DataItem)isValid.Data;
-                    txtCbusiness.Text = item.name.ToString();
-                    txtCsede.Text = item.sede.ToString();
-                    txtCng.Text = item.unidad.ToString();
-                    txtCKey.Text = DataSession.DKey;
-                    DataSession.Sede = item.sede;
-                    DataSession.Unidad = item.unidad;
-                    DataSession.Name = item.name;
-                    DataSession.Logo = item.image;
                     using (WebClient webClient = new WebClient())
                     {
-                        byte[] imageData = webClient.DownloadData(item.image);
+                        byte[] imageData = webClient.DownloadData(DataSession.Logo);
                         using (MemoryStream ms = new MemoryStream(imageData))
                         {
                             PicCLogo.Image = Image.FromStream(ms);
@@ -465,6 +502,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     }
                 }
             }
+
         }
 
         private void PicCloseHome_Click(object sender, EventArgs e)
@@ -504,6 +542,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
         {
             if (e.RowIndex >= 0)
             {
+
+                dgvMembresias.ClearSelection();
+                dgvMembresias.Rows[e.RowIndex].Selected = true;
+
                 var membresias = DataStatic.Membresias[e.RowIndex];
                 int CodigoMembresia = membresias.CodigoMenbresia;
                 int CodigoSede = membresias.CodigoSede;
@@ -527,11 +569,24 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 DataStatic.Pagos = HPC.Data.Pagos;
                 DataStatic.Cuotas = HPC.Data.Cuotas;
                 DataStatic.Incidencias = HPC.Data.Incidencias;
-                MessageStatusMembresia(membresias.ObtenerTiempoVencimiento,membresias.Estado);
+                MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
                 lblPlan.Text = membresias.Descripcion.ToUpper();
+
+                DataStatic.MembresiasSelected = membresias;
+                if (membresias.Estado == 1)
+                {
+                    btnMarkAsistence.Visible = true;
+                }
+                else
+                {
+                    btnMarkAsistence.Visible = false;
+                }
 
                 Thread dataLoadThread = new Thread(LoadDataToGrids);
                 dataLoadThread.Start();
+
+
+
 
             }
         }
@@ -550,12 +605,103 @@ namespace ZKTecoFingerPrintScanner_Implementation
             lblPlan.Text = "NOMBRE DEL PLAN";
             lblMessageMem.Text = "ESTADO MEMBRESIA";
             lblMessage.Message = "";
+            picHuellaMA.Image = Properties.Resources.huell;
+            PicMaUser.Image = Properties.Resources.user2;
 
             dgvAsistences.Rows.Clear();
             dgvHcuotas.Rows.Clear();
             dgvHpago.Rows.Clear();
             dgvMembresias.Rows.Clear();
             dgvIncidencias.Rows.Clear();
+        }
+
+        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timerNow_Tick(object sender, EventArgs e)
+        {
+            DateTime horaActual = DateTime.Now;
+
+            // Formatear la hora actual según tus preferencias
+            string horaFormateada = horaActual.ToString("HH:mm:ss");
+
+            // Actualizar el texto del Label con la hora formateada
+            lblHour.Text = horaFormateada;
+        }
+        private void DateFormat()
+        {
+            DateTime dnow = DateTime.Now;
+            string dnowFormat = dnow.ToString("dddd d 'de' MMMM 'de' yyyy");
+            lblDate.Text = dnowFormat;
+        }
+
+        private async void btnMarkAsistence_Click(object sender, EventArgs e)
+        {
+            string message;
+            //validate flag sede permission
+            if (DataStatic.MembresiasSelected.ObtenerDisponibilidadHorarioPaquete > 0)
+            {
+                //validate horario
+                if (DataStatic.MembresiasSelected.flagPaqueteSedePermiso > 0)
+                {
+                    if (DataStatic.MembresiasSelected.NroIngreso < DataStatic.MembresiasSelected.NroIngresoActual)
+                    {
+                        message = "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
+                    }
+                    else
+                    {
+                        //?sucess validate 
+                        AppsFitService serv = new AppsFitService();
+
+                        var data = new
+                        {
+                            CodigoUnidadNegocio = DataSession.Unidad,
+                            Sede = DataSession.Sede,
+                            Socio = DataStatic.MembresiasSelected.CodigoSocio,
+                            Membresia = DataStatic.MembresiasSelected.CodigoMenbresia
+                        };
+
+                        var res = await serv.MarkAsistence(data);
+                        if (res.Success)
+                        {
+                            message = res.Message1;
+                            //update List
+                            DataGridViewCellEventArgs cellEventArgs = new DataGridViewCellEventArgs(0, 0);
+                            dgridMembresias_CellClick(dgvMembresias, cellEventArgs);
+                        }
+                        else { message = res.Message1; };
+                        button1.Text = $"{DataStatic.MembresiasSelected.CodigoMenbresia}-{DataStatic.MembresiasSelected.CodigoSocio}";
+                    }
+                }
+                else { message = "HORARIO NO DISPONIBLE"; }
+
+            }
+            else { message = "ESTA MEMBRESIA NO TIENE ACCESO PARA ESTA SEDE."; }
+
+            MessageBox.Show(message);
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void ckAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            CheckBoxValue.IsChecked = checkBox.Checked;
+
+            bool isChecked = CheckBoxValue.IsChecked;
+            lbldev.Text = isChecked.ToString();
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

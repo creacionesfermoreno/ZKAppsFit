@@ -142,7 +142,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             captureThread.Start();
             bIsTimeToDie = false;
             nameserie = fpInstance.devSn;
-            MessageDispositive($"Conectado : {nameserie}", true);
+            MessageDispositive("Dispositivo conectado", true);
 
         }
 
@@ -163,7 +163,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 captureThread.Abort();
                 if (result == zkfp.ZKFP_ERR_OK)
                 {
-                    //  MessageDispositive("Desconectado", false);
+                     MessageDispositive("Dispositivo desconectado", false);
 
                     Thread.Sleep(1000);
                     result = fpInstance.Finalize();
@@ -173,39 +173,30 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         regTempLen = 0;
                         IsRegister = false;
                         bIdentify = true;
-                        // MessageDispositive(MessageManager.msg_FP_Disconnected, false);
+                         MessageDispositive("Dispositivo desconectado", false);
                     }
                     else
                     {
-                        // MessageDispositive(MessageManager.msg_FP_FailedToReleaseResources, false);
+                         MessageDispositive("Error en dispositivo", false);
                     }
-
                 }
                 else
                 {
-                    string message = FingerPrintDeviceUtilities.DisplayDeviceErrorByCode(result);
-                    // MessageDispositive(message, false);
+                     string message = FingerPrintDeviceUtilities.DisplayDeviceErrorByCode(result);
+                     MessageDispositive(message, false);
                 }
             }
         }
         public void MessageDispositive(string message, bool status)
         {
-            //Panel panel = myForm.Controls["PanelHeader"] as Panel;
-            //Label lblSerie = panel.Controls["lblSerie"] as Label;
-            //lblSerie.ForeColor = Color.White;
-
-            myForm.lblSerie_.ForeColor = Color.White;
             myForm.lblSerie_.Text = message;
-            //lblSerie.Text = message;
             if (status)
             {
-                myForm.lblSerie_.ForeColor = Color.White;
-                myForm.lblSerie_.BackColor = Color.FromArgb(79, 208, 154);
+                myForm.lblSerie_.ForeColor = Color.Green; 
             }
             else
             {
-                myForm.lblSerie_.ForeColor = Color.White;
-                myForm.lblSerie_.BackColor = Color.FromArgb(230, 112, 134);
+                myForm.lblSerie_.ForeColor = Color.Red;  
             }
         }
 
@@ -275,7 +266,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     else
                     {
 
-                        Label lblIntents = SetControlValue("tabPage2", "lblIntents");
+                        Label lblIntents = myForm.lblIntents_;
                         int remainingCont = REGISTER_FINGER_COUNT - RegisterCount;
                         string a = REGISTER_FINGER_COUNT > 1 ? "veces" : "vez";
                         lblIntents.Text = $"{remainingCont} {a} más";
@@ -382,7 +373,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void CompleteRegistration()
         {
-            Label lblIntents = SetControlValue("tabPage2", "lblIntents");
+            Label lblIntents = myForm.lblIntents_;
             lblIntents.Text = "Completado";
 
             int ret = GenerateRegisteredFingerPrint();
@@ -393,21 +384,20 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     string fingerPrintTemplate = string.Empty;
                     zkfp.Blob2Base64String(RegTmp, regTempLen, ref fingerPrintTemplate);
-                    // createFile(fingerPrintTemplate);
 
                     // Register huella
-                    StatusMessage("Huella registrada correctamente", true);
+                   // StatusMessage("Huella registrada correctamente", true);
                     registerHuella(fingerPrintTemplate);
                     ClearDeviceUser();
                 }
                 else
                 {
-                    StatusMessage("Error al agregar la plantilla de usuarios", false);
+                   // StatusMessage("Error al agregar la plantilla de usuarios", false);
                 }
             }
             else
             {
-                StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
+               // StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
             }
 
             IsRegister = false;
@@ -483,6 +473,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
             // pict.Image = bmp;
 
             // FingerprintCaptured.Invoke(bmp, messageInfo, messageSuccess);
+            PictureBox pasistence = myForm.picHuellaMA_;
+            PictureBox pregister = myForm.PicRegister_;
+            pasistence.Image= bmp;
+            pregister.Image = bmp;
         }
 
         public dynamic SetControlValue(string tabPageName, string controlName)

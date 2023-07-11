@@ -26,6 +26,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string huella { get; set; }
         public int unidad { get; set; }
         public int sede { get; set; }
+        public string rubro { get; set; }
     }
 
 
@@ -59,6 +60,15 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public bool Success { get; set; }
         [JsonProperty("Date")]
         public Date Data { get; set; }
+    }
+
+
+    public class ResponseBase
+    {
+        public string Message1 { get; set; }
+        public bool Success { get; set; }
+        [JsonProperty("Date")]
+        public List<Object> Data { get; set; }
     }
 
     public class Date
