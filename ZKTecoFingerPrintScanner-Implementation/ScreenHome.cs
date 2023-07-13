@@ -65,6 +65,15 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
             panelDeviseConnect.Region = Region.FromHrgn(CreateRoundRectRgn
                 (0, 0, panelDeviseConnect.Width, panelDeviseConnect.Height, 20, 20));
+
+            panelIntentos.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, panelIntentos.Width, panelIntentos.Height, 20, 20));
+
+            BtnConnectionNew.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, BtnConnectionNew.Width, BtnConnectionNew.Height, 20, 20));
+
+            BtnDisconnectionNew.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, BtnDisconnectionNew.Width, BtnDisconnectionNew.Height, 20, 20));
         }
 
         private void AdjustFormSize(int percentage)
@@ -700,6 +709,16 @@ namespace ZKTecoFingerPrintScanner_Implementation
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
