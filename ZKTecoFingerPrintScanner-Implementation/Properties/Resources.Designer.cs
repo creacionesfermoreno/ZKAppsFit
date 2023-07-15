@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ZKTecoFingerPrintScanner_Implementation.Properties {
+namespace BIOCHECK.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ZKTecoFingerPrintScanner_Implementation.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BIOCHECK.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -91,6 +91,76 @@ namespace ZKTecoFingerPrintScanner_Implementation.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check2 {
+            get {
+                object obj = ResourceManager.GetObject("check2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check3 {
+            get {
+                object obj = ResourceManager.GetObject("check3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap connect {
+            get {
+                object obj = ResourceManager.GetObject("connect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap huell {
+            get {
+                object obj = ResourceManager.GetObject("huell", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minus {
+            get {
+                object obj = ResourceManager.GetObject("minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minus_circle_svgrepo_com {
+            get {
+                object obj = ResourceManager.GetObject("minus-circle-svgrepo-com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap off {
+            get {
+                object obj = ResourceManager.GetObject("off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a .
         /// </summary>
         internal static string user {
@@ -105,6 +175,36 @@ namespace ZKTecoFingerPrintScanner_Implementation.Properties {
         internal static System.Drawing.Bitmap user1 {
             get {
                 object obj = ResourceManager.GetObject("user1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user2 {
+            get {
+                object obj = ResourceManager.GetObject("user2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user21 {
+            get {
+                object obj = ResourceManager.GetObject("user21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zktcoedit {
+            get {
+                object obj = ResourceManager.GetObject("zktcoedit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -20,7 +20,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
     public class ManagementZk
     {
         private IntPtr deviceHandle;
-        private bool isInitialized;
+        public bool isInitialized;
         public string name_sn = "";
 
         //varialbles
@@ -142,7 +142,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             captureThread.Start();
             bIsTimeToDie = false;
             nameserie = fpInstance.devSn;
-            MessageDispositive($"Conectado : {nameserie}", true);
+            MessageDispositive("Dispositivo conectado", true);
 
         }
 
@@ -163,7 +163,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 captureThread.Abort();
                 if (result == zkfp.ZKFP_ERR_OK)
                 {
-                    //  MessageDispositive("Desconectado", false);
+                    MessageDispositive("Dispositivo desconectado", false);
 
                     Thread.Sleep(1000);
                     result = fpInstance.Finalize();
@@ -173,39 +173,30 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         regTempLen = 0;
                         IsRegister = false;
                         bIdentify = true;
-                        // MessageDispositive(MessageManager.msg_FP_Disconnected, false);
+                        MessageDispositive("Dispositivo desconectado", false);
                     }
                     else
                     {
-                        // MessageDispositive(MessageManager.msg_FP_FailedToReleaseResources, false);
+                        MessageDispositive("Error en dispositivo", false);
                     }
-
                 }
                 else
                 {
                     string message = FingerPrintDeviceUtilities.DisplayDeviceErrorByCode(result);
-                    // MessageDispositive(message, false);
+                    MessageDispositive(message, false);
                 }
             }
         }
         public void MessageDispositive(string message, bool status)
         {
-            //Panel panel = myForm.Controls["PanelHeader"] as Panel;
-            //Label lblSerie = panel.Controls["lblSerie"] as Label;
-            //lblSerie.ForeColor = Color.White;
-
-            myForm.lblSerie_.ForeColor = Color.White;
             myForm.lblSerie_.Text = message;
-            //lblSerie.Text = message;
             if (status)
             {
-                myForm.lblSerie_.ForeColor = Color.White;
-                myForm.lblSerie_.BackColor = Color.FromArgb(79, 208, 154);
+                myForm.lblSerie_.ForeColor = Color.Green;
             }
             else
             {
-                myForm.lblSerie_.ForeColor = Color.White;
-                myForm.lblSerie_.BackColor = Color.FromArgb(230, 112, 134);
+                myForm.lblSerie_.ForeColor = Color.Red;
             }
         }
 
@@ -275,7 +266,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     else
                     {
 
-                        Label lblIntents = SetControlValue("tabPage2", "lblIntents");
+                        Label lblIntents = myForm.lblIntents_;
                         int remainingCont = REGISTER_FINGER_COUNT - RegisterCount;
                         string a = REGISTER_FINGER_COUNT > 1 ? "veces" : "vez";
                         lblIntents.Text = $"{remainingCont} {a} más";
@@ -295,10 +286,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         {
                             var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
                             int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
-                            if (ret > 0)
+
+                            if (ret > 60)
                             {
                                 match = true;
-                                socio.MessageExtra = $"puntuación de éxito : {ret} -  {socio.Nombre} {socio.CodigoSocio}";
+                                string fullName = socio.Nombre + " " + socio.Apellidos;
+                                DataStatic.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
                                 await DataMembresia(socio);
                                 return;
                             }
@@ -382,7 +375,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void CompleteRegistration()
         {
-            Label lblIntents = SetControlValue("tabPage2", "lblIntents");
+            Label lblIntents = myForm.lblIntents_;
             lblIntents.Text = "Completado";
 
             int ret = GenerateRegisteredFingerPrint();
@@ -393,21 +386,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     string fingerPrintTemplate = string.Empty;
                     zkfp.Blob2Base64String(RegTmp, regTempLen, ref fingerPrintTemplate);
-                    // createFile(fingerPrintTemplate);
-
                     // Register huella
-                    StatusMessage("Huella registrada correctamente", true);
                     registerHuella(fingerPrintTemplate);
-                    ClearDeviceUser();
                 }
-                else
-                {
-                    StatusMessage("Error al agregar la plantilla de usuarios", false);
-                }
+                else { }
             }
             else
             {
-                StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
+                // StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
             }
 
             IsRegister = false;
@@ -433,7 +419,29 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
             }
         }
-
+        public async void registerHuella(string huella)
+        {
+            try
+            {
+                var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Code, Huella = huella };
+                AppsFitService service = new AppsFitService();
+                var resp = await service.RegHuellaAPI(data);
+                if (resp.Success)
+                {
+                    EventGeneral.Invoke("REG", true);
+                }
+                else
+                {
+                    DataStatic.MessageGeneric = resp.Message1;
+                    EventGeneral.Invoke("REG-FAIL", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                createFile(ex.ToString());
+            }
+            ClearDeviceUser();
+        }
         public void ClearDeviceUser()
         {
             try
@@ -483,6 +491,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
             // pict.Image = bmp;
 
             // FingerprintCaptured.Invoke(bmp, messageInfo, messageSuccess);
+            PictureBox pasistence = myForm.picHuellaMA_;
+            PictureBox pregister = myForm.PicRegister_;
+            pasistence.Image = bmp;
+            pregister.Image = bmp;
         }
 
         public dynamic SetControlValue(string tabPageName, string controlName)
@@ -556,20 +568,34 @@ namespace ZKTecoFingerPrintScanner_Implementation
             // pict.Image = null;
         }
 
-        public async void registerHuella(string huella)
+
+
+        //load huellas update list
+        public async Task LoadFingers()
         {
-            var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Filtre, Huella = huella };
-            AppsFitService service = new AppsFitService();
-            var resp = await service.RegHuellaAPI(data);
-            if (resp.Success)
+            AppsFitService serv = null;
+            var task = Task.Run(async () =>
+            {
+                serv = new AppsFitService();
+                var response = await serv.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
+                return response;
+            });
+            try
+            {
+                var result = await task;
+
+                if (result.Success)
+                {
+                    SocioData.SetListaUsers(result.Data);
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
             {
 
             }
-            else
-            {
-
-            }
-
         }
 
         public void createFile(string content)
@@ -606,4 +632,5 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
 
     }
+
 }

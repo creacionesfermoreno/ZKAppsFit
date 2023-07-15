@@ -28,6 +28,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string Huella { get; set; }
         public string ImagenUrl { get; set; }
         public string MessageExtra { get; set; }
+        public decimal DeudaSuplemento { get; set; }
+        
 
     }
 
@@ -48,6 +50,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public decimal MontoCuota { get; set; }
         public decimal Debe { get; set; }
         public int NroIngreso { get; set; }
+        public int CodigoSocio { get; set; }
         public int CantidadFreezing { get; set; }
         public int CantidadFreezingTomados { get; set; }
         public int CantidadAsistencia { get; set; }
@@ -57,6 +60,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public int CodigoMenbresia { get; set; }
         public string colorEstado { get; set; }
         public int Estado { get; set; }
+        public int ObtenerDisponibilidadHorarioPaquete { get; set; }
+        public int flagPaqueteSedePermiso { get; set; }
         public string ObtenerTiempoVencimiento { get; set; }
         public string ObtenerEstadoCitaNutrional { get; set; }
     }
@@ -112,6 +117,9 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         }
     }
 
-   
+    public static class CheckBoxValue
+    {
+        public static bool IsChecked { get; set; }
+    }
 
 }

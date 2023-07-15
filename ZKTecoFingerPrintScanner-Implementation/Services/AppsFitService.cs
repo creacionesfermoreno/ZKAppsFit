@@ -10,7 +10,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
     public class AppsFitService
     {
         private readonly HttpClient _httpClient;
-        private readonly string apiUrl = "https://localhost:44386/api";
+         private readonly string apiUrl = "https://webapiappsfit-cliente.azurewebsites.net/api";
+        //private readonly string apiUrl = "https://localhost:44386/api";
 
         public AppsFitService()
         {
@@ -170,6 +171,33 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
                     resp = JsonConvert.DeserializeObject<ResponseHPC>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+
+        public async Task<ResponseBase> MarkAsistence(object body)
+        {
+            ResponseBase resp = new ResponseBase();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/socio/mark-asistence", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseBase>(responseContent);
                 }
                 else
                 {
