@@ -65,6 +65,13 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 SbMessage.Message = resp.Message1;
                 btnPase.Visible = true;
 
+                DataSession.DKey = txtDkey.Text;
+                DataSession.Unidad = item.unidad;
+                DataSession.Sede = item.sede;
+                DataSession.Rubro = item.rubro;
+                DataSession.Logo = item.image;
+                DataSession.Name = item.name;
+
 
                 DataManager dataManager = new DataManager();
                 string dataToSave = txtDkey.Text;
@@ -80,10 +87,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void btnPase_Click(object sender, EventArgs e)
         {
+            DataSession.DKey = txtDkey.Text;
             this.Hide();
             ScreenHome home = new ScreenHome();
-            home.Show();
-            DataSession.DKey = txtDkey.Text;
+            home.FormClosed += Login_FormClosed;
+            home.ShowDialog();
         }
 
         private  void Login_Load(object sender, EventArgs e)
@@ -91,5 +99,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
           
 
         }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        
     }
 }

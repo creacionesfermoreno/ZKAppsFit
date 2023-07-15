@@ -67,6 +67,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "LoadingForm";
             this.Text = "LoadingForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoadingForm_FormClosed);
             this.Load += new System.EventHandler(this.LoadingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

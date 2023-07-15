@@ -11,6 +11,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
     {
         public static string DKey { get; set; }
         public static string Filtre { get; set; }
+        public static int Code { get; set; }
         public static int Unidad { get; set; }
         public static int Sede { get; set; }
         public static string Name { get; set; }
@@ -21,7 +22,10 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
     public static class DataStatic
     {
         public static Membresia MembresiasSelected { get; set; }
-        public static List<Membresia> Membresias { get; set; }
+       
+        public static string MessageGeneric  { get; set; }
+        public static string MessageGenericD  { get; set; }
+        public static List<Membresia> Membresias { get; set; } 
         public static List<Asistence> Asistences { get; set; }
         public static List<Pago> Pagos { get; set; }
         public static List<Cuota> Cuotas { get; set; }

@@ -27,6 +27,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public int unidad { get; set; }
         public int sede { get; set; }
         public string rubro { get; set; }
+        public decimal deuda_product { get; set; }
     }
 
 

@@ -20,7 +20,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
     public class ManagementZk
     {
         private IntPtr deviceHandle;
-        private bool isInitialized;
+        public bool isInitialized;
         public string name_sn = "";
 
         //varialbles
@@ -163,7 +163,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 captureThread.Abort();
                 if (result == zkfp.ZKFP_ERR_OK)
                 {
-                     MessageDispositive("Dispositivo desconectado", false);
+                    MessageDispositive("Dispositivo desconectado", false);
 
                     Thread.Sleep(1000);
                     result = fpInstance.Finalize();
@@ -173,17 +173,17 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         regTempLen = 0;
                         IsRegister = false;
                         bIdentify = true;
-                         MessageDispositive("Dispositivo desconectado", false);
+                        MessageDispositive("Dispositivo desconectado", false);
                     }
                     else
                     {
-                         MessageDispositive("Error en dispositivo", false);
+                        MessageDispositive("Error en dispositivo", false);
                     }
                 }
                 else
                 {
-                     string message = FingerPrintDeviceUtilities.DisplayDeviceErrorByCode(result);
-                     MessageDispositive(message, false);
+                    string message = FingerPrintDeviceUtilities.DisplayDeviceErrorByCode(result);
+                    MessageDispositive(message, false);
                 }
             }
         }
@@ -192,11 +192,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
             myForm.lblSerie_.Text = message;
             if (status)
             {
-                myForm.lblSerie_.ForeColor = Color.Green; 
+                myForm.lblSerie_.ForeColor = Color.Green;
             }
             else
             {
-                myForm.lblSerie_.ForeColor = Color.Red;  
+                myForm.lblSerie_.ForeColor = Color.Red;
             }
         }
 
@@ -286,10 +286,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         {
                             var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
                             int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
-                            if (ret > 0)
+
+                            if (ret > 60)
                             {
                                 match = true;
-                                socio.MessageExtra = $"puntuación de éxito : {ret} -  {socio.Nombre} {socio.CodigoSocio}";
+                                string fullName = socio.Nombre + " " + socio.Apellidos;
+                                DataStatic.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
                                 await DataMembresia(socio);
                                 return;
                             }
@@ -384,20 +386,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     string fingerPrintTemplate = string.Empty;
                     zkfp.Blob2Base64String(RegTmp, regTempLen, ref fingerPrintTemplate);
-
                     // Register huella
-                   // StatusMessage("Huella registrada correctamente", true);
                     registerHuella(fingerPrintTemplate);
-                    ClearDeviceUser();
                 }
-                else
-                {
-                   // StatusMessage("Error al agregar la plantilla de usuarios", false);
-                }
+                else { }
             }
             else
             {
-               // StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
+                // StatusMessage($"No se puede inscribir al usuario actual. Código de error: {ret}", false);
             }
 
             IsRegister = false;
@@ -423,7 +419,29 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
             }
         }
-
+        public async void registerHuella(string huella)
+        {
+            try
+            {
+                var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Code, Huella = huella };
+                AppsFitService service = new AppsFitService();
+                var resp = await service.RegHuellaAPI(data);
+                if (resp.Success)
+                {
+                    EventGeneral.Invoke("REG", true);
+                }
+                else
+                {
+                    DataStatic.MessageGeneric = resp.Message1;
+                    EventGeneral.Invoke("REG-FAIL", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                createFile(ex.ToString());
+            }
+            ClearDeviceUser();
+        }
         public void ClearDeviceUser()
         {
             try
@@ -475,7 +493,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             // FingerprintCaptured.Invoke(bmp, messageInfo, messageSuccess);
             PictureBox pasistence = myForm.picHuellaMA_;
             PictureBox pregister = myForm.PicRegister_;
-            pasistence.Image= bmp;
+            pasistence.Image = bmp;
             pregister.Image = bmp;
         }
 
@@ -550,20 +568,34 @@ namespace ZKTecoFingerPrintScanner_Implementation
             // pict.Image = null;
         }
 
-        public async void registerHuella(string huella)
+
+
+        //load huellas update list
+        public async Task LoadFingers()
         {
-            var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Filtre, Huella = huella };
-            AppsFitService service = new AppsFitService();
-            var resp = await service.RegHuellaAPI(data);
-            if (resp.Success)
+            AppsFitService serv = null;
+            var task = Task.Run(async () =>
+            {
+                serv = new AppsFitService();
+                var response = await serv.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
+                return response;
+            });
+            try
+            {
+                var result = await task;
+
+                if (result.Success)
+                {
+                    SocioData.SetListaUsers(result.Data);
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
             {
 
             }
-            else
-            {
-
-            }
-
         }
 
         public void createFile(string content)
@@ -600,4 +632,5 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
 
     }
+
 }

@@ -28,6 +28,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string Huella { get; set; }
         public string ImagenUrl { get; set; }
         public string MessageExtra { get; set; }
+        public decimal DeudaSuplemento { get; set; }
+        
 
     }
 
