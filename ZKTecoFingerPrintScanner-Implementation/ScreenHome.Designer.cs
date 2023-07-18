@@ -96,13 +96,11 @@
             this.ll = new System.Windows.Forms.Label();
             this.lblPlan = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panelMA = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.picHuellaMA = new System.Windows.Forms.PictureBox();
             this.ckAuto = new System.Windows.Forms.CheckBox();
             this.lblFullName_ = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.PicMaUser = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -125,12 +123,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblIntents = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panelIntentos = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.PicRegister = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblIntents = new System.Windows.Forms.Label();
             this.ImageUser = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -185,6 +182,14 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.timerNow = new System.Windows.Forms.Timer(this.components);
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblMessage = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -200,11 +205,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.panelMA.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHuellaMA)).BeginInit();
-            this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicMaUser)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -214,7 +217,7 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panelIntentos.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicRegister)).BeginInit();
@@ -242,6 +245,8 @@
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSerie
@@ -272,7 +277,7 @@
             this.btnMarkAsistence.ForeColor = System.Drawing.Color.White;
             this.btnMarkAsistence.Location = new System.Drawing.Point(18, 198);
             this.btnMarkAsistence.Name = "btnMarkAsistence";
-            this.btnMarkAsistence.Size = new System.Drawing.Size(171, 67);
+            this.btnMarkAsistence.Size = new System.Drawing.Size(161, 67);
             this.btnMarkAsistence.TabIndex = 20;
             this.btnMarkAsistence.Text = "Marcar Asistencia";
             this.btnMarkAsistence.UseVisualStyleBackColor = false;
@@ -906,7 +911,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.20091F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.79909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 594F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 625F));
             this.tableLayoutPanel5.Controls.Add(this.ll, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblPlan, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -925,7 +930,7 @@
             this.ll.ForeColor = System.Drawing.Color.Black;
             this.ll.Location = new System.Drawing.Point(3, 0);
             this.ll.Name = "ll";
-            this.ll.Size = new System.Drawing.Size(59, 30);
+            this.ll.Size = new System.Drawing.Size(52, 30);
             this.ll.TabIndex = 20;
             this.ll.Text = "Membresía";
             this.ll.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -936,7 +941,7 @@
             this.lblPlan.AutoSize = true;
             this.lblPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(28)))), ((int)(((byte)(70)))));
-            this.lblPlan.Location = new System.Drawing.Point(101, 6);
+            this.lblPlan.Location = new System.Drawing.Point(82, 6);
             this.lblPlan.Name = "lblPlan";
             this.lblPlan.Size = new System.Drawing.Size(154, 17);
             this.lblPlan.TabIndex = 15;
@@ -945,7 +950,12 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.panel3.Controls.Add(this.tableLayoutPanel7);
+            this.panel3.Controls.Add(this.tableLayoutPanel3);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.pictureBox7);
+            this.panel3.Controls.Add(this.panelMA);
+            this.panel3.Controls.Add(this.PicMaUser);
+            this.panel3.Controls.Add(this.ckAuto);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
@@ -953,61 +963,35 @@
             this.panel3.Size = new System.Drawing.Size(304, 710);
             this.panel3.TabIndex = 13;
             // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.79688F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.20313F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel7.Controls.Add(this.panelMA, 1, 4);
-            this.tableLayoutPanel7.Controls.Add(this.ckAuto, 1, 3);
-            this.tableLayoutPanel7.Controls.Add(this.lblFullName_, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.panel12, 1, 1);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 5;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.74233F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.25767F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 281F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(304, 710);
-            this.tableLayoutPanel7.TabIndex = 2;
-            this.tableLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel7_Paint);
-            // 
             // panelMA
             // 
-            this.panelMA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelMA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
             this.panelMA.Controls.Add(this.panel7);
             this.panelMA.Controls.Add(this.btnMarkAsistence);
-            this.panelMA.Location = new System.Drawing.Point(44, 431);
+            this.panelMA.Location = new System.Drawing.Point(60, 336);
             this.panelMA.Name = "panelMA";
-            this.panelMA.Size = new System.Drawing.Size(200, 276);
+            this.panelMA.Size = new System.Drawing.Size(190, 276);
             this.panelMA.TabIndex = 1;
             // 
             // panel7
             // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.picHuellaMA);
             this.panel7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel7.Location = new System.Drawing.Point(39, 35);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(127, 136);
+            this.panel7.Size = new System.Drawing.Size(117, 136);
             this.panel7.TabIndex = 21;
             // 
             // picHuellaMA
             // 
             this.picHuellaMA.Image = global::BIOCHECK.Properties.Resources.huell;
             this.picHuellaMA.InitialImage = ((System.Drawing.Image)(resources.GetObject("picHuellaMA.InitialImage")));
-            this.picHuellaMA.Location = new System.Drawing.Point(17, 7);
+            this.picHuellaMA.Location = new System.Drawing.Point(12, 9);
             this.picHuellaMA.Name = "picHuellaMA";
             this.picHuellaMA.Size = new System.Drawing.Size(92, 116);
             this.picHuellaMA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1016,12 +1000,13 @@
             // 
             // ckAuto
             // 
+            this.ckAuto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ckAuto.AutoSize = true;
             this.ckAuto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ckAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckAuto.ForeColor = System.Drawing.Color.White;
             this.ckAuto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ckAuto.Location = new System.Drawing.Point(44, 391);
+            this.ckAuto.Location = new System.Drawing.Point(60, 298);
             this.ckAuto.Name = "ckAuto";
             this.ckAuto.Size = new System.Drawing.Size(109, 24);
             this.ckAuto.TabIndex = 21;
@@ -1031,35 +1016,27 @@
             // 
             // lblFullName_
             // 
+            this.lblFullName_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFullName_.AutoSize = true;
             this.lblFullName_.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFullName_.ForeColor = System.Drawing.Color.White;
-            this.lblFullName_.Location = new System.Drawing.Point(44, 326);
+            this.lblFullName_.Location = new System.Drawing.Point(47, 0);
             this.lblFullName_.Name = "lblFullName_";
-            this.lblFullName_.Size = new System.Drawing.Size(116, 60);
+            this.lblFullName_.Size = new System.Drawing.Size(220, 40);
             this.lblFullName_.TabIndex = 1;
             this.lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
             this.lblFullName_.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel12
-            // 
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.PicMaUser);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(44, 113);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(200, 210);
-            this.panel12.TabIndex = 22;
-            // 
             // PicMaUser
             // 
+            this.PicMaUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PicMaUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicMaUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PicMaUser.Image = global::BIOCHECK.Properties.Resources.user2;
             this.PicMaUser.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicMaUser.InitialImage")));
-            this.PicMaUser.Location = new System.Drawing.Point(0, 0);
+            this.PicMaUser.Location = new System.Drawing.Point(78, 22);
             this.PicMaUser.Name = "PicMaUser";
-            this.PicMaUser.Size = new System.Drawing.Size(198, 208);
+            this.PicMaUser.Size = new System.Drawing.Size(176, 187);
             this.PicMaUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicMaUser.TabIndex = 0;
             this.PicMaUser.TabStop = false;
@@ -1335,33 +1312,61 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.panel5.Controls.Add(this.tableLayoutPanel3);
+            this.panel5.Controls.Add(this.lblIntents);
+            this.panel5.Controls.Add(this.panelIntentos);
+            this.panel5.Controls.Add(this.label27);
+            this.panel5.Controls.Add(this.label26);
+            this.panel5.Controls.Add(this.label25);
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.label23);
+            this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(839, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(353, 710);
             this.panel5.TabIndex = 17;
             // 
-            // tableLayoutPanel3
+            // pictureBox6
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.83883F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.16117F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel3.Controls.Add(this.lblIntents, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.panelIntentos, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.74611F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.25389F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 241F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(353, 710);
-            this.tableLayoutPanel3.TabIndex = 0;
+            this.pictureBox6.Image = global::BIOCHECK.Properties.Resources.advertencia;
+            this.pictureBox6.Location = new System.Drawing.Point(31, 37);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 1;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panelIntentos
+            // 
+            this.panelIntentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelIntentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.panelIntentos.Controls.Add(this.panel11);
+            this.panelIntentos.Location = new System.Drawing.Point(86, 274);
+            this.panelIntentos.Name = "panelIntentos";
+            this.panelIntentos.Size = new System.Drawing.Size(178, 204);
+            this.panelIntentos.TabIndex = 26;
+            // 
+            // panel11
+            // 
+            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.PicRegister);
+            this.panel11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel11.Location = new System.Drawing.Point(24, 30);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(130, 155);
+            this.panel11.TabIndex = 26;
+            // 
+            // PicRegister
+            // 
+            this.PicRegister.Image = global::BIOCHECK.Properties.Resources.huell;
+            this.PicRegister.Location = new System.Drawing.Point(8, 10);
+            this.PicRegister.Name = "PicRegister";
+            this.PicRegister.Size = new System.Drawing.Size(113, 135);
+            this.PicRegister.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicRegister.TabIndex = 12;
+            this.PicRegister.TabStop = false;
             // 
             // lblIntents
             // 
@@ -1371,60 +1376,12 @@
             this.lblIntents.AutoSize = true;
             this.lblIntents.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIntents.ForeColor = System.Drawing.Color.White;
-            this.lblIntents.Location = new System.Drawing.Point(79, 417);
+            this.lblIntents.Location = new System.Drawing.Point(139, 520);
             this.lblIntents.Name = "lblIntents";
-            this.lblIntents.Size = new System.Drawing.Size(191, 51);
+            this.lblIntents.Size = new System.Drawing.Size(101, 21);
             this.lblIntents.TabIndex = 26;
             this.lblIntents.Text = "3 veces más";
             this.lblIntents.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panelIntentos
-            // 
-            this.panelIntentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelIntentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
-            this.panelIntentos.Controls.Add(this.panel11);
-            this.panelIntentos.Location = new System.Drawing.Point(79, 181);
-            this.panelIntentos.Name = "panelIntentos";
-            this.panelIntentos.Size = new System.Drawing.Size(191, 233);
-            this.panelIntentos.TabIndex = 26;
-            // 
-            // panel11
-            // 
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.PicRegister);
-            this.panel11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel11.Location = new System.Drawing.Point(34, 46);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(129, 136);
-            this.panel11.TabIndex = 26;
-            // 
-            // PicRegister
-            // 
-            this.PicRegister.Image = global::BIOCHECK.Properties.Resources.huell;
-            this.PicRegister.Location = new System.Drawing.Point(8, 11);
-            this.PicRegister.Name = "PicRegister";
-            this.PicRegister.Size = new System.Drawing.Size(111, 115);
-            this.PicRegister.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicRegister.TabIndex = 12;
-            this.PicRegister.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(79, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label1.Size = new System.Drawing.Size(191, 178);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "VERIFICA TU HUELLA 3 VECES";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // ImageUser
             // 
@@ -2009,7 +1966,7 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.22222F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.77778F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel10.Controls.Add(this.pictureBox5, 3, 0);
             this.tableLayoutPanel10.Controls.Add(this.BtnDisconnectionNew, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.BtnConnectionNew, 0, 0);
@@ -2029,9 +1986,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::BIOCHECK.Properties.Resources.minus;
-            this.pictureBox5.Location = new System.Drawing.Point(358, 3);
+            this.pictureBox5.Location = new System.Drawing.Point(327, 3);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(45, 47);
+            this.pictureBox5.Size = new System.Drawing.Size(76, 47);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 30;
             this.pictureBox5.TabStop = false;
@@ -2047,9 +2004,9 @@
             this.BtnDisconnectionNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDisconnectionNew.Image = global::BIOCHECK.Properties.Resources.off;
             this.BtnDisconnectionNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDisconnectionNew.Location = new System.Drawing.Point(162, 8);
+            this.BtnDisconnectionNew.Location = new System.Drawing.Point(146, 8);
             this.BtnDisconnectionNew.Name = "BtnDisconnectionNew";
-            this.BtnDisconnectionNew.Size = new System.Drawing.Size(139, 37);
+            this.BtnDisconnectionNew.Size = new System.Drawing.Size(124, 37);
             this.BtnDisconnectionNew.TabIndex = 29;
             this.BtnDisconnectionNew.Text = "Desconectar";
             this.BtnDisconnectionNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2068,7 +2025,7 @@
             this.BtnConnectionNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnConnectionNew.Location = new System.Drawing.Point(3, 8);
             this.BtnConnectionNew.Name = "BtnConnectionNew";
-            this.BtnConnectionNew.Size = new System.Drawing.Size(153, 37);
+            this.BtnConnectionNew.Size = new System.Drawing.Size(137, 37);
             this.BtnConnectionNew.TabIndex = 28;
             this.BtnConnectionNew.Text = "Conectar";
             this.BtnConnectionNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2181,6 +2138,108 @@
             this.timerNow.Interval = 1000;
             this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
             // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(100)))));
+            this.label23.Location = new System.Drawing.Point(83, 49);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(95, 13);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "INDICACIONES";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(47, 94);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(30, 31);
+            this.label24.TabIndex = 3;
+            this.label24.Text = "1";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(83, 89);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(267, 68);
+            this.label25.TabIndex = 4;
+            this.label25.Text = "Asegúrate de presionar y colocar bien \r\ntu huella. Esto garantizará una precisión" +
+    " \r\ny rapidez en el registro de tu asistencia.\r\n¡Gracias!";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(47, 179);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(30, 31);
+            this.label26.TabIndex = 5;
+            this.label26.Text = "2";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(83, 183);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(166, 17);
+            this.label27.TabIndex = 6;
+            this.label27.Text = "Verifica tu huella 3 veces";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox7.Image = global::BIOCHECK.Properties.Resources.advertencia;
+            this.pictureBox7.Location = new System.Drawing.Point(38, 656);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(34, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 22;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(100)))));
+            this.label1.Location = new System.Drawing.Point(75, 656);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 36);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Asegúrate de presionar y \r\ncolocar bien tu huella.";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.2963F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.7037F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.Controls.Add(this.lblFullName_, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 215);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(298, 77);
+            this.tableLayoutPanel3.TabIndex = 24;
+            // 
             // lblMessage
             // 
             this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -2224,12 +2283,10 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
+            this.panel3.PerformLayout();
             this.panelMA.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picHuellaMA)).EndInit();
-            this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicMaUser)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -2242,8 +2299,8 @@
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panelIntentos.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicRegister)).EndInit();
@@ -2281,6 +2338,9 @@
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2302,7 +2362,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvHpago;
         private System.Windows.Forms.DataGridView dgvHcuotas;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.PictureBox PicMaUser;
         private System.Windows.Forms.Label lblFullName_;
@@ -2310,7 +2369,6 @@
         private System.Windows.Forms.DataGridView dgvIncidencias;
         private System.Windows.Forms.DataGridView dgvMembresias;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNro;
         private System.Windows.Forms.TextBox TxtSurname;
         private System.Windows.Forms.TextBox TxtName;
@@ -2378,7 +2436,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panelIntentos;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -2408,7 +2465,6 @@
         private System.Windows.Forms.Label lblIntents;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.CheckBox ckAuto;
-        private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label lblDeudaProductos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombrePaquete;
@@ -2430,5 +2486,14 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.Label lblDeudaMembresia;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

@@ -840,5 +840,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
