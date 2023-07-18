@@ -232,7 +232,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 if (IsRegister)
                 {
-                    //  StatusMessage("", false, true);
 
                     int ret = zkfp.ZKFP_ERR_OK;
                     int fid = 0, score = 0;
@@ -346,11 +345,15 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     });
 
                     DataStatic.Membresias = resp.Data;
-                    DataStatic.Asistences = respHistorial.Data;
-                    DataStatic.Pagos = HPC.Data.Pagos;
-                    DataStatic.Cuotas = HPC.Data.Cuotas;
-                    DataStatic.Incidencias = HPC.Data.Incidencias;
+                    DataStatic.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
+                    DataStatic.Pagos = HPC.Data.Pagos.Count > 0 ? HPC.Data.Pagos : new List<Pago>();
+                    DataStatic.Cuotas = HPC.Data.Cuotas.Count > 0 ? HPC.Data.Cuotas : new List<Cuota>();
+                    DataStatic.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias : new List<Incidencia>();
                     EventGeneral.Invoke("MA-T", 1);
+                }
+                else
+                {
+                    EventGeneral.Invoke("MA-F", 1);
                 }
             }
             finally

@@ -61,7 +61,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             //managementZk.EventGeneral += OnEventGeneral;
             //AdjustFormSize(70);
 
-           // CenterControl(panel1, lblMessageMem);
+            // CenterControl(panel1, lblMessageMem);
             btnMarkAsistence.Region = Region.FromHrgn(CreateRoundRectRgn
                 (0, 0, btnMarkAsistence.Width, btnMarkAsistence.Height, 30, 30));
 
@@ -123,7 +123,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 switch (message)
                 {
                     case "MA-T":
-                       
+
                         dgvMembresias.Rows.Clear();
                         StatusMessage(DataStatic.MessageGenericD, true);
                         SocioInfoMatch(true);
@@ -153,7 +153,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         {
                             dgvMembresias.Rows[0].Selected = true;
                             DataStatic.MembresiasSelected = DataStatic.Membresias[0];
-                            string deudaMem = DataStatic.MembresiasSelected.Debe > 0?$"DEBE {DataStatic.MembresiasSelected.Debe} EN MEMBRESIA":"";
+                            string deudaMem = DataStatic.MembresiasSelected.Debe > 0 ? $"DEBE {DataStatic.MembresiasSelected.Debe} EN MEMBRESIA" : "";
                             StlyDeudaM(deudaMem, deudaMem != "" ? true : false);
                             if (CheckBoxValue.IsChecked)
                             {
@@ -161,8 +161,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
                             }
                         }
 
-                        Thread dataLoadThread = new Thread(LoadDataToGrids);
-                        dataLoadThread.Start();
+                        //Thread dataLoadThread = new Thread(LoadDataToGrids);
+                        //dataLoadThread.Start();
+                        _ = Task.Run(() => LoadDataToGrids());
 
                         break;
                     case "MA-F":
@@ -174,7 +175,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         StatusMessage($"No se encontro socio {DateTime.Now}", false);
                         MessageStatusMembresia("ESTADO DE MEMBRESIA", 0, true);
                         lblPlan.Text = "";
-                        
+
                         break;
                     case "REG":
                         StatusMessage("Registro de huella exitosa", true);
@@ -203,24 +204,37 @@ namespace ZKTecoFingerPrintScanner_Implementation
             dgvIncidencias.Rows.Clear();
             try
             {
-                foreach (Asistence a in DataStatic.Asistences)
+                if (DataStatic.Asistences.Count > 0)
                 {
-                    dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
+                    foreach (Asistence a in DataStatic.Asistences)
+                    {
+                        dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
+                    }
                 }
 
-                foreach (Pago p in DataStatic.Pagos)
+
+                if (DataStatic.Pagos.Count > 0)
                 {
-                    dgvHpago.Rows.Add(p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
+                    foreach (Pago p in DataStatic.Pagos)
+                    {
+                        dgvHpago.Rows.Add(p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
+                    }
                 }
 
-                foreach (Cuota c in DataStatic.Cuotas)
+                if (DataStatic.Cuotas.Count > 0)
                 {
-                    dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
+                    foreach (Cuota c in DataStatic.Cuotas)
+                    {
+                        dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
+                    }
                 }
 
-                foreach (Incidencia c in DataStatic.Incidencias)
+                if (DataStatic.Incidencias.Count > 0)
                 {
-                    dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
+                    foreach (Incidencia c in DataStatic.Incidencias)
+                    {
+                        dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
+                    }
                 }
 
             }
@@ -238,8 +252,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 var socio = DataStatic.Socio;
                 lblFullName_.Text = $"{socio.Nombre}, {socio.Apellidos}".ToUpper();
-                string deudaStr = socio.DeudaSuplemento > 0? $"DEBE {socio.DeudaSuplemento} EN PRODUCTOS" : "";
-                StlyDeuda(deudaStr,deudaStr.Length > 0 ? true:false);
+                string deudaStr = socio.DeudaSuplemento > 0 ? $"DEBE {socio.DeudaSuplemento} EN PRODUCTOS" : "";
+                StlyDeuda(deudaStr, deudaStr.Length > 0 ? true : false);
                 if (string.IsNullOrEmpty(socio.ImagenUrl) == false && validateHttps(socio.ImagenUrl) == true)
                 {
                     using (WebClient webClient = new WebClient())
@@ -640,7 +654,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
                 lblPlan.Text = membresias.Descripcion.ToUpper();
 
-                string deudaMem = Convert.ToInt32(membresias.Debe)> 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
+                string deudaMem = Convert.ToInt32(membresias.Debe) > 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
                 StlyDeudaM(deudaMem, Convert.ToInt32(membresias.Debe) > 0 ? true : false);
 
 
@@ -654,9 +668,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     btnMarkAsistence.Visible = false;
                 }
 
-                
-                Thread dataLoadThread = new Thread(LoadDataToGrids);
-                dataLoadThread.Start();
+
+                //Thread dataLoadThread = new Thread(LoadDataToGrids);
+                //dataLoadThread.Start();
+                _ = Task.Run(() => LoadDataToGrids());
             }
         }
 
