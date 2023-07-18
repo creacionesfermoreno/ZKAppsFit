@@ -10,7 +10,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
     public class AppsFitService
     {
         private readonly HttpClient _httpClient;
-         private readonly string apiUrl = "https://webapiappsfit-cliente.azurewebsites.net/api";
+        private readonly string apiUrl = "https://webapiappsfit-cliente.azurewebsites.net/api";
         //private readonly string apiUrl = "https://localhost:44386/api";
 
         public AppsFitService()

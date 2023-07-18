@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZKTecoFingerPrintScanner_Implementation.Controls;
 using ZKTecoFingerPrintScanner_Implementation.Helpers;
 using ZKTecoFingerPrintScanner_Implementation.Models;
 using ZKTecoFingerPrintScanner_Implementation.Services;
@@ -30,7 +31,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         public Label lblSerie_ { get; set; }
         public Label lblIntents_ { get; set; }
-        public StatusBar lblMessage_ { get; set; }
+        // public StatusBar lblMessage_ { get; set; }
         public PictureBox picHuellaMA_ { get; set; }
         public PictureBox PicRegister_ { get; set; }
 
@@ -159,11 +160,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
                             {
                                 btnMarkAsistence.PerformClick();
                             }
+                            _ = Task.Run(() => LoadDataToGrids());
                         }
 
                         //Thread dataLoadThread = new Thread(LoadDataToGrids);
                         //dataLoadThread.Start();
-                        _ = Task.Run(() => LoadDataToGrids());
+
 
                         break;
                     case "MA-F":
@@ -174,6 +176,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         SocioInfoMatch(false);
                         StatusMessage($"No se encontro socio {DateTime.Now}", false);
                         MessageStatusMembresia("ESTADO DE MEMBRESIA", 0, true);
+                        StatusMessageD("", false, true);
                         lblPlan.Text = "";
 
                         break;
@@ -406,6 +409,30 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+        private void StatusMessageD(string message, bool success, bool reset = false)
+        {
+
+            statusBar1.Message = message;
+            statusBar1.StatusBarForeColor = Color.White;
+
+            if (reset)
+            {
+                statusBar1.StatusBarBackColor = Color.White;
+            }
+            else
+            {
+                if (success)
+                {
+
+                    statusBar1.StatusBarBackColor = Color.FromArgb(79, 208, 154);
+                }
+                else
+                {
+                    statusBar1.StatusBarBackColor = Color.FromArgb(230, 112, 134);
+                }
+            }
+        }
+
         public bool validateHttps(string url)
         {
             bool valid = false;
@@ -507,6 +534,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             TxtSurname.Text = "";
             TxtNro.Text = "";
             lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
+            StatusMessageD("", false, true);
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -625,53 +653,66 @@ namespace ZKTecoFingerPrintScanner_Implementation
             if (e.RowIndex >= 0)
             {
 
-                dgvMembresias.ClearSelection();
-                dgvMembresias.Rows[e.RowIndex].Selected = true;
-
-                var membresias = DataStatic.Membresias[e.RowIndex];
-                int CodigoMembresia = membresias.CodigoMenbresia;
-                int CodigoSede = membresias.CodigoSede;
-                int CodigoUnidadNegocio = DataSession.Unidad;
-
-                AppsFitService serv = new AppsFitService();
-
-                var respHistorial = await serv.AsistencesList(new
+                try
                 {
-                    CodigoUnidadNegocio = CodigoUnidadNegocio,
-                    CodigoSede = CodigoSede,
-                    Membresia = CodigoMembresia
-                });
-                var HPC = await serv.HistorialPC(new
-                {
-                    CodigoUnidadNegocio = CodigoUnidadNegocio,
-                    CodigoSede = CodigoSede,
-                    Membresia = CodigoMembresia
-                });
-                DataStatic.Asistences = respHistorial.Data;
-                DataStatic.Pagos = HPC.Data.Pagos;
-                DataStatic.Cuotas = HPC.Data.Cuotas;
-                DataStatic.Incidencias = HPC.Data.Incidencias;
-                MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
-                lblPlan.Text = membresias.Descripcion.ToUpper();
+                    dgvMembresias.ClearSelection();
+                    dgvMembresias.Rows[e.RowIndex].Selected = true;
 
-                string deudaMem = Convert.ToInt32(membresias.Debe) > 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
-                StlyDeudaM(deudaMem, Convert.ToInt32(membresias.Debe) > 0 ? true : false);
+                    var membresias = DataStatic.Membresias[e.RowIndex];
+                    int CodigoMembresia = membresias.CodigoMenbresia;
+                    int CodigoSede = membresias.CodigoSede;
+                    int CodigoUnidadNegocio = DataSession.Unidad;
+
+                    AppsFitService serv = new AppsFitService();
 
 
-                DataStatic.MembresiasSelected = membresias;
-                if (membresias.Estado == 1)
-                {
-                    btnMarkAsistence.Visible = true;
+                    var commonParameters = new
+                    {
+                        CodigoUnidadNegocio = CodigoUnidadNegocio,
+                        CodigoSede = CodigoSede,
+                        Membresia = CodigoMembresia
+                    };
+
+                    var respHistorial = await serv.AsistencesList(commonParameters);
+                    var HPC = await serv.HistorialPC(commonParameters);
+
+                    if (respHistorial.Success)
+                    {
+                        DataStatic.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
+                    }
+                    else
+                    {
+
+                    }
+
+                    DataStatic.Pagos = HPC.Data.Pagos.Count > 0 ? HPC.Data.Pagos : new List<Pago>();
+                    DataStatic.Cuotas = HPC.Data.Cuotas.Count > 0 ? HPC.Data.Cuotas : new List<Cuota>();
+                    DataStatic.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias : new List<Incidencia>();
+
+
+
+                    MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
+                    lblPlan.Text = membresias.Descripcion.ToUpper();
+
+                    string deudaMem = Convert.ToInt32(membresias.Debe) > 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
+                    StlyDeudaM(deudaMem, Convert.ToInt32(membresias.Debe) > 0 ? true : false);
+
+                    DataStatic.MembresiasSelected = membresias;
+                    if (membresias.Estado == 1)
+                    {
+                        btnMarkAsistence.Visible = true;
+                    }
+                    else
+                    {
+                        btnMarkAsistence.Visible = false;
+                    }
+
+                    _ = Task.Run(() => LoadDataToGrids());
                 }
-                else
+                catch (Exception ex)
                 {
-                    btnMarkAsistence.Visible = false;
+                    managementZk.createFile($"{DateTime.Now.ToString()} - {ex.Message}");
                 }
-
-
-                //Thread dataLoadThread = new Thread(LoadDataToGrids);
-                //dataLoadThread.Start();
-                _ = Task.Run(() => LoadDataToGrids());
             }
         }
 
@@ -697,6 +738,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             dgvHpago.Rows.Clear();
             dgvMembresias.Rows.Clear();
             dgvIncidencias.Rows.Clear();
+
+            StatusMessageD("", false, true);
         }
 
         private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
@@ -721,70 +764,89 @@ namespace ZKTecoFingerPrintScanner_Implementation
             lblDate.Text = dnowFormat;
         }
 
+
         private async void btnMarkAsistence_Click(object sender, EventArgs e)
         {
-
             if (managementZk.isInitialized)
             {
                 if (DataStatic.Membresias == null)
                 {
-                    MessageBox.Show("DEBE CONTAR CON UNA MEMBRESIA");
+                    StatusMessageD($"DEBE CONTAR CON UNA MEMBRESIA", false);
+                    return;
                 }
                 else
                 {
-                    string message;
-                    //validate flag sede permission
-                    if (DataStatic.MembresiasSelected.ObtenerDisponibilidadHorarioPaquete > 0)
+                    string message = ValidateMembresia(DataStatic.MembresiasSelected);
+
+                    if (!string.IsNullOrEmpty(message))
                     {
-                        //validate horario
-                        if (DataStatic.MembresiasSelected.flagPaqueteSedePermiso > 0)
+                        StatusMessageD($"{message}", false);
+                        return;
+                    }
+                    else
+                    {
+                        if (DataStatic.MembresiasSelected.Debe == 0)
                         {
-                            if (DataStatic.MembresiasSelected.NroIngreso < DataStatic.MembresiasSelected.NroIngresoActual)
+                            //? Success, validate and mark attendance
+                            AppsFitService serv = new AppsFitService();
+
+                            var data = new
                             {
-                                message = "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
-                            }
-                            else
+                                CodigoUnidadNegocio = DataSession.Unidad,
+                                Sede = DataSession.Sede,
+                                Socio = DataStatic.MembresiasSelected.CodigoSocio,
+                                Membresia = DataStatic.MembresiasSelected.CodigoMenbresia
+                            };
+
+                            var res = await serv.MarkAsistence(data);
+                            StatusMessageD($"{res.Message1}", res.Success);
+                            if (res.Success)
                             {
-                                //?sucess validate 
-                                AppsFitService serv = new AppsFitService();
-
-                                var data = new
-                                {
-                                    CodigoUnidadNegocio = DataSession.Unidad,
-                                    Sede = DataSession.Sede,
-                                    Socio = DataStatic.MembresiasSelected.CodigoSocio,
-                                    Membresia = DataStatic.MembresiasSelected.CodigoMenbresia
-                                };
-
-                                var res = await serv.MarkAsistence(data);
-                                if (res.Success)
-                                {
-                                    message = res.Message1;
-                                    //update List
-                                    DataGridViewCellEventArgs cellEventArgs = new DataGridViewCellEventArgs(0, 0);
-                                    dgridMembresias_CellClick(dgvMembresias, cellEventArgs);
-                                }
-                                else { message = res.Message1; };
-
+                                // Update List
+                                DataGridViewCellEventArgs cellEventArgs = new DataGridViewCellEventArgs(0, 0);
+                                dgridMembresias_CellClick(dgvMembresias, cellEventArgs);
                             }
                         }
-                        else { message = "HORARIO NO DISPONIBLE"; }
-
+                        else
+                        {
+                            //Debe
+                            MessageBox.Show($"TIENES UNA DEUDA DE {DataStatic.MembresiasSelected.Debe} !");
+                            return;
+                        }
                     }
-                    else { message = "ESTA MEMBRESIA NO TIENE ACCESO PARA ESTA SEDE."; }
-
-                    MessageBox.Show(message);
                 }
             }
             else
             {
-                MessageBox.Show("DEBE CONECTAR EL DISPOSITIVO");
+                StatusMessageD($"DEBE CONECTAR EL DISPOSITIVO", false);
+                return;
             }
-
 
         }
 
 
+
+
+        // Function to validate the membership and return a message
+        private string ValidateMembresia(Membresia membresia)
+        {
+            if (membresia.ObtenerDisponibilidadHorarioPaquete <= 0)
+            {
+                return "ESTA MEMBRESIA NO TIENE ACCESO PARA ESTA SEDE.";
+            }
+
+            if (membresia.flagPaqueteSedePermiso <= 0)
+            {
+                return "HORARIO NO DISPONIBLE";
+            }
+
+            if (membresia.NroIngreso < membresia.NroIngresoActual)
+            {
+                return "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
+            }
+
+            return string.Empty;
+        }
 
         private void ckAuto_CheckedChanged(object sender, EventArgs e)
         {
