@@ -80,6 +80,13 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
             BtnDisconnectionNew.Region = Region.FromHrgn(CreateRoundRectRgn
                 (0, 0, BtnDisconnectionNew.Width, BtnDisconnectionNew.Height, 20, 20));
+            //Control asistencia
+            panelCAUser.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, panelCAUser.Width, panelCAUser.Height, 20, 20));
+
+            panelAPHuella.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, panelAPHuella.Width, panelAPHuella.Height, 20, 20));
+
         }
         //center control
         public void CenterControl(Control parent, Control child)
@@ -1014,6 +1021,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
             }
+
+        }
+
+        private void rbPersonal_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

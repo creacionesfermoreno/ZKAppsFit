@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenHome));
             this.lblSerie = new MaterialSkin.Controls.MaterialLabel();
             this.btnMarkAsistence = new System.Windows.Forms.Button();
@@ -140,6 +140,7 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.ImageUser = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label32 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.label31 = new System.Windows.Forms.Label();
@@ -177,6 +178,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.PicCLogo = new System.Windows.Forms.PictureBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label39 = new System.Windows.Forms.Label();
+            this.panelAPTurno1 = new System.Windows.Forms.Panel();
+            this.btnMarcarIBT1 = new System.Windows.Forms.Button();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.btnMarcarEntradaT1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelCAUser = new System.Windows.Forms.Panel();
+            this.pbAPFoto = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.panelAPHuella = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.pbAPHuella = new System.Windows.Forms.PictureBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.lblGym = new System.Windows.Forms.Label();
             this.lblRubro = new System.Windows.Forms.Label();
             this.picGymLogo = new System.Windows.Forms.PictureBox();
@@ -194,14 +215,39 @@
             this.BtnConnectionNew = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.statusBar1 = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblMessage = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.timerNow = new System.Windows.Forms.Timer(this.components);
-            this.label32 = new System.Windows.Forms.Label();
+            this.btnMarcarFBT1 = new System.Windows.Forms.Button();
+            this.btnMarcarSalidaT1 = new System.Windows.Forms.Button();
+            this.lblMET1 = new System.Windows.Forms.Label();
+            this.lblMIBT1 = new System.Windows.Forms.Label();
+            this.lblMFBT1 = new System.Windows.Forms.Label();
+            this.lblMST1 = new System.Windows.Forms.Label();
+            this.rbAPUsuario = new System.Windows.Forms.RadioButton();
+            this.rbAPPersonalFijo = new System.Windows.Forms.RadioButton();
+            this.gbAPTipoUsuario = new System.Windows.Forms.GroupBox();
+            this.rbAPPersonalEvent = new System.Windows.Forms.RadioButton();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.panelAPTurno2 = new System.Windows.Forms.Panel();
+            this.lblMST2 = new System.Windows.Forms.Label();
+            this.lblMFBT2 = new System.Windows.Forms.Label();
+            this.lblMIBT2 = new System.Windows.Forms.Label();
+            this.lblMET2 = new System.Windows.Forms.Label();
+            this.btnMarcarSalidaT2 = new System.Windows.Forms.Button();
+            this.btnMarcarFBT2 = new System.Windows.Forms.Button();
+            this.btnMarcarIBT2 = new System.Windows.Forms.Button();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.btnMarcarEntradaT2 = new System.Windows.Forms.Button();
+            this.label49 = new System.Windows.Forms.Label();
+            this.gbAPTipoUser = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.statusBar1 = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
+            this.lblMessage = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
@@ -246,6 +292,17 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicCLogo)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.panelAPTurno1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panelCAUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).BeginInit();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.panelAPHuella.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).BeginInit();
             this.panelDeviseConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -260,6 +317,10 @@
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
+            this.gbAPTipoUsuario.SuspendLayout();
+            this.panelAPTurno2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            this.gbAPTipoUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSerie
@@ -268,12 +329,12 @@
             this.lblSerie.AutoSize = true;
             this.lblSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.lblSerie.Depth = 0;
-            this.lblSerie.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblSerie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblSerie.Location = new System.Drawing.Point(64, 26);
             this.lblSerie.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(134, 19);
+            this.lblSerie.Size = new System.Drawing.Size(129, 18);
             this.lblSerie.TabIndex = 3;
             this.lblSerie.Text = "Estado dispositivo";
             // 
@@ -316,6 +377,7 @@
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
             this.TabControl.Controls.Add(this.tabPage3);
+            this.TabControl.Controls.Add(this.tabPage4);
             this.TabControl.Depth = 0;
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 53);
@@ -339,7 +401,7 @@
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1192, 710);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Marcar asistencia";
+            this.tabPage1.Text = "Asistencia cliente";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tableLayoutPanel11
@@ -492,15 +554,15 @@
             this.dgvAsistences.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.dgvAsistences.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAsistences.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle53.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistences.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistences.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAsistences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsistences.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -514,11 +576,11 @@
             this.dgvAsistences.Name = "dgvAsistences";
             this.dgvAsistences.ReadOnly = true;
             this.dgvAsistences.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvAsistences.RowsDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvAsistences.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAsistences.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvAsistences.Size = new System.Drawing.Size(432, 169);
             this.dgvAsistences.TabIndex = 11;
@@ -555,15 +617,15 @@
             this.dgvHcuotas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.dgvHcuotas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHcuotas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle55.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHcuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHcuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHcuotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHcuotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
@@ -576,11 +638,11 @@
             this.dgvHcuotas.Name = "dgvHcuotas";
             this.dgvHcuotas.ReadOnly = true;
             this.dgvHcuotas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvHcuotas.RowsDefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHcuotas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHcuotas.Size = new System.Drawing.Size(438, 129);
             this.dgvHcuotas.TabIndex = 14;
             // 
@@ -610,40 +672,40 @@
             this.dgvIncidencias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.dgvIncidencias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvIncidencias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle57.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle57.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvIncidencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvIncidencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvIncidencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIncidencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
             this.Column9,
             this.Column10});
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIncidencias.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIncidencias.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvIncidencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvIncidencias.EnableHeadersVisualStyles = false;
             this.dgvIncidencias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.dgvIncidencias.Location = new System.Drawing.Point(447, 238);
             this.dgvIncidencias.Name = "dgvIncidencias";
             this.dgvIncidencias.ReadOnly = true;
-            dataGridViewCellStyle59.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvIncidencias.RowsDefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvIncidencias.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvIncidencias.Size = new System.Drawing.Size(432, 129);
             this.dgvIncidencias.TabIndex = 19;
             // 
@@ -673,15 +735,15 @@
             this.dgvHpago.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.dgvHpago.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHpago.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle60.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHpago.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHpago.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvHpago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHpago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FECHAHP,
@@ -689,14 +751,14 @@
             this.COMPROBANTEHP,
             this.FPAGOHP,
             this.CREADORHP});
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHpago.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHpago.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvHpago.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHpago.EnableHeadersVisualStyles = false;
             this.dgvHpago.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
@@ -704,12 +766,12 @@
             this.dgvHpago.Name = "dgvHpago";
             this.dgvHpago.ReadOnly = true;
             this.dgvHpago.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle62.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle62.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle62.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvHpago.RowsDefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHpago.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvHpago.Size = new System.Drawing.Size(438, 169);
             this.dgvHpago.TabIndex = 8;
             // 
@@ -811,14 +873,14 @@
             this.dgvMembresias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.dgvMembresias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMembresias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
-            dataGridViewCellStyle63.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle63.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(146)))), ((int)(((byte)(146)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMembresias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombrePaquete,
@@ -842,20 +904,20 @@
             this.dgvMembresias.Name = "dgvMembresias";
             this.dgvMembresias.ReadOnly = true;
             this.dgvMembresias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMembresias.RowHeadersDefaultCellStyle = dataGridViewCellStyle64;
-            dataGridViewCellStyle65.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvMembresias.RowsDefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMembresias.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(116)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvMembresias.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvMembresias.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvMembresias.Size = new System.Drawing.Size(888, 189);
             this.dgvMembresias.TabIndex = 0;
@@ -945,7 +1007,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.20091F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.79909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 639F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 697F));
             this.tableLayoutPanel5.Controls.Add(this.ll, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblPlan, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -964,7 +1026,7 @@
             this.ll.ForeColor = System.Drawing.Color.Black;
             this.ll.Location = new System.Drawing.Point(3, 0);
             this.ll.Name = "ll";
-            this.ll.Size = new System.Drawing.Size(52, 30);
+            this.ll.Size = new System.Drawing.Size(35, 30);
             this.ll.TabIndex = 20;
             this.ll.Text = "Membresía";
             this.ll.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -975,9 +1037,9 @@
             this.lblPlan.AutoSize = true;
             this.lblPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(28)))), ((int)(((byte)(70)))));
-            this.lblPlan.Location = new System.Drawing.Point(73, 6);
+            this.lblPlan.Location = new System.Drawing.Point(57, 0);
             this.lblPlan.Name = "lblPlan";
-            this.lblPlan.Size = new System.Drawing.Size(154, 17);
+            this.lblPlan.Size = new System.Drawing.Size(114, 30);
             this.lblPlan.TabIndex = 15;
             this.lblPlan.Text = "NOMBRE DEL PLAN";
             // 
@@ -1014,7 +1076,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.2963F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.7037F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel3.Controls.Add(this.lblFullName_, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 215);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -1031,9 +1093,9 @@
             this.lblFullName_.AutoSize = true;
             this.lblFullName_.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFullName_.ForeColor = System.Drawing.Color.White;
-            this.lblFullName_.Location = new System.Drawing.Point(44, 0);
+            this.lblFullName_.Location = new System.Drawing.Point(35, 0);
             this.lblFullName_.Name = "lblFullName_";
-            this.lblFullName_.Size = new System.Drawing.Size(208, 40);
+            this.lblFullName_.Size = new System.Drawing.Size(159, 60);
             this.lblFullName_.TabIndex = 1;
             this.lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
             this.lblFullName_.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1128,8 +1190,11 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.tabPage2.Controls.Add(this.label44);
+            this.tabPage2.Controls.Add(this.gbAPTipoUsuario);
             this.tabPage2.Controls.Add(this.panel15);
             this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.panel12);
             this.tabPage2.Controls.Add(this.panel14);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.panel6);
@@ -1150,9 +1215,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel15.BackColor = System.Drawing.Color.Silver;
             this.panel15.Controls.Add(this.pictureBox3);
-            this.panel15.Location = new System.Drawing.Point(688, 246);
+            this.panel15.Location = new System.Drawing.Point(688, 183);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(142, 261);
+            this.panel15.Size = new System.Drawing.Size(142, 295);
             this.panel15.TabIndex = 25;
             // 
             // pictureBox3
@@ -1163,7 +1228,7 @@
             this.pictureBox3.Image = global::BIOCHECK.Properties.Resources.zktcoedit;
             this.pictureBox3.Location = new System.Drawing.Point(3, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(136, 255);
+            this.pictureBox3.Size = new System.Drawing.Size(136, 289);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -1173,7 +1238,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(255, 263);
+            this.label16.Location = new System.Drawing.Point(255, 326);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(137, 18);
             this.label16.TabIndex = 23;
@@ -1185,7 +1250,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel14.Controls.Add(this.tableLayoutPanel2);
-            this.panel14.Location = new System.Drawing.Point(239, 274);
+            this.panel14.Location = new System.Drawing.Point(239, 337);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(432, 204);
             this.panel14.TabIndex = 24;
@@ -1262,12 +1327,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(3, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(121, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(121, 18);
             this.materialLabel2.TabIndex = 4;
             this.materialLabel2.Text = "Codigo :";
             // 
@@ -1277,12 +1342,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(3, 38);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(121, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(121, 18);
             this.materialLabel3.TabIndex = 5;
             this.materialLabel3.Text = "Nombres :";
             // 
@@ -1292,12 +1357,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(3, 76);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(121, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(121, 18);
             this.materialLabel4.TabIndex = 6;
             this.materialLabel4.Text = "Apellidos :";
             // 
@@ -1307,12 +1372,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel5.Location = new System.Drawing.Point(3, 111);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(121, 38);
+            this.materialLabel5.Size = new System.Drawing.Size(121, 18);
             this.materialLabel5.TabIndex = 7;
             this.materialLabel5.Text = "Nro documento :";
             // 
@@ -1323,7 +1388,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(37, 161);
+            this.label9.Location = new System.Drawing.Point(40, 253);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(287, 18);
             this.label9.TabIndex = 20;
@@ -1336,9 +1401,9 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.TxtSearch);
             this.panel6.Controls.Add(this.BtnSearch);
-            this.panel6.Location = new System.Drawing.Point(25, 172);
+            this.panel6.Location = new System.Drawing.Point(28, 265);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(772, 58);
+            this.panel6.Size = new System.Drawing.Size(646, 58);
             this.panel6.TabIndex = 21;
             // 
             // TxtSearch
@@ -1347,7 +1412,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtSearch.Location = new System.Drawing.Point(14, 18);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(526, 20);
+            this.TxtSearch.Size = new System.Drawing.Size(458, 20);
             this.TxtSearch.TabIndex = 1;
             // 
             // BtnSearch
@@ -1361,7 +1426,7 @@
             this.BtnSearch.ForeColor = System.Drawing.Color.White;
             this.BtnSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnSearch.Image")));
             this.BtnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnSearch.Location = new System.Drawing.Point(639, 10);
+            this.BtnSearch.Location = new System.Drawing.Point(495, 9);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(118, 35);
             this.BtnSearch.TabIndex = 2;
@@ -1534,7 +1599,7 @@
             // 
             this.ImageUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ImageUser.Image = global::BIOCHECK.Properties.Resources.user2;
-            this.ImageUser.Location = new System.Drawing.Point(28, 274);
+            this.ImageUser.Location = new System.Drawing.Point(28, 337);
             this.ImageUser.Name = "ImageUser";
             this.ImageUser.Size = new System.Drawing.Size(193, 204);
             this.ImageUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1566,6 +1631,17 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Configuración";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label32.Location = new System.Drawing.Point(246, 651);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(35, 15);
+            this.label32.TabIndex = 35;
+            this.label32.Text = "60%";
             // 
             // pictureBox8
             // 
@@ -2040,6 +2116,270 @@
             this.PicCLogo.TabIndex = 2;
             this.PicCLogo.TabStop = false;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label49);
+            this.tabPage4.Controls.Add(this.panelAPTurno2);
+            this.tabPage4.Controls.Add(this.label39);
+            this.tabPage4.Controls.Add(this.panelAPTurno1);
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1192, 710);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Asistencia personal";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label39.ForeColor = System.Drawing.Color.Black;
+            this.label39.Location = new System.Drawing.Point(350, 33);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(66, 18);
+            this.label39.TabIndex = 28;
+            this.label39.Text = "Turno 1";
+            // 
+            // panelAPTurno1
+            // 
+            this.panelAPTurno1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAPTurno1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAPTurno1.Controls.Add(this.lblMST1);
+            this.panelAPTurno1.Controls.Add(this.lblMFBT1);
+            this.panelAPTurno1.Controls.Add(this.lblMIBT1);
+            this.panelAPTurno1.Controls.Add(this.lblMET1);
+            this.panelAPTurno1.Controls.Add(this.btnMarcarSalidaT1);
+            this.panelAPTurno1.Controls.Add(this.btnMarcarFBT1);
+            this.panelAPTurno1.Controls.Add(this.btnMarcarIBT1);
+            this.panelAPTurno1.Controls.Add(this.pictureBox12);
+            this.panelAPTurno1.Controls.Add(this.btnMarcarEntradaT1);
+            this.panelAPTurno1.Location = new System.Drawing.Point(338, 48);
+            this.panelAPTurno1.Name = "panelAPTurno1";
+            this.panelAPTurno1.Size = new System.Drawing.Size(667, 258);
+            this.panelAPTurno1.TabIndex = 27;
+            // 
+            // btnMarcarIBT1
+            // 
+            this.btnMarcarIBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarIBT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarIBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarIBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarIBT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarIBT1.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarIBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarIBT1.Location = new System.Drawing.Point(14, 80);
+            this.btnMarcarIBT1.Name = "btnMarcarIBT1";
+            this.btnMarcarIBT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarIBT1.TabIndex = 2;
+            this.btnMarcarIBT1.Text = "Marcar Inicio Break";
+            this.btnMarcarIBT1.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox12.Image = global::BIOCHECK.Properties.Resources.bgtime;
+            this.pictureBox12.Location = new System.Drawing.Point(449, 35);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(192, 192);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 1;
+            this.pictureBox12.TabStop = false;
+            // 
+            // btnMarcarEntradaT1
+            // 
+            this.btnMarcarEntradaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(89)))), ((int)(((byte)(98)))));
+            this.btnMarcarEntradaT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarEntradaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarEntradaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarEntradaT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarEntradaT1.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarEntradaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarEntradaT1.Location = new System.Drawing.Point(14, 26);
+            this.btnMarcarEntradaT1.Name = "btnMarcarEntradaT1";
+            this.btnMarcarEntradaT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarEntradaT1.TabIndex = 0;
+            this.btnMarcarEntradaT1.Text = "Marcar Entrada";
+            this.btnMarcarEntradaT1.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.panel1.Controls.Add(this.panelCAUser);
+            this.panel1.Controls.Add(this.panelAPHuella);
+            this.panel1.Controls.Add(this.label35);
+            this.panel1.Controls.Add(this.pictureBox9);
+            this.panel1.Controls.Add(this.label34);
+            this.panel1.Controls.Add(this.label33);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(304, 710);
+            this.panel1.TabIndex = 0;
+            // 
+            // panelCAUser
+            // 
+            this.panelCAUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelCAUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.panelCAUser.Controls.Add(this.pbAPFoto);
+            this.panelCAUser.Controls.Add(this.tableLayoutPanel7);
+            this.panelCAUser.Location = new System.Drawing.Point(33, 369);
+            this.panelCAUser.Name = "panelCAUser";
+            this.panelCAUser.Size = new System.Drawing.Size(227, 283);
+            this.panelCAUser.TabIndex = 7;
+            // 
+            // pbAPFoto
+            // 
+            this.pbAPFoto.Image = global::BIOCHECK.Properties.Resources.user2;
+            this.pbAPFoto.Location = new System.Drawing.Point(35, 18);
+            this.pbAPFoto.Name = "pbAPFoto";
+            this.pbAPFoto.Size = new System.Drawing.Size(152, 133);
+            this.pbAPFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAPFoto.TabIndex = 0;
+            this.pbAPFoto.TabStop = false;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 3;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.69036F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.30965F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel7.Controls.Add(this.label38, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label36, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label37, 1, 1);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 157);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(224, 126);
+            this.tableLayoutPanel7.TabIndex = 1;
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label38.Location = new System.Drawing.Point(28, 70);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(166, 15);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Nro. Doc";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label36
+            // 
+            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(28, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(166, 34);
+            this.label36.TabIndex = 1;
+            this.label36.Text = "NOMBRES, APELLIDOS";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label37
+            // 
+            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label37.Location = new System.Drawing.Point(28, 42);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(166, 15);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "Cargo";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panelAPHuella
+            // 
+            this.panelAPHuella.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.panelAPHuella.Controls.Add(this.gbAPTipoUser);
+            this.panelAPHuella.Controls.Add(this.panel13);
+            this.panelAPHuella.Location = new System.Drawing.Point(33, 191);
+            this.panelAPHuella.Name = "panelAPHuella";
+            this.panelAPHuella.Size = new System.Drawing.Size(227, 158);
+            this.panelAPHuella.TabIndex = 6;
+            // 
+            // panel13
+            // 
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel13.Controls.Add(this.pbAPHuella);
+            this.panel13.Location = new System.Drawing.Point(122, 16);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(95, 125);
+            this.panel13.TabIndex = 0;
+            // 
+            // pbAPHuella
+            // 
+            this.pbAPHuella.Image = global::BIOCHECK.Properties.Resources.huell;
+            this.pbAPHuella.InitialImage = global::BIOCHECK.Properties.Resources.huell;
+            this.pbAPHuella.Location = new System.Drawing.Point(6, 3);
+            this.pbAPHuella.Name = "pbAPHuella";
+            this.pbAPHuella.Size = new System.Drawing.Size(82, 117);
+            this.pbAPHuella.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAPHuella.TabIndex = 0;
+            this.pbAPHuella.TabStop = false;
+            // 
+            // label35
+            // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.White;
+            this.label35.Location = new System.Drawing.Point(30, 136);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(253, 34);
+            this.label35.TabIndex = 5;
+            this.label35.Text = "Asegúrate de presionar y colocar bien \r\ntu huella. ¡Gracias!";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::BIOCHECK.Properties.Resources.advertencia;
+            this.pictureBox9.Location = new System.Drawing.Point(33, 93);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 4;
+            this.pictureBox9.TabStop = false;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(100)))));
+            this.label34.Location = new System.Drawing.Point(81, 106);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(95, 13);
+            this.label34.TabIndex = 3;
+            this.label34.Text = "INDICACIONES";
+            // 
+            // label33
+            // 
+            this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.White;
+            this.label33.Location = new System.Drawing.Point(53, 20);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(207, 44);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Control de Asistencia \nPersonal";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblGym
             // 
             this.lblGym.AutoSize = true;
@@ -2286,20 +2626,6 @@
             this.panel4.Size = new System.Drawing.Size(1200, 108);
             this.panel4.TabIndex = 13;
             // 
-            // statusBar1
-            // 
-            this.statusBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusBar1.BackColor = System.Drawing.Color.DarkGray;
-            this.statusBar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusBar1.Location = new System.Drawing.Point(607, 19);
-            this.statusBar1.Message = "";
-            this.statusBar1.MessageType = false;
-            this.statusBar1.Name = "statusBar1";
-            this.statusBar1.Size = new System.Drawing.Size(227, 32);
-            this.statusBar1.StatusBarBackColor = System.Drawing.Color.DarkGray;
-            this.statusBar1.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
-            this.statusBar1.TabIndex = 6;
-            // 
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 2;
@@ -2350,20 +2676,6 @@
             this.tableLayoutPanel14.Size = new System.Drawing.Size(308, 108);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
-            // lblMessage
-            // 
-            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMessage.BackColor = System.Drawing.Color.DarkGray;
-            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(607, 64);
-            this.lblMessage.Message = "";
-            this.lblMessage.MessageType = false;
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(227, 32);
-            this.lblMessage.StatusBarBackColor = System.Drawing.Color.DarkGray;
-            this.lblMessage.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblMessage.TabIndex = 5;
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
@@ -2386,16 +2698,369 @@
             this.timerNow.Interval = 1000;
             this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
             // 
-            // label32
+            // btnMarcarFBT1
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label32.Location = new System.Drawing.Point(246, 651);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(35, 15);
-            this.label32.TabIndex = 35;
-            this.label32.Text = "60%";
+            this.btnMarcarFBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarFBT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarFBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarFBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarFBT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarFBT1.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarFBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarFBT1.Location = new System.Drawing.Point(14, 133);
+            this.btnMarcarFBT1.Name = "btnMarcarFBT1";
+            this.btnMarcarFBT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarFBT1.TabIndex = 3;
+            this.btnMarcarFBT1.Text = "Marcar Fin Break";
+            this.btnMarcarFBT1.UseVisualStyleBackColor = false;
+            // 
+            // btnMarcarSalidaT1
+            // 
+            this.btnMarcarSalidaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarSalidaT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarSalidaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarSalidaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarSalidaT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarSalidaT1.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarSalidaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarSalidaT1.Location = new System.Drawing.Point(14, 187);
+            this.btnMarcarSalidaT1.Name = "btnMarcarSalidaT1";
+            this.btnMarcarSalidaT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarSalidaT1.TabIndex = 4;
+            this.btnMarcarSalidaT1.Text = "Marcar Salida";
+            this.btnMarcarSalidaT1.UseVisualStyleBackColor = false;
+            // 
+            // lblMET1
+            // 
+            this.lblMET1.AutoSize = true;
+            this.lblMET1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMET1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(89)))), ((int)(((byte)(98)))));
+            this.lblMET1.Location = new System.Drawing.Point(308, 35);
+            this.lblMET1.Name = "lblMET1";
+            this.lblMET1.Size = new System.Drawing.Size(110, 20);
+            this.lblMET1.TabIndex = 5;
+            this.lblMET1.Text = "10:48:32 AM";
+            // 
+            // lblMIBT1
+            // 
+            this.lblMIBT1.AutoSize = true;
+            this.lblMIBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMIBT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMIBT1.Location = new System.Drawing.Point(346, 96);
+            this.lblMIBT1.Name = "lblMIBT1";
+            this.lblMIBT1.Size = new System.Drawing.Size(44, 20);
+            this.lblMIBT1.TabIndex = 6;
+            this.lblMIBT1.Text = "0:00";
+            // 
+            // lblMFBT1
+            // 
+            this.lblMFBT1.AutoSize = true;
+            this.lblMFBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMFBT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMFBT1.Location = new System.Drawing.Point(346, 142);
+            this.lblMFBT1.Name = "lblMFBT1";
+            this.lblMFBT1.Size = new System.Drawing.Size(44, 20);
+            this.lblMFBT1.TabIndex = 7;
+            this.lblMFBT1.Text = "0:00";
+            // 
+            // lblMST1
+            // 
+            this.lblMST1.AutoSize = true;
+            this.lblMST1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMST1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMST1.Location = new System.Drawing.Point(346, 196);
+            this.lblMST1.Name = "lblMST1";
+            this.lblMST1.Size = new System.Drawing.Size(44, 20);
+            this.lblMST1.TabIndex = 8;
+            this.lblMST1.Text = "0:00";
+            // 
+            // rbAPUsuario
+            // 
+            this.rbAPUsuario.AutoSize = true;
+            this.rbAPUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAPUsuario.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.rbAPUsuario.Location = new System.Drawing.Point(10, 22);
+            this.rbAPUsuario.Name = "rbAPUsuario";
+            this.rbAPUsuario.Size = new System.Drawing.Size(69, 21);
+            this.rbAPUsuario.TabIndex = 26;
+            this.rbAPUsuario.TabStop = true;
+            this.rbAPUsuario.Text = "Cliente";
+            this.rbAPUsuario.UseVisualStyleBackColor = true;
+            // 
+            // rbAPPersonalFijo
+            // 
+            this.rbAPPersonalFijo.AutoSize = true;
+            this.rbAPPersonalFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAPPersonalFijo.Location = new System.Drawing.Point(103, 22);
+            this.rbAPPersonalFijo.Name = "rbAPPersonalFijo";
+            this.rbAPPersonalFijo.Size = new System.Drawing.Size(108, 21);
+            this.rbAPPersonalFijo.TabIndex = 27;
+            this.rbAPPersonalFijo.TabStop = true;
+            this.rbAPPersonalFijo.Text = "Personal Fijo";
+            this.rbAPPersonalFijo.UseVisualStyleBackColor = true;
+            this.rbAPPersonalFijo.CheckedChanged += new System.EventHandler(this.rbPersonal_CheckedChanged);
+            // 
+            // gbAPTipoUsuario
+            // 
+            this.gbAPTipoUsuario.Controls.Add(this.rbAPPersonalEvent);
+            this.gbAPTipoUsuario.Controls.Add(this.rbAPUsuario);
+            this.gbAPTipoUsuario.Controls.Add(this.rbAPPersonalFijo);
+            this.gbAPTipoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAPTipoUsuario.Location = new System.Drawing.Point(33, 183);
+            this.gbAPTipoUsuario.Name = "gbAPTipoUsuario";
+            this.gbAPTipoUsuario.Size = new System.Drawing.Size(380, 53);
+            this.gbAPTipoUsuario.TabIndex = 28;
+            this.gbAPTipoUsuario.TabStop = false;
+            // 
+            // rbAPPersonalEvent
+            // 
+            this.rbAPPersonalEvent.AutoSize = true;
+            this.rbAPPersonalEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAPPersonalEvent.Location = new System.Drawing.Point(231, 22);
+            this.rbAPPersonalEvent.Name = "rbAPPersonalEvent";
+            this.rbAPPersonalEvent.Size = new System.Drawing.Size(141, 21);
+            this.rbAPPersonalEvent.TabIndex = 28;
+            this.rbAPPersonalEvent.TabStop = true;
+            this.rbAPPersonalEvent.Text = "Personal Eventual";
+            this.rbAPPersonalEvent.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Location = new System.Drawing.Point(28, 179);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(646, 61);
+            this.panel12.TabIndex = 29;
+            // 
+            // label44
+            // 
+            this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label44.ForeColor = System.Drawing.Color.Black;
+            this.label44.Location = new System.Drawing.Point(39, 166);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(105, 18);
+            this.label44.TabIndex = 30;
+            this.label44.Text = "Tipo Usuario";
+            // 
+            // panelAPTurno2
+            // 
+            this.panelAPTurno2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAPTurno2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAPTurno2.Controls.Add(this.lblMST2);
+            this.panelAPTurno2.Controls.Add(this.lblMFBT2);
+            this.panelAPTurno2.Controls.Add(this.lblMIBT2);
+            this.panelAPTurno2.Controls.Add(this.lblMET2);
+            this.panelAPTurno2.Controls.Add(this.btnMarcarSalidaT2);
+            this.panelAPTurno2.Controls.Add(this.btnMarcarFBT2);
+            this.panelAPTurno2.Controls.Add(this.btnMarcarIBT2);
+            this.panelAPTurno2.Controls.Add(this.pictureBox10);
+            this.panelAPTurno2.Controls.Add(this.btnMarcarEntradaT2);
+            this.panelAPTurno2.Location = new System.Drawing.Point(338, 335);
+            this.panelAPTurno2.Name = "panelAPTurno2";
+            this.panelAPTurno2.Size = new System.Drawing.Size(667, 258);
+            this.panelAPTurno2.TabIndex = 28;
+            // 
+            // lblMST2
+            // 
+            this.lblMST2.AutoSize = true;
+            this.lblMST2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMST2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMST2.Location = new System.Drawing.Point(346, 196);
+            this.lblMST2.Name = "lblMST2";
+            this.lblMST2.Size = new System.Drawing.Size(44, 20);
+            this.lblMST2.TabIndex = 8;
+            this.lblMST2.Text = "0:00";
+            // 
+            // lblMFBT2
+            // 
+            this.lblMFBT2.AutoSize = true;
+            this.lblMFBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMFBT2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMFBT2.Location = new System.Drawing.Point(346, 142);
+            this.lblMFBT2.Name = "lblMFBT2";
+            this.lblMFBT2.Size = new System.Drawing.Size(44, 20);
+            this.lblMFBT2.TabIndex = 7;
+            this.lblMFBT2.Text = "0:00";
+            // 
+            // lblMIBT2
+            // 
+            this.lblMIBT2.AutoSize = true;
+            this.lblMIBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMIBT2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMIBT2.Location = new System.Drawing.Point(346, 96);
+            this.lblMIBT2.Name = "lblMIBT2";
+            this.lblMIBT2.Size = new System.Drawing.Size(44, 20);
+            this.lblMIBT2.TabIndex = 6;
+            this.lblMIBT2.Text = "0:00";
+            // 
+            // lblMET2
+            // 
+            this.lblMET2.AutoSize = true;
+            this.lblMET2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMET2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblMET2.Location = new System.Drawing.Point(346, 35);
+            this.lblMET2.Name = "lblMET2";
+            this.lblMET2.Size = new System.Drawing.Size(44, 20);
+            this.lblMET2.TabIndex = 5;
+            this.lblMET2.Text = "0:00";
+            // 
+            // btnMarcarSalidaT2
+            // 
+            this.btnMarcarSalidaT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarSalidaT2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarSalidaT2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarSalidaT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarSalidaT2.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarSalidaT2.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarSalidaT2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarSalidaT2.Location = new System.Drawing.Point(14, 187);
+            this.btnMarcarSalidaT2.Name = "btnMarcarSalidaT2";
+            this.btnMarcarSalidaT2.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarSalidaT2.TabIndex = 4;
+            this.btnMarcarSalidaT2.Text = "Marcar Salida";
+            this.btnMarcarSalidaT2.UseVisualStyleBackColor = false;
+            // 
+            // btnMarcarFBT2
+            // 
+            this.btnMarcarFBT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarFBT2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarFBT2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarFBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarFBT2.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarFBT2.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarFBT2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarFBT2.Location = new System.Drawing.Point(14, 133);
+            this.btnMarcarFBT2.Name = "btnMarcarFBT2";
+            this.btnMarcarFBT2.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarFBT2.TabIndex = 3;
+            this.btnMarcarFBT2.Text = "Marcar Fin Break";
+            this.btnMarcarFBT2.UseVisualStyleBackColor = false;
+            // 
+            // btnMarcarIBT2
+            // 
+            this.btnMarcarIBT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarIBT2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarIBT2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarIBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarIBT2.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarIBT2.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarIBT2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarIBT2.Location = new System.Drawing.Point(14, 80);
+            this.btnMarcarIBT2.Name = "btnMarcarIBT2";
+            this.btnMarcarIBT2.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarIBT2.TabIndex = 2;
+            this.btnMarcarIBT2.Text = "Marcar Inicio Break";
+            this.btnMarcarIBT2.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox10.Image = global::BIOCHECK.Properties.Resources.bgtime;
+            this.pictureBox10.Location = new System.Drawing.Point(449, 35);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(192, 192);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 1;
+            this.pictureBox10.TabStop = false;
+            // 
+            // btnMarcarEntradaT2
+            // 
+            this.btnMarcarEntradaT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarEntradaT2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarEntradaT2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarEntradaT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarEntradaT2.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarEntradaT2.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarEntradaT2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarEntradaT2.Location = new System.Drawing.Point(14, 26);
+            this.btnMarcarEntradaT2.Name = "btnMarcarEntradaT2";
+            this.btnMarcarEntradaT2.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarEntradaT2.TabIndex = 0;
+            this.btnMarcarEntradaT2.Text = "Marcar Entrada";
+            this.btnMarcarEntradaT2.UseVisualStyleBackColor = false;
+            // 
+            // label49
+            // 
+            this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.label49.ForeColor = System.Drawing.Color.Black;
+            this.label49.Location = new System.Drawing.Point(350, 324);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(66, 18);
+            this.label49.TabIndex = 29;
+            this.label49.Text = "Turno 2";
+            // 
+            // gbAPTipoUser
+            // 
+            this.gbAPTipoUser.Controls.Add(this.radioButton2);
+            this.gbAPTipoUser.Controls.Add(this.radioButton1);
+            this.gbAPTipoUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAPTipoUser.Location = new System.Drawing.Point(3, 16);
+            this.gbAPTipoUser.Name = "gbAPTipoUser";
+            this.gbAPTipoUser.Size = new System.Drawing.Size(113, 125);
+            this.gbAPTipoUser.TabIndex = 1;
+            this.gbAPTipoUser.TabStop = false;
+            this.gbAPTipoUser.Text = "Tipo Usuario";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(6, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(82, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Personal fijo";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(6, 60);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(110, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Personal eventual";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // statusBar1
+            // 
+            this.statusBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusBar1.BackColor = System.Drawing.Color.DarkGray;
+            this.statusBar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusBar1.Location = new System.Drawing.Point(607, 19);
+            this.statusBar1.Message = "";
+            this.statusBar1.MessageType = false;
+            this.statusBar1.Name = "statusBar1";
+            this.statusBar1.Size = new System.Drawing.Size(227, 32);
+            this.statusBar1.StatusBarBackColor = System.Drawing.Color.DarkGray;
+            this.statusBar1.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
+            this.statusBar1.TabIndex = 6;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMessage.BackColor = System.Drawing.Color.DarkGray;
+            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(607, 64);
+            this.lblMessage.Message = "";
+            this.lblMessage.MessageType = false;
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(227, 32);
+            this.lblMessage.StatusBarBackColor = System.Drawing.Color.DarkGray;
+            this.lblMessage.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblMessage.TabIndex = 5;
             // 
             // ScreenHome
             // 
@@ -2468,6 +3133,21 @@
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicCLogo)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.panelAPTurno1.ResumeLayout(false);
+            this.panelAPTurno1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panelCAUser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).EndInit();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.panelAPHuella.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).EndInit();
             this.panelDeviseConnect.ResumeLayout(false);
             this.panelDeviseConnect.PerformLayout();
@@ -2486,6 +3166,13 @@
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
+            this.gbAPTipoUsuario.ResumeLayout(false);
+            this.gbAPTipoUsuario.PerformLayout();
+            this.panelAPTurno2.ResumeLayout(false);
+            this.panelAPTurno2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            this.gbAPTipoUser.ResumeLayout(false);
+            this.gbAPTipoUser.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2650,5 +3337,51 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Panel panelAPHuella;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.PictureBox pbAPHuella;
+        private System.Windows.Forms.Panel panelCAUser;
+        private System.Windows.Forms.PictureBox pbAPFoto;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel panelAPTurno1;
+        private System.Windows.Forms.Button btnMarcarEntradaT1;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.Button btnMarcarIBT1;
+        private System.Windows.Forms.Button btnMarcarSalidaT1;
+        private System.Windows.Forms.Button btnMarcarFBT1;
+        private System.Windows.Forms.Label lblMIBT1;
+        private System.Windows.Forms.Label lblMET1;
+        private System.Windows.Forms.Label lblMST1;
+        private System.Windows.Forms.Label lblMFBT1;
+        private System.Windows.Forms.RadioButton rbAPPersonalFijo;
+        private System.Windows.Forms.RadioButton rbAPUsuario;
+        private System.Windows.Forms.GroupBox gbAPTipoUsuario;
+        private System.Windows.Forms.RadioButton rbAPPersonalEvent;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Panel panelAPTurno2;
+        private System.Windows.Forms.Label lblMST2;
+        private System.Windows.Forms.Label lblMFBT2;
+        private System.Windows.Forms.Label lblMIBT2;
+        private System.Windows.Forms.Label lblMET2;
+        private System.Windows.Forms.Button btnMarcarSalidaT2;
+        private System.Windows.Forms.Button btnMarcarFBT2;
+        private System.Windows.Forms.Button btnMarcarIBT2;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Button btnMarcarEntradaT2;
+        private System.Windows.Forms.GroupBox gbAPTipoUser;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

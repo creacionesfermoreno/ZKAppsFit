@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\David\Desktop\Nueva carpeta\</PublishUrl>
+    <PublishUrl>C:\Users\David\Desktop\NC\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>https://contenidosappsfit.blob.core.windows.net/biocheck/</UpdateUrl>
-    <ApplicationRevision>20</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -168,6 +168,9 @@
     <Compile Include="Helpers\BitmapFormat.cs" />
     <Compile Include="Helpers\DataManager.cs" />
     <Compile Include="Helpers\DataSession.cs" />
+    <Compile Include="Helpers\DesingButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helpers\FingerPrintDeviceUtilities.cs" />
     <Compile Include="Helpers\GraphicsManager.cs" />
     <Compile Include="Helpers\Utilities.cs" />
@@ -242,6 +245,9 @@
     <Content Include="libzkfpcsharp.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\left.png" />
+    <None Include="Resources\bgtime.png" />
+    <None Include="Resources\right.png" />
     <None Include="Resources\config.png" />
     <None Include="Resources\advertencia.png" />
     <None Include="Resources\minus.png" />
