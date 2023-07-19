@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BIOCHECK.exe" size="448488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BIOCHECK.exe" size="465896">
       <assemblyIdentity name="BIOCHECK" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>S0r6MNJzQ93G27SRnZ4AQ8vvFsvOSEG03mAspdEl4uo=</dsig:DigestValue>
+        <dsig:DigestValue>COzWTFXOlIzPlrSX0y5lu9r9utn8kAOf2NhNAd8zdIQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
