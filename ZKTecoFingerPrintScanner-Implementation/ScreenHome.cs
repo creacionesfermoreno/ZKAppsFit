@@ -907,5 +907,114 @@ namespace ZKTecoFingerPrintScanner_Implementation
         {
 
         }
+
+        private void btnLlenarData_Click(object sender, EventArgs e)
+        {
+            List<Membresia> list = new List<Membresia>();
+            List<Pago> listPago = new List<Pago>();
+            List<Asistence> listAsis = new List<Asistence>();
+            List<Cuota> listCuota = new List<Cuota>();
+            List<Incidencia> listIncidencia = new List<Incidencia>();
+            list.Add(new Membresia()
+            {
+                NombrePaquete = "paquete 01",
+                FCrecionText = "18/07/2023",
+                DesFechaInicio = "18/07/2023",
+                DesFechaFin = "18/07/2023",
+                Costo = 190,
+                MontoTotal = 200,
+                Debe = 100,
+                CantidadFreezing = 12,
+                CantidadFreezingTomados = 1,
+                CantidadAsistencia = 2,
+                NroContrato = "925655458",
+                AsesorComercial = "AMADOR LOPEZ",
+                CodigoSede = 1,
+            });
+            list.Add(new Membresia()
+            {
+                NombrePaquete = "paquete 02",
+                FCrecionText = "18/07/2023",
+                DesFechaInicio = "18/07/2023",
+                DesFechaFin = "18/07/2023",
+                Costo = 190,
+                MontoTotal = 200,
+                Debe = 100,
+                CantidadFreezing = 12,
+                CantidadFreezingTomados = 1,
+                CantidadAsistencia = 2,
+                NroContrato = "925655458",
+                AsesorComercial = "AMADOR CASSANI",
+                CodigoSede = 1,
+            });
+
+            listPago.Add(new Pago()
+            {
+                Estado = 1,
+                desFechaPago = "18/07/2023",
+                Monto = 200,
+                NroComprobante = "545",
+                DesFormaPago = "CONTADO",
+                UsuarioCreacion = "DEMO APPSFIT"
+            });
+
+            listAsis.Add(new Asistence()
+            {
+                FCreacionText = "18/01/2023",
+                HourText = "4",
+                DiaSemana = "1",
+                UsuarioCreacion = "DEMO USUARIO"
+            });
+
+            listCuota.Add(new Cuota()
+            {
+                
+                Monto = 100,
+                UsuarioCreacion = "USUARIO DEMO"
+            });
+
+            listIncidencia.Add(new Incidencia()
+            {
+                
+                UsuarioCreacion = "DEMO USUARIO",
+                Ocurrencia = "Prueba"
+            });
+
+            foreach (Membresia m in list)
+            {
+                dgvMembresias.Rows.Add(
+                  m.NombrePaquete,
+                  m.FCrecionText,
+                  m.DesFechaInicio,
+                  m.DesFechaFin,
+                  m.Costo,
+                  m.MontoTotal,
+                  m.Debe,
+                  m.CantidadFreezing,
+                  m.CantidadFreezingTomados,
+                  m.CantidadAsistencia,
+                  m.NroContrato,
+                  m.AsesorComercial,
+                  m.CodigoSede);
+            }
+
+            foreach (Pago p in listPago)
+            {
+                dgvHpago.Rows.Add(p.Estado, p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
+            }
+            foreach (Asistence a in listAsis)
+            {
+                dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
+            }
+            foreach (Cuota c in listCuota)
+            {
+                dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
+            }
+            foreach (Incidencia c in listIncidencia)
+            {
+                dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
+            }
+
+        }
     }
 }
