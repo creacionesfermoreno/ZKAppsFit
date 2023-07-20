@@ -400,4 +400,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
-ZKTecoFingerPrintScanner-Implementation/bin
+ZKTecoFingerPrintScanner-Implementation/bin/
+ZKTecoFingerPrintScanner-Implementation/obj/
