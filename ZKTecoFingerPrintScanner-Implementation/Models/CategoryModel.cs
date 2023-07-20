@@ -16,7 +16,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
     {
         public string Name { get; set; }
         public string Huella { get; set; }
-        
+
     }
     public class SocioModel
     {
@@ -27,9 +27,13 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string Apellidos { get; set; }
         public string Huella { get; set; }
         public string ImagenUrl { get; set; }
+        public string Celular { get; set; }
+        public string Correo { get; set; }
+        public string Descripcion { get; set; }
         public string MessageExtra { get; set; }
         public decimal DeudaSuplemento { get; set; }
-        
+        public string DNI { get; set; }
+
 
     }
 
@@ -81,7 +85,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public decimal Monto { get; set; }
         public string UsuarioCreacion { get; set; }
         public DateTime Fecha { get; set; }
-        
+
 
     }
 
@@ -94,7 +98,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
 
     }
 
-    public class Pago {
+    public class Pago
+    {
         public string NroComprobante { get; set; }
         public int Estado { get; set; }
         public decimal Monto { get; set; }
@@ -115,11 +120,74 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         {
             socios.Add(user);
         }
+
     }
+
+
+    public sealed class HuellaData
+    {
+        private static readonly Lazy<HuellaData> lazyInstance = new Lazy<HuellaData>(() => new HuellaData());
+
+        private HuellaData()
+        {
+            Fijos = new List<SocioModel>();
+            Profesionales = new List<SocioModel>();
+            Socios = new List<SocioModel>();
+        }
+
+        public static HuellaData Instance => lazyInstance.Value;
+
+        public IReadOnlyList<SocioModel> Fijos { get; private set; }
+        public IReadOnlyList<SocioModel> Profesionales { get; private set; }
+        public IReadOnlyList<SocioModel> Socios { get; private set; }
+
+        public void SetProfesionales(List<SocioModel> nuevosProfesionales)
+        {
+            Profesionales = nuevosProfesionales;
+        }
+
+        public void SetFijos(List<SocioModel> nuevosFijos)
+        {
+            Fijos = nuevosFijos;
+        }
+        public void SetSocios(List<SocioModel> socios)
+        {
+            Socios = socios;
+        }
+    }
+
+
+
 
     public static class CheckBoxValue
     {
         public static bool IsChecked { get; set; }
     }
+
+  
+
+    public sealed class STGlobal
+    {
+        private static readonly Lazy<STGlobal> lazyInstance = new Lazy<STGlobal>(() => new STGlobal());
+
+        private STGlobal()
+        {
+            Precision = 0;
+            TypeRegister = 1;
+            SearchRegister = string.Empty;
+            TypeMatch = 1;
+            CheackAutomatic = false;
+        }
+
+        public static STGlobal Instance => lazyInstance.Value;
+
+        public int Precision { get; set; }
+        public int TypeRegister { get; set; }
+        public int TypeMatch { get; set; }
+        public string SearchRegister { get; set; }
+        public bool CheackAutomatic { get; set; }
+    }
+
+
 
 }

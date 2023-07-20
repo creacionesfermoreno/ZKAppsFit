@@ -22,15 +22,74 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
     public static class DataStatic
     {
         public static Membresia MembresiasSelected { get; set; }
-       
-        public static string MessageGeneric  { get; set; }
-        public static string MessageGenericD  { get; set; }
-        public static List<Membresia> Membresias { get; set; } 
+
+        public static string MessageGeneric { get; set; }
+        public static string MessageGenericD { get; set; }
+        public static List<Membresia> Membresias { get; set; }
         public static List<Asistence> Asistences { get; set; }
         public static List<Pago> Pagos { get; set; }
         public static List<Cuota> Cuotas { get; set; }
         public static SocioModel Socio { get; set; }
         public static List<Incidencia> Incidencias { get; set; }
+    }
+
+
+    public sealed class DataSocioAll
+    {
+        private static readonly Lazy<DataSocioAll> lazyInstance = new Lazy<DataSocioAll>(() => new DataSocioAll());
+
+        private DataSocioAll()
+        {
+            MembresiasSelected = new Membresia();
+        }
+
+        public static DataSocioAll Instance => lazyInstance.Value;
+
+        public Membresia MembresiasSelected { get; set; }
+        public string MessageGeneric { get; set; }
+        public string MessageGenericD { get; set; }
+
+        private List<Membresia> membresias = new List<Membresia>();
+        public List<Membresia> Membresias
+        {
+            get => membresias;
+            set => membresias = value ?? new List<Membresia>();
+        }
+
+        private List<Asistence> asistences = new List<Asistence>();
+        public List<Asistence> Asistences
+        {
+            get => asistences;
+            set => asistences = value ?? new List<Asistence>();
+        }
+
+        private List<Pago> pagos = new List<Pago>();
+        public List<Pago> Pagos
+        {
+            get => pagos;
+            set => pagos = value ?? new List<Pago>();
+        }
+
+        private List<Cuota> cuotas = new List<Cuota>();
+        public List<Cuota> Cuotas
+        {
+            get => cuotas;
+            set => cuotas = value ?? new List<Cuota>();
+        }
+
+        private SocioModel socio = new SocioModel();
+        public SocioModel Socio
+        {
+            get => socio;
+            set => socio = value ?? new SocioModel();
+        }
+
+        private List<Incidencia> incidencias = new List<Incidencia>();
+        public List<Incidencia> Incidencias
+        {
+            get => incidencias;
+            set => incidencias = value ?? new List<Incidencia>();
+        }
     }
 
 

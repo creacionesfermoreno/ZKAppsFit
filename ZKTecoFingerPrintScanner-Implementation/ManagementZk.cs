@@ -62,7 +62,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public event AlertaEventHandler AlertaEvent;
 
         private ScreenHome myForm;
-
+        STGlobal stGlobal = STGlobal.Instance;
+        DataSocioAll dataSocioAll = DataSocioAll.Instance;
         public ManagementZk(ScreenHome screenHome)
         {
             myForm = screenHome;
@@ -77,6 +78,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
         {
             MatchSearch = value;
         }
+
 
         //Initialize
         public bool Initialize()
@@ -101,6 +103,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
             return isInitialized;
         }
+
+
         //connect device
         public void ConnectDevice(int deviceIndex)
         {
@@ -147,8 +151,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
         }
 
 
-
-
         //disconnect
         public void Disconnect()
         {
@@ -187,6 +189,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 }
             }
         }
+
+
         public void MessageDispositive(string message, bool status)
         {
             myForm.lblSerie_.Text = message;
@@ -222,6 +226,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
             catch { }
         }
+
+
 
         public string messageInfo = "";
         public string messageSuccess = "";
@@ -278,19 +284,18 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
                     if (MatchSearch)
                     {
-                        List<SocioModel> sociosList = SocioData.socios;
+                        HuellaData huellaData = HuellaData.Instance;
                         bool match = false;
-
-                        foreach (SocioModel socio in sociosList)
+                        foreach (SocioModel socio in huellaData.Socios)
                         {
                             var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
                             int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
 
-                            if (ret > 60)
+                            if (ret > stGlobal.Precision)
                             {
                                 match = true;
                                 string fullName = socio.Nombre + " " + socio.Apellidos;
-                                DataStatic.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
+                                dataSocioAll.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
                                 await DataMembresia(socio);
                                 return;
                             }
@@ -311,12 +316,13 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+
         //gestion membresia
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(5);
 
         public async Task DataMembresia(SocioModel socio)
         {
-            DataStatic.Socio = socio;
+            dataSocioAll.Socio = socio;
             AppsFitService serv = new AppsFitService();
 
             try
@@ -344,11 +350,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         Membresia = resp.Data[0].CodigoMenbresia
                     });
 
-                    DataStatic.Membresias = resp.Data;
-                    DataStatic.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
-                    DataStatic.Pagos = HPC.Data.Pagos.Count > 0 ? HPC.Data.Pagos : new List<Pago>();
-                    DataStatic.Cuotas = HPC.Data.Cuotas.Count > 0 ? HPC.Data.Cuotas : new List<Cuota>();
-                    DataStatic.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias : new List<Incidencia>();
+                    dataSocioAll.Membresias = resp.Data;
+                    dataSocioAll.Asistences = respHistorial.Data;
+                    dataSocioAll.Pagos = HPC.Data.Pagos;
+                    dataSocioAll.Cuotas = HPC.Data.Cuotas;
+                    dataSocioAll.Incidencias = HPC.Data.Incidencias;
+
                     EventGeneral.Invoke("MA-T", 1);
                 }
                 else
@@ -362,19 +369,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
-        public void TextStatusMembresia(int status, string message)
-        {
-            Label lblMessageMem = SetControlValueT("tabPage1", "lblMessageMem");
-            if (status == 1)
-            {
-                lblMessageMem.BackColor = Color.Green;
-            }
-            if (status == 2)
-            {
-                lblMessageMem.BackColor = Color.Gray;
-            }
-            lblMessageMem.Text = message ?? "";
-        }
 
         private void CompleteRegistration()
         {
@@ -402,33 +396,29 @@ namespace ZKTecoFingerPrintScanner_Implementation
             IsRegister = false;
         }
 
-        private void StatusMessage(string message, bool success, bool empy = false)
-        {
-            StatusBar lblMessage = myForm.Controls["lblMessage"] as StatusBar;
 
-            lblMessage.Message = message;
-            lblMessage.StatusBarForeColor = Color.White;
-
-            if (success)
-            {
-                lblMessage.StatusBarBackColor = Color.FromArgb(79, 208, 154);
-            }
-            else
-            {
-                lblMessage.StatusBarBackColor = Color.FromArgb(230, 112, 134);
-            }
-            if (empy)
-            {
-                lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
-            }
-        }
         public async void registerHuella(string huella)
         {
             try
             {
-                var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Code, Huella = huella };
+
                 AppsFitService service = new AppsFitService();
-                var resp = await service.RegHuellaAPI(data);
+                ResponseModel resp;
+                switch (stGlobal.TypeRegister)
+                {
+                    case 1:
+                        var data = new { DefaultKeyEmpresa = DataSession.DKey, Socio = DataSession.Code, Huella = huella };
+                        resp = await service.RegHuellaAPI(data);
+                        break;
+                    case 2:
+                        var dat = new { Dni = stGlobal.SearchRegister, Huella = huella };
+                        resp = await service.RegHuellaAPIFijo(dat);
+                        break;
+                    default:
+                        var da = new { Dni = stGlobal.SearchRegister, Huella = huella };
+                        resp = await service.RegHuellaAPIFEvent(da);
+                        break;
+                }
                 if (resp.Success)
                 {
                     EventGeneral.Invoke("REG", true);
@@ -445,6 +435,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
             ClearDeviceUser();
         }
+
+
         public void ClearDeviceUser()
         {
             try
@@ -490,116 +482,19 @@ namespace ZKTecoFingerPrintScanner_Implementation
             MemoryStream ms = new MemoryStream();
             BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
             Bitmap bmp = new Bitmap(ms);
-            // PictureBox pict = SetControlValue("tabPage2", "PicRegister");
-            // pict.Image = bmp;
 
-            // FingerprintCaptured.Invoke(bmp, messageInfo, messageSuccess);
             PictureBox pasistence = myForm.picHuellaMA_;
             PictureBox pregister = myForm.PicRegister_;
             pasistence.Image = bmp;
             pregister.Image = bmp;
         }
 
-        public dynamic SetControlValue(string tabPageName, string controlName)
-        {
-            dynamic control1 = null;
-            TabControl tabControl = myForm.Controls["TabControl"] as TabControl;
-            if (tabControl != null)
-            {
-                TabPage tabPage = tabControl.Controls[tabPageName] as TabPage;
-                if (tabPage != null)
-                {
-                    Control control = tabPage.Controls[controlName];
-                    if (control != null)
-                    {
-                        if (control is PictureBox pictureBox)
-                        {
-                            control1 = pictureBox;
-                        }
-                        if (control is Label label)
-                        {
-                            control1 = label;
-                        }
-                        if (control is StatusBar statusBar)
-                        {
-                            control1 = statusBar;
-                        }
-                    }
-                }
-            }
-            return control1;
-        }
-
-        public dynamic SetControlValueT(string tabPageName, string controlName)
-        {
-            dynamic control1 = null;
-            TabControl tabControl = myForm.Controls["TabControl"] as TabControl;
-            if (tabControl != null)
-            {
-                TabPage tabPage = tabControl.Controls[tabPageName] as TabPage;
-                if (tabPage != null)
-                {
-                    Control control = tabPage.Controls.Find(controlName, true).FirstOrDefault() as Control;
-                    if (control != null)
-                    {
-                        if (control is PictureBox pictureBox)
-                        {
-                            control1 = pictureBox;
-                        }
-                        if (control is Label label)
-                        {
-                            control1 = label;
-                        }
-                        if (control is StatusBar statusBar)
-                        {
-                            control1 = statusBar;
-                        }
-                        if (control is DataGridView dataGridView)
-                        {
-                            control1 = dataGridView;
-                        }
-                    }
-                }
-            }
-            return control1;
-        }
-
 
         private void ClearImage()
         {
-            //  PictureBox pict = SetControlValue("tabPage2", "PicRegister");
-            // pict.Image = null;
+
         }
 
-
-
-        //load huellas update list
-        public async Task LoadFingers()
-        {
-            AppsFitService serv = null;
-            var task = Task.Run(async () =>
-            {
-                serv = new AppsFitService();
-                var response = await serv.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
-                return response;
-            });
-            try
-            {
-                var result = await task;
-
-                if (result.Success)
-                {
-                    SocioData.SetListaUsers(result.Data);
-                }
-                else
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
 
         public void createFile(string content)
         {
@@ -633,7 +528,84 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+        public void createFileLog(string page, Exception err)
+        {
 
+            string content = $"File: {page} ({DateTime.Now})\nError: {err.Message}\nMethod: {err.TargetSite}\nLinea: {err.StackTrace}";
+
+            string fileName = "log.txt";
+            string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+            string filePath = System.IO.Path.Combine(projectPath, fileName);
+
+            try
+            {
+                if (File.Exists(filePath))
+                {
+
+                    using (StreamWriter sw = File.AppendText(filePath))
+                    {
+                        sw.WriteLine();
+                        sw.WriteLine(content);
+                    }
+                }
+                else
+                {
+
+                    using (StreamWriter sw = File.CreateText(filePath))
+                    {
+                        sw.WriteLine(content);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Se produjo un error: " + ex.Message);
+            }
+        }
+
+
+
+        public void EliminarArchivoLog()
+        {
+            try
+            {
+                string fileName = "log.txt";
+                string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                string filePath = Path.Combine(projectPath, fileName);
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+        public string ShowLogs()
+        {
+            string message = "";
+            try
+            {
+                string fileName = "log.txt";
+                string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                string filePath = System.IO.Path.Combine(projectPath, fileName);
+
+                if (File.Exists(filePath))
+                {
+                    string logContent = File.ReadAllText(filePath);
+                    message = logContent;
+                }
+            }
+            catch (Exception ex)
+            {
+                message = "";
+            }
+            return message;
+        }
     }
 
 }
