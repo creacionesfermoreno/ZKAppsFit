@@ -62,12 +62,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public event AlertaEventHandler AlertaEvent;
 
         private ScreenHome myForm;
-        STGlobal stGlobal = STGlobal.Instance;
-        DataSocioAll dataSocioAll = DataSocioAll.Instance;
+        private DataSocioAll dataSocioAll;
+        private STGlobal stGlobal;
         public ManagementZk(ScreenHome screenHome)
         {
             myForm = screenHome;
-
+            dataSocioAll = DataSocioAll.Instance;
+            stGlobal = STGlobal.Instance;
+            
         }
 
         public void SetIsRegister(bool value)
@@ -311,23 +313,17 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
             catch (Exception ex)
             {
-
-
+                createFileLog("Management", ex);
             }
         }
 
-
-        //gestion membresia
-        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(5);
-
         public async Task DataMembresia(SocioModel socio)
         {
-            dataSocioAll.Socio = socio;
-            AppsFitService serv = new AppsFitService();
-
             try
             {
-                await semaphore.WaitAsync();
+                dataSocioAll.Socio = socio;
+                AppsFitService serv = new AppsFitService();
+
                 var resp = await serv.MembresiasList(new
                 {
                     CodigoUnidadNegocio = socio.CodigoUnidadNegocio,
@@ -335,8 +331,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     Socio = socio.CodigoSocio
                 });
 
-                if (resp.Success)
+                if (resp.Success && resp.Data.Count > 0)
                 {
+
                     var respHistorial = await serv.AsistencesList(new
                     {
                         CodigoUnidadNegocio = socio.CodigoUnidadNegocio,
@@ -350,11 +347,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         Membresia = resp.Data[0].CodigoMenbresia
                     });
 
-                    dataSocioAll.Membresias = resp.Data;
-                    dataSocioAll.Asistences = respHistorial.Data;
-                    dataSocioAll.Pagos = HPC.Data.Pagos;
-                    dataSocioAll.Cuotas = HPC.Data.Cuotas;
-                    dataSocioAll.Incidencias = HPC.Data.Incidencias;
+                    dataSocioAll.Membresias = resp.Data.Count > 0? new List<Membresia>() { resp.Data[0] }: new List<Membresia>();
+                    dataSocioAll.Asistences = respHistorial.Data.Count > 0? respHistorial.Data : new List<Asistence>();
+                    //dataSocioAll.Pagos = HPC.Data.Pagos;
+                    //dataSocioAll.Cuotas = HPC.Data.Cuotas;
+                    dataSocioAll.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias: new List<Incidencia>();
 
                     EventGeneral.Invoke("MA-T", 1);
                 }
@@ -363,13 +360,40 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     EventGeneral.Invoke("MA-F", 1);
                 }
             }
-            finally
+            catch (Exception ex)
             {
-                semaphore.Release();
+                createFileLog("Management", ex);
             }
         }
 
+        //reload detail membresia
+        public async Task ReloadDataAsistence()
+        {
 
+            try
+            {
+                SocioModel socio = dataSocioAll.Socio;
+                Membresia membresia = dataSocioAll.MembresiasSelected;
+               
+                AppsFitService serv = new AppsFitService();
+
+                if (socio.CodigoUnidadNegocio > 0 && membresia.CodigoMenbresia > 0)
+                {
+                    var respHistorial = await serv.AsistencesList(new
+                    {
+                        CodigoUnidadNegocio = socio.CodigoUnidadNegocio,
+                        CodigoSede = socio.CodigoSede,
+                        Membresia = membresia.CodigoMenbresia
+                    });
+                    dataSocioAll.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
+                }
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
+
+        }
         private void CompleteRegistration()
         {
             Label lblIntents = myForm.lblIntents_;
@@ -431,7 +455,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
             catch (Exception ex)
             {
-                createFile(ex.ToString());
+                createFileLog("Management", ex);
             }
             ClearDeviceUser();
         }
@@ -448,7 +472,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 }
                 iFid = 1;
             }
-            catch { }
+            catch (Exception ex){ createFileLog("Management", ex); }
 
         }
 
@@ -479,14 +503,21 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void DisplayFingerPrintImage()
         {
-            MemoryStream ms = new MemoryStream();
-            BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
-            Bitmap bmp = new Bitmap(ms);
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
+                Bitmap bmp = new Bitmap(ms);
 
-            PictureBox pasistence = myForm.picHuellaMA_;
-            PictureBox pregister = myForm.PicRegister_;
-            pasistence.Image = bmp;
-            pregister.Image = bmp;
+                PictureBox pasistence = myForm.picHuellaMA_;
+                PictureBox pregister = myForm.PicRegister_;
+                pasistence.Image = bmp;
+                pregister.Image = bmp;
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
         }
 
 
@@ -531,14 +562,17 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public void createFileLog(string page, Exception err)
         {
 
-            string content = $"File: {page} ({DateTime.Now})\nError: {err.Message}\nMethod: {err.TargetSite}\nLinea: {err.StackTrace}";
-
-            string fileName = "log.txt";
-            string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-            string filePath = System.IO.Path.Combine(projectPath, fileName);
+            
 
             try
             {
+
+                string content = $"File: {page} ({DateTime.Now})\nError: {err.Message}\nMethod: {err.TargetSite}\nLinea: {err.StackTrace}";
+
+                string fileName = "log.txt";
+                string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                string filePath = System.IO.Path.Combine(projectPath, fileName);
+
                 if (File.Exists(filePath))
                 {
 

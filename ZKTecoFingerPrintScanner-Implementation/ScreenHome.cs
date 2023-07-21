@@ -36,8 +36,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public PictureBox picHuellaMA_ { get; set; }
         public PictureBox PicRegister_ { get; set; }
 
-        STGlobal stGlobal = STGlobal.Instance;
-        DataSocioAll dataSocioAll = DataSocioAll.Instance;
+        private DataSocioAll dataSocioAll;
+        private STGlobal stGlobal;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -58,6 +58,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
             picHuellaMA_ = picHuellaMA;
             PicRegister_ = PicRegister;
             lblIntents_ = lblIntents;
+
+            dataSocioAll = DataSocioAll.Instance;
+            stGlobal = STGlobal.Instance;
 
             managementZk = new ManagementZk(this);
             // managementZk.FingerprintCaptured += OnFingerprintCaptured;
@@ -93,7 +96,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             //TabControl.TabPages[1].Text = "Configuracion";
             //TabControl.TabPages[2].Text = "Asistencia personal";
             //TabControl.TabPages[3].Text = "Registro";
-            
+
         }
 
 
@@ -128,64 +131,50 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 switch (message)
                 {
                     case "MA-T":
-
-                        if (dataSocioAll.Membresias == null || !dataSocioAll.Membresias.Any())
+                        if (dataSocioAll.Membresias != null && dataSocioAll.Membresias.Count > 0)
                         {
-                            dgvMembresias.ClearSelection();
-                            dgvMembresias.Rows.Clear();
-                        }
-                        else
-                        {
-                            dgvMembresias.Rows.Clear();
-                            foreach (Membresia m in dataSocioAll.Membresias)
-                            {
-                                dgvMembresias.Rows.Add(
-                                    m.NombrePaquete,
-                                    m.FCrecionText,
-                                    m.DesFechaInicio,
-                                    m.DesFechaFin,
-                                    m.Costo,
-                                    m.MontoTotal,
-                                    m.Debe,
-                                    m.CantidadFreezing,
-                                    m.CantidadFreezingTomados,
-                                    m.CantidadAsistencia,
-                                    m.NroContrato,
-                                    m.AsesorComercial,
-                                    m.CodigoSede);
-                            }
+                            var membresia = dataSocioAll.Membresias[0];
+                            txtMPromo.Text = membresia.NombrePaquete.ToString();
+                            txtMFecha.Text = membresia.FCrecionText.ToString();
+                            txtMFInicio.Text = membresia.DesFechaInicio.ToString();
+                            txtMFin.Text = membresia.DesFechaFin.ToString();
+                            txtMPrecio.Text = membresia.Costo.ToString();
+                            txtMAcuenta.Text = membresia.MontoTotal.ToString();
+                            txtMDebe.Text = membresia.Debe.ToString();
+                            txtMFrezing.Text = membresia.CantidadFreezing.ToString();
+                            txtMFrezingTom.Text = membresia.CantidadFreezingTomados.ToString();
+                            txtMFrezingActual.Text = membresia.CantidadAsistencia.ToString();
+                            txtMContrato.Text = membresia.NroContrato.ToString();
+                            txtMResponsable.Text = membresia.AsesorComercial.ToString();
+                            txtMSede.Text = membresia.CodigoSede.ToString();
 
-                            if (dataSocioAll.Membresias.Count > 0)
-                            {
-                                lblPlan.Text = dataSocioAll.Membresias[0].Descripcion.ToUpper();
-                                MessageStatusMembresia(dataSocioAll.Membresias[0].ObtenerTiempoVencimiento, dataSocioAll.Membresias[0].Estado);
+                            btnMarkAsistence.Visible = true;
+                            lblPlan.Text = membresia.Descripcion.ToUpper();
+                            MessageStatusMembresia(membresia.ObtenerTiempoVencimiento, membresia.Estado);
 
-                                dgvMembresias.Rows[0].Selected = true;
-                                dataSocioAll.MembresiasSelected = dataSocioAll.Membresias[0];
-                                string deudaMem = dataSocioAll.MembresiasSelected.Debe > 0 ? $"DEBE {dataSocioAll.MembresiasSelected.Debe} EN MEMBRESIA" : "";
-                                StlyDeudaM(deudaMem, !string.IsNullOrEmpty(deudaMem));
-                                if (stGlobal.CheackAutomatic)
-                                {
-                                    btnMarkAsistence.PerformClick();
-                                }
-                                _ = Task.Run(() => LoadDataToGrids());
+                            dataSocioAll.MembresiasSelected = membresia;
+                            string deudaMem = dataSocioAll.MembresiasSelected.Debe > 0 ? $"DEBE {dataSocioAll.MembresiasSelected.Debe} EN MEMBRESIA" : "";
+                            StlyDeudaM(deudaMem, !string.IsNullOrEmpty(deudaMem));
+                            if (stGlobal.CheackAutomatic)
+                            {
+                                btnMarkAsistence.PerformClick();
                             }
+                            _ = Task.Run(() => LoadDataToGrids());
+
                             StatusMessage(dataSocioAll.MessageGenericD, true);
                             SocioInfoMatch(true);
                         }
 
                         break;
                     case "MA-F":
-                        dgvMembresias.Rows.Clear();
-                        dgvAsistences.Rows.Clear();
-                        dgvHpago.Rows.Clear();
-                        dgvHcuotas.Rows.Clear();
                         SocioInfoMatch(false);
                         StatusMessage($"No se encontro socio {DateTime.Now}", false);
                         MessageStatusMembresia("ESTADO DE MEMBRESIA", 0, true);
                         StatusMessageD("", false, true);
                         lblPlan.Text = "";
-
+                        clearMembresiaText();
+                        listBox1.Items.Clear();
+                        listBox2.Items.Clear();
                         break;
                     case "REG":
                         StatusMessage("Registro de huella exitosa", true);
@@ -205,57 +194,56 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         }
 
+
+
+        //clear txt membresia
+        public void clearMembresiaText()
+        {
+            txtMPromo.Text = "";
+            txtMFecha.Text = "";
+            txtMFInicio.Text = "";
+            txtMFin.Text = "";
+            txtMPrecio.Text = "";
+            txtMAcuenta.Text = "";
+            txtMDebe.Text = "";
+            txtMFrezing.Text = "";
+            txtMFrezingTom.Text = "";
+            txtMFrezingActual.Text = "";
+            txtMContrato.Text = "";
+            txtMResponsable.Text = "";
+            txtMSede.Text = "";
+            
+        }
+
         private void LoadDataToGrids()
         {
 
             try
             {
-
-                dgvHcuotas.ClearSelection();
-                dgvHcuotas.Rows.Clear();
-
-                dgvHpago.ClearSelection();
-                dgvHpago.Rows.Clear();
-
-                dgvAsistences.ClearSelection();
-                dgvAsistences.Rows.Clear();
-
-                dgvIncidencias.ClearSelection();
-                dgvIncidencias.Rows.Clear();
-
-
-                if (dataSocioAll.Asistences.Count > 0)
+                if (dataSocioAll.Asistences != null && dataSocioAll.Asistences.Count > 0)
                 {
+                    listBox1.Items.Clear();
+                    listBox1.Items.Add(string.Format("{0,-25} {1,-25} {2,-25} {3,-30}", "Fecha de Creación", "Hora", "Día de la Semana", "Usuario de Creación"));
+                    listBox1.Items.Add(new string('-', 150));
+
                     foreach (Asistence a in dataSocioAll.Asistences)
                     {
-                        dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
+                        listBox1.Items.Add(string.Format("{0,-25} {1,-25} {2,-25} {3,-30}", a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion));
                     }
+                    
                 }
 
-
-                if (dataSocioAll.Pagos.Count > 0)
+                if (dataSocioAll.Incidencias != null && dataSocioAll.Incidencias.Count > 0)
                 {
-                    foreach (Pago p in dataSocioAll.Pagos)
-                    {
-                        dgvHpago.Rows.Add(p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
-                    }
-                }
-
-                if (dataSocioAll.Cuotas.Count > 0)
-                {
-                    foreach (Cuota c in dataSocioAll.Cuotas)
-                    {
-                        dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
-                    }
-                }
-
-                if (dataSocioAll.Incidencias.Count > 0)
-                {
+                    listBox2.Items.Clear();
+                    listBox2.Items.Add(string.Format("{0,-30} {1,-30} {2,-60}", "Fecha de Creación", "Usuario de Creación", "Ocurrencia"));
+                    listBox2.Items.Add(new string('-', 100));
                     foreach (Incidencia c in dataSocioAll.Incidencias)
                     {
-                        dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
+                        listBox2.Items.Add(string.Format("{0,-30} {1,-30} {2,-60}", c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia));
                     }
                 }
+
 
             }
             catch (Exception ex)
@@ -674,10 +662,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     clearTab2();
                     managementZk.SetMatchSearch(false);
-                    dgvHcuotas.Rows.Clear();
-                    dgvHpago.Rows.Clear();
-                    dgvMembresias.Rows.Clear();
-                    dgvAsistences.Rows.Clear();
                 }
 
                 if (TabControl.SelectedTab == tabPage3)
@@ -699,14 +683,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
             managementZk.EventGeneral -= OnEventGeneral;
         }
 
-      
+
         public void getConfiguration()
         {
             try
             {
                 if (!string.IsNullOrEmpty(DataSession.DKey) && !string.IsNullOrEmpty(DataSession.Name))
                 {
-                    txtCbusiness.Text = DataSession.Unidad.ToString();
+                    txtCbusiness.Text = DataSession.Name.ToString();
                     txtCsede.Text = DataSession.Sede.ToString();
                     txtCng.Text = DataSession.Unidad.ToString();
                     txtCKey.Text = DataSession.DKey.ToString();
@@ -755,69 +739,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
 
 
-        private async void dgridMembresias_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-                try
-                {
-                    dgvMembresias.ClearSelection();
-                    dgvMembresias.Rows[e.RowIndex].Selected = true;
-
-                    var membresias = dataSocioAll.Membresias[e.RowIndex];
-                    int CodigoMembresia = membresias.CodigoMenbresia;
-                    int CodigoSede = membresias.CodigoSede;
-                    int CodigoUnidadNegocio = DataSession.Unidad;
-
-                    AppsFitService serv = new AppsFitService();
-
-
-                    var commonParameters = new
-                    {
-                        CodigoUnidadNegocio = CodigoUnidadNegocio,
-                        CodigoSede = CodigoSede,
-                        Membresia = CodigoMembresia
-                    };
-
-                    var respHistorial = await serv.AsistencesList(commonParameters);
-                    var HPC = await serv.HistorialPC(commonParameters);
-
-                    if (respHistorial.Success)
-                    {
-                        dataSocioAll.Asistences = respHistorial.Data;
-                    }
-
-                    dataSocioAll.Pagos = HPC.Data.Pagos;
-                    dataSocioAll.Cuotas = HPC.Data.Cuotas;
-                    dataSocioAll.Incidencias = HPC.Data.Incidencias;
-
-                    MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
-                    lblPlan.Text = membresias.Descripcion.ToUpper();
-
-                    string deudaMem = Convert.ToInt32(membresias.Debe) > 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
-                    StlyDeudaM(deudaMem, Convert.ToInt32(membresias.Debe) > 0 ? true : false);
-
-                    DataStatic.MembresiasSelected = membresias;
-                    if (membresias.Estado == 1)
-                    {
-                        btnMarkAsistence.Visible = true;
-                    }
-                    else
-                    {
-                        btnMarkAsistence.Visible = false;
-                    }
-
-                    _ = Task.Run(() => LoadDataToGrids());
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error : {ex.Message}\t Metodo: {ex.TargetSite},\t Linea:{ex.StackTrace}");
-                }
-            }
-        }
-
+      
 
 
 
@@ -833,12 +755,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 lblMessage.Message = "";
                 picHuellaMA.Image = BIOCHECK.Properties.Resources.huell;
                 PicMaUser.Image = BIOCHECK.Properties.Resources.user2;
-
-                dgvAsistences.Rows.Clear();
-                dgvHcuotas.Rows.Clear();
-                dgvHpago.Rows.Clear();
-                dgvMembresias.Rows.Clear();
-                dgvIncidencias.Rows.Clear();
 
                 StatusMessageD("", false, true);
             }
@@ -871,7 +787,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 try
                 {
-                    if (dataSocioAll.Membresias.Count == 0)
+                    StatusMessageD("", false, true);
+
+                    if (dataSocioAll.Membresias != null && dataSocioAll.Membresias.Count == 0)
                     {
                         StatusMessageD($"DEBE CONTAR CON UNA MEMBRESIA", false);
 
@@ -879,43 +797,49 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     }
                     else
                     {
-                        string message = ValidateMembresia(dataSocioAll.MembresiasSelected);
 
-                        if (!string.IsNullOrEmpty(message))
+                        if (dataSocioAll.MembresiasSelected != null)
                         {
-                            StatusMessageD($"{message}", false);
-                            return;
-                        }
-                        else
-                        {
-                            if (dataSocioAll.MembresiasSelected.Debe == 0)
+                            string message = ValidateMembresia(dataSocioAll.MembresiasSelected);
+
+                            if (!string.IsNullOrEmpty(message))
                             {
-                                //? Success, validate and mark attendance
-                                AppsFitService serv = new AppsFitService();
-
-                                var data = new
-                                {
-                                    CodigoUnidadNegocio = DataSession.Unidad,
-                                    Sede = DataSession.Sede,
-                                    Socio = dataSocioAll.MembresiasSelected.CodigoSocio,
-                                    Membresia = dataSocioAll.MembresiasSelected.CodigoMenbresia
-                                };
-
-                                var res = await serv.MarkAsistence(data);
-                                StatusMessageD($"{res.Message1}", res.Success);
-                                if (res.Success)
-                                {
-                                    // Update List
-                                    DataGridViewCellEventArgs cellEventArgs = new DataGridViewCellEventArgs(0, 0);
-                                    dgridMembresias_CellClick(dgvMembresias, cellEventArgs);
-                                }
+                                StatusMessageD($"{message}", false);
+                                return;
                             }
                             else
                             {
-                                //Debe
-                                StatusMessageD("", false, true);
-                                MessageBox.Show($"TIENES UNA DEUDA DE {dataSocioAll.MembresiasSelected.Debe} !");
-                                return;
+                                if (Convert.ToInt32(dataSocioAll.MembresiasSelected.Debe) == 0)
+                                {
+                                    //? Success, validate and mark attendance
+                                    AppsFitService serv = new AppsFitService();
+
+                                    var data = new
+                                    {
+                                        CodigoUnidadNegocio = DataSession.Unidad,
+                                        Sede = DataSession.Sede,
+                                        Socio = dataSocioAll.MembresiasSelected.CodigoSocio,
+                                        Membresia = dataSocioAll.MembresiasSelected.CodigoMenbresia
+                                    };
+
+                                    var res = await serv.MarkAsistence(data);
+                                    StatusMessageD($"{res.Message1}", res.Success);
+                                    managementZk.createFile(res.Message1 + "" + res.Success);
+                                    if (res.Success)
+                                    {
+                                        // Update List
+                                        await managementZk.ReloadDataAsistence();
+                                        _ = Task.Run(() => LoadDataToGrids());
+                                    }
+                                }
+                                else
+                                {
+                                    //Debe
+                                    StatusMessageD("", false, true);
+                                    MessageBox.Show($"TIENES UNA DEUDA DE {dataSocioAll.MembresiasSelected.Debe} !");
+
+                                    return;
+                                }
                             }
                         }
                     }
@@ -954,6 +878,10 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     return "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
                 }
+                if (membresia.Estado == 2)
+                {
+                    return "😨 SU MEMBRESÍA FINALIZÓ 👎";
+                }
             }
             catch (Exception ex)
             {
@@ -970,7 +898,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             stGlobal.CheackAutomatic = checkBox.Checked;
         }
 
-       
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -1146,7 +1074,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void btnDeleteLogs_Click(object sender, EventArgs e)
         {
-            
+
             managementZk.EliminarArchivoLog();
         }
 
@@ -1160,6 +1088,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 managementZk.createFileLog("ScreeHome", ex);
             }
+        }
+
+        private void dgvIncidencias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         //******************************************************-search by register-****************************************
