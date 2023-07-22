@@ -6,6 +6,7 @@ using System.Data;
 using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Messaging;
 using System.Net;
 using System.Net.Http;
@@ -35,6 +36,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public PictureBox picHuellaMA_ { get; set; }
         public PictureBox PicRegister_ { get; set; }
 
+        private DataSocioAll dataSocioAll;
+        private STGlobal stGlobal;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn(
@@ -46,8 +50,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
             int nHeightEllipse
         );
 
-
-
         public ScreenHome()
         {
             InitializeComponent();
@@ -56,6 +58,9 @@ namespace ZKTecoFingerPrintScanner_Implementation
             picHuellaMA_ = picHuellaMA;
             PicRegister_ = PicRegister;
             lblIntents_ = lblIntents;
+
+            dataSocioAll = DataSocioAll.Instance;
+            stGlobal = STGlobal.Instance;
 
             managementZk = new ManagementZk(this);
             // managementZk.FingerprintCaptured += OnFingerprintCaptured;
@@ -87,7 +92,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
             panelAPHuella.Region = Region.FromHrgn(CreateRoundRectRgn
                 (0, 0, panelAPHuella.Width, panelAPHuella.Height, 20, 20));
 
+            //TabControl.TabPages[0].Text = "Asistencia cliente";
+            //TabControl.TabPages[1].Text = "Configuracion";
+            //TabControl.TabPages[2].Text = "Asistencia personal";
+            //TabControl.TabPages[3].Text = "Registro";
+
         }
+
+
         //center control
         public void CenterControl(Control parent, Control child)
         {
@@ -95,6 +107,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             x = (parent.Width / 2) - (child.Width / 2);
             child.Location = new System.Drawing.Point(x, child.Location.Y);
         }
+
+
         private void AdjustFormSize(int percentage)
         {
             Rectangle bounds = Screen.PrimaryScreen.Bounds;
@@ -107,21 +121,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             Location = new Point(x, y);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
-            foreach (Asistence a in DataStatic.Asistences)
-            {
-                dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
-            }
-
-
-            foreach (Pago p in DataStatic.Pagos)
-            {
-                dgvHpago.Rows.Add(p.Estado, p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
-            }
-
-        }
 
         public void OnEventGeneral(string message, dynamic message2)
         {
@@ -131,65 +131,54 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 switch (message)
                 {
                     case "MA-T":
+                        if (dataSocioAll.Membresias != null && dataSocioAll.Membresias.Count > 0)
+                        {
+                            var membresia = dataSocioAll.Membresias[0];
+                            txtMPromo.Text = membresia.NombrePaquete.ToString();
+                            txtMFecha.Text = membresia.FCrecionText.ToString();
+                            txtMFInicio.Text = membresia.DesFechaInicio.ToString();
+                            txtMFin.Text = membresia.DesFechaFin.ToString();
+                            txtMPrecio.Text = membresia.Costo.ToString();
+                            txtMAcuenta.Text = membresia.MontoTotal.ToString();
+                            txtMDebe.Text = membresia.Debe.ToString();
+                            txtMFrezing.Text = membresia.CantidadFreezing.ToString();
+                            txtMFrezingTom.Text = membresia.CantidadFreezingTomados.ToString();
+                            txtMFrezingActual.Text = membresia.CantidadAsistencia.ToString();
+                            txtMContrato.Text = membresia.NroContrato.ToString();
+                            txtMResponsable.Text = membresia.AsesorComercial.ToString();
+                            txtMSede.Text = membresia.CodigoSede.ToString();
 
-                        dgvMembresias.Rows.Clear();
-                        StatusMessage(DataStatic.MessageGenericD, true);
-                        SocioInfoMatch(true);
-                        if (DataStatic.Membresias.Count > 0)
-                        {
-                            lblPlan.Text = DataStatic.Membresias[0].Descripcion.ToUpper();
-                            MessageStatusMembresia(DataStatic.Membresias[0].ObtenerTiempoVencimiento, DataStatic.Membresias[0].Estado);
-                        }
-                        foreach (Membresia m in DataStatic.Membresias)
-                        {
-                            dgvMembresias.Rows.Add(
-                              m.NombrePaquete,
-                              m.FCrecionText,
-                              m.DesFechaInicio,
-                              m.DesFechaFin,
-                              m.Costo,
-                              m.MontoTotal,
-                              m.Debe,
-                              m.CantidadFreezing,
-                              m.CantidadFreezingTomados,
-                              m.CantidadAsistencia,
-                              m.NroContrato,
-                              m.AsesorComercial,
-                              m.CodigoSede);
-                        }
-                        if (DataStatic.Membresias.Count > 0)
-                        {
-                            dgvMembresias.Rows[0].Selected = true;
-                            DataStatic.MembresiasSelected = DataStatic.Membresias[0];
-                            string deudaMem = DataStatic.MembresiasSelected.Debe > 0 ? $"DEBE {DataStatic.MembresiasSelected.Debe} EN MEMBRESIA" : "";
-                            StlyDeudaM(deudaMem, deudaMem != "" ? true : false);
-                            if (CheckBoxValue.IsChecked)
+                            btnMarkAsistence.Visible = true;
+                            lblPlan.Text = membresia.Descripcion.ToUpper();
+                            MessageStatusMembresia(membresia.ObtenerTiempoVencimiento, membresia.Estado);
+
+                            dataSocioAll.MembresiasSelected = membresia;
+                            string deudaMem = dataSocioAll.MembresiasSelected.Debe > 0 ? $"DEBE {dataSocioAll.MembresiasSelected.Debe} EN MEMBRESIA" : "";
+                            StlyDeudaM(deudaMem, !string.IsNullOrEmpty(deudaMem));
+                            if (stGlobal.CheackAutomatic)
                             {
                                 btnMarkAsistence.PerformClick();
                             }
                             _ = Task.Run(() => LoadDataToGrids());
+
+                            StatusMessage(dataSocioAll.MessageGenericD, true);
+                            SocioInfoMatch(true);
                         }
-
-                        //Thread dataLoadThread = new Thread(LoadDataToGrids);
-                        //dataLoadThread.Start();
-
 
                         break;
                     case "MA-F":
-                        dgvMembresias.Rows.Clear();
-                        dgvAsistences.Rows.Clear();
-                        dgvHpago.Rows.Clear();
-                        dgvHcuotas.Rows.Clear();
                         SocioInfoMatch(false);
                         StatusMessage($"No se encontro socio {DateTime.Now}", false);
                         MessageStatusMembresia("ESTADO DE MEMBRESIA", 0, true);
                         StatusMessageD("", false, true);
                         lblPlan.Text = "";
-
+                        clearMembresiaText();
+                        listBox1.Items.Clear();
+                        listBox2.Items.Clear();
                         break;
                     case "REG":
                         StatusMessage("Registro de huella exitosa", true);
-                        _ = LoadFingers();
+                        _ = LoadFingers(false);
                         break;
                     case "REG-FAIL":
                         StatusMessage(DataStatic.MessageGeneric, false);
@@ -198,117 +187,154 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         break;
                 }
             }
-
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                managementZk.createFileLog("ScreeHome", ex);
             }
 
         }
+
+
+
+        //clear txt membresia
+        public void clearMembresiaText()
+        {
+            txtMPromo.Text = "";
+            txtMFecha.Text = "";
+            txtMFInicio.Text = "";
+            txtMFin.Text = "";
+            txtMPrecio.Text = "";
+            txtMAcuenta.Text = "";
+            txtMDebe.Text = "";
+            txtMFrezing.Text = "";
+            txtMFrezingTom.Text = "";
+            txtMFrezingActual.Text = "";
+            txtMContrato.Text = "";
+            txtMResponsable.Text = "";
+            txtMSede.Text = "";
+            
+        }
+
         private void LoadDataToGrids()
         {
-            dgvHcuotas.Rows.Clear();
-            dgvHpago.Rows.Clear();
-            dgvAsistences.Rows.Clear();
-            dgvIncidencias.Rows.Clear();
+
             try
             {
-                if (DataStatic.Asistences.Count > 0)
+                if (dataSocioAll.Asistences != null && dataSocioAll.Asistences.Count > 0)
                 {
-                    foreach (Asistence a in DataStatic.Asistences)
+                    listBox1.Items.Clear();
+                    listBox1.Items.Add(string.Format("{0,-25} {1,-25} {2,-25} {3,-30}", "Fecha de Creación", "Hora", "Día de la Semana", "Usuario de Creación"));
+                    listBox1.Items.Add(new string('-', 150));
+
+                    foreach (Asistence a in dataSocioAll.Asistences)
                     {
-                        dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
+                        listBox1.Items.Add(string.Format("{0,-25} {1,-25} {2,-25} {3,-30}", a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion));
+                    }
+                    
+                }
+
+                if (dataSocioAll.Incidencias != null && dataSocioAll.Incidencias.Count > 0)
+                {
+                    listBox2.Items.Clear();
+                    listBox2.Items.Add(string.Format("{0,-30} {1,-30} {2,-60}", "Fecha de Creación", "Usuario de Creación", "Ocurrencia"));
+                    listBox2.Items.Add(new string('-', 100));
+                    foreach (Incidencia c in dataSocioAll.Incidencias)
+                    {
+                        listBox2.Items.Add(string.Format("{0,-30} {1,-30} {2,-60}", c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia));
                     }
                 }
 
-
-                if (DataStatic.Pagos.Count > 0)
-                {
-                    foreach (Pago p in DataStatic.Pagos)
-                    {
-                        dgvHpago.Rows.Add(p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
-                    }
-                }
-
-                if (DataStatic.Cuotas.Count > 0)
-                {
-                    foreach (Cuota c in DataStatic.Cuotas)
-                    {
-                        dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
-                    }
-                }
-
-                if (DataStatic.Incidencias.Count > 0)
-                {
-                    foreach (Incidencia c in DataStatic.Incidencias)
-                    {
-                        dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
-                    }
-                }
 
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción en el hilo secundario
-                managementZk.createFile(ex.Message.ToString());
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
+
 
         //set socio match
         private void SocioInfoMatch(bool success)
         {
-            if (success)
+            try
             {
-                var socio = DataStatic.Socio;
-                lblFullName_.Text = $"{socio.Nombre}, {socio.Apellidos}".ToUpper();
-                string deudaStr = socio.DeudaSuplemento > 0 ? $"DEBE {socio.DeudaSuplemento} EN PRODUCTOS" : "";
-                StlyDeuda(deudaStr, deudaStr.Length > 0 ? true : false);
-                if (string.IsNullOrEmpty(socio.ImagenUrl) == false && validateHttps(socio.ImagenUrl) == true)
+                if (success)
                 {
-                    using (WebClient webClient = new WebClient())
+                    var socio = dataSocioAll.Socio;
+                    lblFullName_.Text = $"{socio.Nombre}, {socio.Apellidos}".ToUpper();
+                    string deudaStr = socio.DeudaSuplemento > 0 ? $"DEBE {socio.DeudaSuplemento} EN PRODUCTOS" : "";
+                    StlyDeuda(deudaStr, deudaStr.Length > 0 ? true : false);
+                    if (string.IsNullOrEmpty(socio.ImagenUrl) == false && validateHttps(socio.ImagenUrl) == true)
                     {
-                        byte[] imageData = webClient.DownloadData(socio.ImagenUrl);
-                        using (MemoryStream ms = new MemoryStream(imageData))
+                        using (WebClient webClient = new WebClient())
                         {
-                            PicMaUser.Image = Image.FromStream(ms);
+                            byte[] imageData = webClient.DownloadData(socio.ImagenUrl);
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                PicMaUser.Image = Image.FromStream(ms);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
+                    StlyDeuda();
+                    PicMaUser.Image = BIOCHECK.Properties.Resources.user2;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
-                StlyDeuda();
-                PicMaUser.Image = BIOCHECK.Properties.Resources.user2;
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
 
         private void MessageStatusMembresia(string message, int status, bool clear = false)
         {
-            string finish = "😨 SU MEMBRESÍA FINALIZÓ 👎";
-            lblMessageMem.Text = status == 2 ? finish : message;
-            lblMessageMem.ForeColor = Color.White;
-            lblMessageMem.BackColor = clear ? Color.FromArgb(37, 47, 59) : (status == 1 ? Color.Green : Color.Gray);
+            try
+            {
+                string finish = "😨 SU MEMBRESÍA FINALIZÓ 👎";
+                lblMessageMem.Text = status == 2 ? finish : message;
+                lblMessageMem.ForeColor = Color.White;
+                lblMessageMem.BackColor = clear ? Color.FromArgb(37, 47, 59) : (status == 1 ? Color.Green : Color.Gray);
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
         private void StlyDeuda(string message = "", bool deuda = false)
         {
-            lblDeudaProductos.Text = string.IsNullOrEmpty(message) ? "DEUDA PRODUCTOS" : message;
-            lblDeudaProductos.ForeColor = Color.White;
-            lblDeudaProductos.BackColor = deuda ? Color.FromArgb(192, 0, 0) : Color.Gray;
+            try
+            {
+                lblDeudaProductos.Text = string.IsNullOrEmpty(message) ? "DEUDA PRODUCTOS" : message;
+                lblDeudaProductos.ForeColor = Color.White;
+                lblDeudaProductos.BackColor = deuda ? Color.FromArgb(192, 0, 0) : Color.Gray;
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
         private void StlyDeudaM(string message = "", bool deuda = false)
         {
-            lblDeudaMembresia.Text = string.IsNullOrEmpty(message) ? "DEUDA MEMBRESIA" : message;
-            lblDeudaMembresia.ForeColor = Color.White;
-            lblDeudaMembresia.BackColor = deuda ? Color.FromArgb(192, 0, 0) : Color.Gray;
+            try
+            {
+                lblDeudaMembresia.Text = string.IsNullOrEmpty(message) ? "DEUDA MEMBRESIA" : message;
+                lblDeudaMembresia.ForeColor = Color.White;
+                lblDeudaMembresia.BackColor = deuda ? Color.FromArgb(192, 0, 0) : Color.Gray;
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
         MaterialSkinManager skinManager = MaterialSkinManager.Instance;
 
         private bool isFirstLoad = true;
-        private void ScreenHome_Load(object sender, EventArgs e)
+        private async void ScreenHome_Load(object sender, EventArgs e)
         {
 
             LoadingForm loading = new LoadingForm();
@@ -333,7 +359,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 {
                     //handle match
                     managementZk.SetMatchSearch(true);
-                    _ = LoadFingers();
+                    _ = LoadFingers(true);
                 }
                 isFirstLoad = false;
             }
@@ -347,231 +373,307 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private void loadInitialData()
         {
-            lblGym.Text = DataSession.Name;
-            lblRubro.Text = DataSession.Rubro;
-            if (!string.IsNullOrEmpty(DataSession.Logo))
-            {
-                using (WebClient webClient = new WebClient())
-                {
-                    byte[] imageData = webClient.DownloadData(DataSession.Logo);
-                    using (MemoryStream ms = new MemoryStream(imageData))
-                    {
-                        picGymLogo.Image = Image.FromStream(ms);
-                    }
-                }
-            }
-        }
-
-        public async Task LoadFingers()
-        {
-            AppsFitService serv = null;
-            var task = Task.Run(async () =>
-            {
-                serv = new AppsFitService();
-                var response = await serv.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
-                return response;
-            });
             try
             {
-                var result = await task;
-
-                if (result.Success)
+                lblGym.Text = DataSession.Name;
+                lblRubro.Text = DataSession.Rubro;
+                if (!string.IsNullOrEmpty(DataSession.Logo))
                 {
-                    SocioData.SetListaUsers(result.Data);
-                    lblCount.Text = $"CANTIDAD REGISTROS : {SocioData.socios.Count}";
+                    using (WebClient webClient = new WebClient())
+                    {
+                        byte[] imageData = webClient.DownloadData(DataSession.Logo);
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            picGymLogo.Image = Image.FromStream(ms);
+                        }
+                    }
+                }
+
+                DataManagerD dpre = new DataManagerD();
+                if (string.IsNullOrEmpty(dpre.ReadData()))
+                {
+                    tbPrecicion.Value = 60;
+                    lblPrecicion.Text = $"60%";
+                    stGlobal.Precision = 60;
                 }
                 else
                 {
+                    var pre = dpre.ReadData();
+                    tbPrecicion.Value = Convert.ToInt32(pre);
+                    lblPrecicion.Text = $"{pre}%";
+                    stGlobal.Precision = Convert.ToInt32(pre);
                 }
+                rbTSocio.Checked = true;
+                stGlobal.TypeRegister = 1;
+                stGlobal.TypeMatch = 1;
             }
             catch (Exception ex)
             {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
+        }
+
+        public async Task LoadFingers(bool init = true)
+        {
+            AppsFitService api = new AppsFitService();
+            try
+            {
+                HuellaData huellaData = HuellaData.Instance;
+
+                if (init)
+                {
+                    var response = await api.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
+                    if (response.Success)
+                    {
+                        huellaData.SetSocios(response.Data);
+                        lblCount.Text = $"CANTIDAD REGISTROS : {huellaData.Socios.Count}";
+                    }
+
+                    var responseF = await api.FingerPrintsListFijo(new { DefaultKeyEmpresa = DataSession.DKey });
+                    if (responseF.Success)
+                    {
+                        huellaData.SetFijos(responseF.Data);
+                        lblCountFijo.Text = $"REGISTROS PERSONAL : {huellaData.Fijos.Count}";
+                    }
+
+                    var responseEvent = await api.FingerPrintsListEvent(new { DefaultKeyEmpresa = DataSession.DKey });
+                    if (responseEvent.Success)
+                    {
+                        huellaData.SetProfesionales(responseEvent.Data);
+                        lblCountEvent.Text = $"REGISTROS PROFESIONALES : {huellaData.Profesionales.Count}";
+                    }
+                }
+                else
+                {
+                    switch (stGlobal.TypeRegister)
+                    {
+                        case 2:
+                            var responseF = await api.FingerPrintsListFijo(new { DefaultKeyEmpresa = DataSession.DKey });
+                            if (responseF.Success)
+                            {
+                                huellaData.SetFijos(responseF.Data);
+                                lblCountFijo.Text = $"REGISTROS PERSONAL : {huellaData.Fijos.Count}";
+                            }
+                            break;
+                        case 3:
+                            var responseEvent = await api.FingerPrintsListEvent(new { DefaultKeyEmpresa = DataSession.DKey });
+                            if (responseEvent.Success)
+                            {
+                                huellaData.SetProfesionales(responseEvent.Data);
+                                lblCountEvent.Text = $"REGISTROS PROFESIONALES : {huellaData.Profesionales.Count}";
+                            }
+                            break;
+                        default:
+                            var response = await api.FingerPrintsList(new { DefaultKeyEmpresa = DataSession.DKey });
+                            if (response.Success)
+                            {
+                                huellaData.SetSocios(response.Data);
+                                lblCount.Text = $"CANTIDAD REGISTROS : {huellaData.Socios.Count}";
+                            }
+                            break;
+                    }
+                }
 
             }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
+
         }
 
 
         private void BtnConnection_Click(object sender, EventArgs e)
         {
-            managementZk.Initialize();
-
-            //connect and suscribe event
-            managementZk.EventGeneral += OnEventGeneral;
+            try
+            {
+                managementZk.Initialize();
+                managementZk.EventGeneral += OnEventGeneral;
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
 
         private void StatusMessage(string message, bool success)
         {
 
-            lblMessage.Message = message;
-            lblMessage.StatusBarForeColor = Color.White;
-            if (success)
+            try
             {
+                lblMessage.Message = message;
+                lblMessage.StatusBarForeColor = Color.White;
+                if (success)
+                {
 
-                lblMessage.StatusBarBackColor = Color.FromArgb(79, 208, 154);
+                    lblMessage.StatusBarBackColor = Color.FromArgb(79, 208, 154);
+                }
+                else
+                {
+                    lblMessage.StatusBarBackColor = Color.FromArgb(230, 112, 134);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblMessage.StatusBarBackColor = Color.FromArgb(230, 112, 134);
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
 
         private void StatusMessageD(string message, bool success, bool reset = false)
         {
 
-            statusBar1.Message = message;
-            statusBar1.StatusBarForeColor = Color.White;
+            try
+            {
+                statusBar1.Message = message;
+                statusBar1.StatusBarForeColor = Color.White;
 
-            if (reset)
-            {
-                statusBar1.StatusBarBackColor = Color.White;
-            }
-            else
-            {
-                if (success)
+                if (reset)
                 {
-
-                    statusBar1.StatusBarBackColor = Color.FromArgb(79, 208, 154);
+                    statusBar1.StatusBarBackColor = Color.White;
                 }
                 else
                 {
-                    statusBar1.StatusBarBackColor = Color.FromArgb(230, 112, 134);
+                    if (success)
+                    {
+
+                        statusBar1.StatusBarBackColor = Color.FromArgb(79, 208, 154);
+                    }
+                    else
+                    {
+                        statusBar1.StatusBarBackColor = Color.FromArgb(230, 112, 134);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
 
         public bool validateHttps(string url)
         {
-            bool valid = false;
-            string patron = @"https:\/\/\S+";
-            bool contieneHTTPS = Regex.IsMatch(url, patron);
+            try
+            {
+                bool valid = false;
+                string patron = @"https:\/\/\S+";
+                bool contieneHTTPS = Regex.IsMatch(url, patron);
 
-            if (contieneHTTPS)
-            {
-                valid = true;
+                if (contieneHTTPS)
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                }
+                return valid;
             }
-            else
+            catch (Exception ex)
             {
-                valid = false;
+                managementZk.createFileLog("ScreeHome", ex);
+                return false;
             }
-            return valid;
         }
 
         private async void BtnSearch_Click(object sender, EventArgs e)
         {
             AppsFitService api = new AppsFitService();
-            if (TxtSearch.Text == "")
+            try
             {
-                StatusMessage("Ingrese Número de documento", false);
-                TxtSearch.Focus();
-            }
-            else
-            {
-                var body = new
+                if (string.IsNullOrEmpty(TxtSearch.Text))
                 {
-                    DefaultKeyEmpresa = DataSession.DKey,
-                    Filtre = TxtSearch.Text,
-                };
-                try
+                    StatusMessage("Ingrese Número de documento", false);
+                    TxtSearch.Focus();
+                }
+                else
                 {
-                    var response = await api.SearchSocio(body);
-                    if (response.Success == true)
+                    //socio
+                    if (stGlobal.TypeRegister == 1) //socio
                     {
-                        DataItem item = response.Data as DataItem;
-                        TxtCode.Text = Convert.ToString(item.code);
-                        TxtName.Text = Convert.ToString(item.name);
-                        TxtSurname.Text = Convert.ToString(item.surnames);
-                        TxtNro.Text = Convert.ToString(item.nro_document);
-
-                        if (!string.IsNullOrEmpty(item.image) && validateHttps(item.image))
-                        {
-                            using (WebClient webClient = new WebClient())
-                            {
-                                byte[] imageData = webClient.DownloadData(item.image);
-                                using (MemoryStream ms = new MemoryStream(imageData))
-                                {
-                                    ImageUser.Image = Image.FromStream(ms);
-                                }
-                            }
-                        }
-                        managementZk.ResetListenRegister();
-                        ClearRegister();
-                        DataSession.Filtre = TxtSearch.Text;
-                        DataSession.Code = item.code;
-
-                    }
-                    else
-                    {
-                        DataSession.Filtre = "";
-                        StatusMessage($"{response.Message1}", false);
-                        TxtCode.Text = "";
-                        TxtName.Text = "";
-                        TxtSurname.Text = "";
-                        TxtNro.Text = "";
-                        ImageUser.Image = BIOCHECK.Properties.Resources.user1;
+                        SearchData(1);
                     }
 
-                }
-                catch (HttpRequestException ex)
-                {
-
+                    //pf
+                    if (stGlobal.TypeRegister == 2)
+                    {
+                        SearchData(2);
+                    }
+                    //event
+                    if (stGlobal.TypeRegister == 3)
+                    {
+                        SearchData(3);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
         //clear register huella
         public void ClearRegister()
         {
-            lblMessage.Message = "";
-            lblIntents.Text = "3 veces más";
-            PicRegister.Image = null;
-            lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
+            try
+            {
+                lblMessage.Message = "";
+                lblIntents.Text = "3 veces más";
+                PicRegister.Image = null;
+                lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
         public void clearTab2()
         {
-            lblMessage.Message = "";
-            lblIntents.Text = "";
-            PicRegister.Image = BIOCHECK.Properties.Resources.huell;
-            ImageUser.Image = BIOCHECK.Properties.Resources.user2;
-            TxtSearch.Text = "";
-            TxtCode.Text = "";
-            TxtName.Text = "";
-            TxtSurname.Text = "";
-            TxtNro.Text = "";
-            lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
-            StatusMessageD("", false, true);
+            try
+            {
+                lblMessage.Message = "";
+                lblIntents.Text = "";
+                PicRegister.Image = BIOCHECK.Properties.Resources.huell;
+                ImageUser.Image = BIOCHECK.Properties.Resources.user2;
+                TxtSearch.Text = "";
+                TxtCode.Text = "";
+                TxtName.Text = "";
+                TxtSurname.Text = "";
+                TxtNro.Text = "";
+                lblMessage.StatusBarBackColor = Color.FromArgb(250, 250, 250);
+                StatusMessageD("", false, true);
+
+            }
+            catch (Exception ex) { managementZk.createFileLog("ScreeHome", ex); }
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TabControl.SelectedTab == tabPage1)
+            try
             {
-                managementZk.SetMatchSearch(true);
-                managementZk.SetIsRegister(false);
+                if (TabControl.SelectedTab == tabPage1)
+                {
+                    managementZk.SetMatchSearch(true);
+                    managementZk.SetIsRegister(false);
+                    clearMA();
+                }
+                if (TabControl.SelectedTab == tabPage2)
+                {
+                    clearTab2();
+                    managementZk.SetMatchSearch(false);
+                }
 
-                clearMA();
-
+                if (TabControl.SelectedTab == tabPage3)
+                {
+                    managementZk.SetIsRegister(false);
+                    managementZk.SetMatchSearch(false);
+                    getConfiguration();
+                }
             }
-            if (TabControl.SelectedTab == tabPage2)
+            catch (Exception ex)
             {
-                clearTab2();
-                managementZk.SetMatchSearch(false);
-                dgvHcuotas.Rows.Clear();
-                dgvHpago.Rows.Clear();
-                dgvMembresias.Rows.Clear();
-                dgvAsistences.Rows.Clear();
-
-
-            }
-
-            if (TabControl.SelectedTab == tabPage3)
-            {
-                managementZk.SetIsRegister(false);
-                managementZk.SetMatchSearch(false);
-                getConfiguration();
-
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
 
@@ -581,187 +683,93 @@ namespace ZKTecoFingerPrintScanner_Implementation
             managementZk.EventGeneral -= OnEventGeneral;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DataManager dataManager = new DataManager();
-            string retrievedData = dataManager.ReadData();
-
-        }
-
-        private void TabSelector_Click(object sender, EventArgs e)
-        {
-
-        }
         public void getConfiguration()
         {
-            if (!string.IsNullOrEmpty(DataSession.DKey) && !string.IsNullOrEmpty(DataSession.Name))
+            try
             {
-                txtCbusiness.Text = DataSession.Unidad.ToString();
-                txtCsede.Text = DataSession.Sede.ToString();
-                txtCng.Text = DataSession.Unidad.ToString();
-                txtCKey.Text = DataSession.DKey.ToString();
-
-                if (!string.IsNullOrEmpty(DataSession.Logo))
+                if (!string.IsNullOrEmpty(DataSession.DKey) && !string.IsNullOrEmpty(DataSession.Name))
                 {
-                    using (WebClient webClient = new WebClient())
+                    txtCbusiness.Text = DataSession.Name.ToString();
+                    txtCsede.Text = DataSession.Sede.ToString();
+                    txtCng.Text = DataSession.Unidad.ToString();
+                    txtCKey.Text = DataSession.DKey.ToString();
+
+                    if (!string.IsNullOrEmpty(DataSession.Logo))
                     {
-                        byte[] imageData = webClient.DownloadData(DataSession.Logo);
-                        using (MemoryStream ms = new MemoryStream(imageData))
+                        using (WebClient webClient = new WebClient())
                         {
-                            PicCLogo.Image = Image.FromStream(ms);
+                            byte[] imageData = webClient.DownloadData(DataSession.Logo);
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                PicCLogo.Image = Image.FromStream(ms);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
             }
 
         }
 
         private void PicCloseHome_Click(object sender, EventArgs e)
         {
-            List<Form> formsToClose = new List<Form>();
-            foreach (Form form in Application.OpenForms)
+            try
             {
-                formsToClose.Add(form);
-            }
-            foreach (Form form in formsToClose)
-            {
-                form.Close();
-                form.Dispose();
-            }
-            managementZk.EventGeneral -= OnEventGeneral;
-        }
-
-
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            dgvHcuotas.Visible = true;
-            dgvHpago.Visible = false;
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            dgvHcuotas.Visible = false;
-            dgvHpago.Visible = true;
-        }
-
-        private async void dgridMembresias_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-
-                try
+                List<Form> formsToClose = new List<Form>();
+                foreach (Form form in Application.OpenForms)
                 {
-                    dgvMembresias.ClearSelection();
-                    dgvMembresias.Rows[e.RowIndex].Selected = true;
-
-                    var membresias = DataStatic.Membresias[e.RowIndex];
-                    int CodigoMembresia = membresias.CodigoMenbresia;
-                    int CodigoSede = membresias.CodigoSede;
-                    int CodigoUnidadNegocio = DataSession.Unidad;
-
-                    AppsFitService serv = new AppsFitService();
-
-
-                    var commonParameters = new
-                    {
-                        CodigoUnidadNegocio = CodigoUnidadNegocio,
-                        CodigoSede = CodigoSede,
-                        Membresia = CodigoMembresia
-                    };
-
-                    var respHistorial = await serv.AsistencesList(commonParameters);
-                    var HPC = await serv.HistorialPC(commonParameters);
-
-                    if (respHistorial.Success)
-                    {
-                        DataStatic.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
-                    }
-                    else
-                    {
-
-                    }
-
-                    DataStatic.Pagos = HPC.Data.Pagos.Count > 0 ? HPC.Data.Pagos : new List<Pago>();
-                    DataStatic.Cuotas = HPC.Data.Cuotas.Count > 0 ? HPC.Data.Cuotas : new List<Cuota>();
-                    DataStatic.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias : new List<Incidencia>();
-
-
-
-                    MessageStatusMembresia(membresias.ObtenerTiempoVencimiento, membresias.Estado);
-                    lblPlan.Text = membresias.Descripcion.ToUpper();
-
-                    string deudaMem = Convert.ToInt32(membresias.Debe) > 0 ? $"DEBE {membresias.Debe} EN MEMBRESIA" : "";
-                    StlyDeudaM(deudaMem, Convert.ToInt32(membresias.Debe) > 0 ? true : false);
-
-                    DataStatic.MembresiasSelected = membresias;
-                    if (membresias.Estado == 1)
-                    {
-                        btnMarkAsistence.Visible = true;
-                    }
-                    else
-                    {
-                        btnMarkAsistence.Visible = false;
-                    }
-
-                    _ = Task.Run(() => LoadDataToGrids());
+                    formsToClose.Add(form);
                 }
-                catch (Exception ex)
+                foreach (Form form in formsToClose)
                 {
-                    managementZk.createFile($"{DateTime.Now.ToString()} - {ex.Message}");
+                    form.Close();
+                    form.Dispose();
                 }
+                managementZk.EventGeneral -= OnEventGeneral;
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
             }
         }
 
-        private void dgvMembresias_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
+      
+
 
 
         //clears--------------------
         private void clearMA()
         {
-            lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
-            PicMaUser.Image = null;
-            lblPlan.Text = "NOMBRE DEL PLAN";
-            lblMessageMem.Text = "ESTADO MEMBRESIA";
-            lblMessage.Message = "";
-            picHuellaMA.Image = BIOCHECK.Properties.Resources.huell;
-            PicMaUser.Image = BIOCHECK.Properties.Resources.user2;
+            try
+            {
+                lblFullName_.Text = "NOMBRES, APELLIDOS COMPLETOS";
+                PicMaUser.Image = null;
+                lblPlan.Text = "NOMBRE DEL PLAN";
+                lblMessageMem.Text = "ESTADO MEMBRESIA";
+                lblMessage.Message = "";
+                picHuellaMA.Image = BIOCHECK.Properties.Resources.huell;
+                PicMaUser.Image = BIOCHECK.Properties.Resources.user2;
 
-            dgvAsistences.Rows.Clear();
-            dgvHcuotas.Rows.Clear();
-            dgvHpago.Rows.Clear();
-            dgvMembresias.Rows.Clear();
-            dgvIncidencias.Rows.Clear();
-
-            StatusMessageD("", false, true);
+                StatusMessageD("", false, true);
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
         }
 
-        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void timerNow_Tick(object sender, EventArgs e)
         {
             DateTime horaActual = DateTime.Now;
-
-            // Formatear la hora actual según tus preferencias
             string horaFormateada = horaActual.ToString("HH:mm:ss");
-
-            // Actualizar el texto del Label con la hora formateada
             lblHour.Text = horaFormateada;
         }
         private void DateFormat()
@@ -774,53 +782,71 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         private async void btnMarkAsistence_Click(object sender, EventArgs e)
         {
+
             if (managementZk.isInitialized)
             {
-                if (DataStatic.Membresias == null)
+                try
                 {
-                    StatusMessageD($"DEBE CONTAR CON UNA MEMBRESIA", false);
-                    return;
-                }
-                else
-                {
-                    string message = ValidateMembresia(DataStatic.MembresiasSelected);
+                    StatusMessageD("", false, true);
 
-                    if (!string.IsNullOrEmpty(message))
+                    if (dataSocioAll.Membresias != null && dataSocioAll.Membresias.Count == 0)
                     {
-                        StatusMessageD($"{message}", false);
+                        StatusMessageD($"DEBE CONTAR CON UNA MEMBRESIA", false);
+
                         return;
                     }
                     else
                     {
-                        if (DataStatic.MembresiasSelected.Debe == 0)
+
+                        if (dataSocioAll.MembresiasSelected != null)
                         {
-                            //? Success, validate and mark attendance
-                            AppsFitService serv = new AppsFitService();
+                            string message = ValidateMembresia(dataSocioAll.MembresiasSelected);
 
-                            var data = new
+                            if (!string.IsNullOrEmpty(message))
                             {
-                                CodigoUnidadNegocio = DataSession.Unidad,
-                                Sede = DataSession.Sede,
-                                Socio = DataStatic.MembresiasSelected.CodigoSocio,
-                                Membresia = DataStatic.MembresiasSelected.CodigoMenbresia
-                            };
+                                StatusMessageD($"{message}", false);
+                                return;
+                            }
+                            else
+                            {
+                                if (Convert.ToInt32(dataSocioAll.MembresiasSelected.Debe) == 0)
+                                {
+                                    //? Success, validate and mark attendance
+                                    AppsFitService serv = new AppsFitService();
 
-                            var res = await serv.MarkAsistence(data);
-                            StatusMessageD($"{res.Message1}", res.Success);
-                            if (res.Success)
-                            {
-                                // Update List
-                                DataGridViewCellEventArgs cellEventArgs = new DataGridViewCellEventArgs(0, 0);
-                                dgridMembresias_CellClick(dgvMembresias, cellEventArgs);
+                                    var data = new
+                                    {
+                                        CodigoUnidadNegocio = DataSession.Unidad,
+                                        Sede = DataSession.Sede,
+                                        Socio = dataSocioAll.MembresiasSelected.CodigoSocio,
+                                        Membresia = dataSocioAll.MembresiasSelected.CodigoMenbresia
+                                    };
+
+                                    var res = await serv.MarkAsistence(data);
+                                    StatusMessageD($"{res.Message1}", res.Success);
+                                    managementZk.createFile(res.Message1 + "" + res.Success);
+                                    if (res.Success)
+                                    {
+                                        // Update List
+                                        await managementZk.ReloadDataAsistence();
+                                        _ = Task.Run(() => LoadDataToGrids());
+                                    }
+                                }
+                                else
+                                {
+                                    //Debe
+                                    StatusMessageD("", false, true);
+                                    MessageBox.Show($"TIENES UNA DEUDA DE {dataSocioAll.MembresiasSelected.Debe} !");
+
+                                    return;
+                                }
                             }
                         }
-                        else
-                        {
-                            //Debe
-                            MessageBox.Show($"TIENES UNA DEUDA DE {DataStatic.MembresiasSelected.Debe} !");
-                            return;
-                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    managementZk.createFileLog("ScreeHome", ex);
                 }
             }
             else
@@ -828,7 +854,6 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 StatusMessageD($"DEBE CONECTAR EL DISPOSITIVO", false);
                 return;
             }
-
         }
 
 
@@ -837,47 +862,43 @@ namespace ZKTecoFingerPrintScanner_Implementation
         // Function to validate the membership and return a message
         private string ValidateMembresia(Membresia membresia)
         {
-            if (membresia.ObtenerDisponibilidadHorarioPaquete <= 0)
+            try
             {
-                return "ESTA MEMBRESIA NO TIENE ACCESO PARA ESTA SEDE.";
-            }
+                if (membresia.ObtenerDisponibilidadHorarioPaquete <= 0)
+                {
+                    return "ESTA MEMBRESIA NO TIENE ACCESO PARA ESTA SEDE.";
+                }
 
-            if (membresia.flagPaqueteSedePermiso <= 0)
+                if (membresia.flagPaqueteSedePermiso <= 0)
+                {
+                    return "HORARIO NO DISPONIBLE";
+                }
+
+                if (membresia.NroIngreso < membresia.NroIngresoActual)
+                {
+                    return "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
+                }
+                if (membresia.Estado == 2)
+                {
+                    return "😨 SU MEMBRESÍA FINALIZÓ 👎";
+                }
+            }
+            catch (Exception ex)
             {
-                return "HORARIO NO DISPONIBLE";
+                managementZk.createFileLog("ScreeHome", ex);
+                return string.Empty;
             }
-
-            if (membresia.NroIngreso < membresia.NroIngresoActual)
-            {
-                return "NRO ASISTENCIAS LLEGO A SU LIMITE, REVISA EL NRO DE SESIONES DE LA MEMBRESIA";
-            }
-
             return string.Empty;
+
         }
 
         private void ckAuto_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
-            CheckBoxValue.IsChecked = checkBox.Checked;
-
-            bool isChecked = CheckBoxValue.IsChecked;
-
+            stGlobal.CheackAutomatic = checkBox.Checked;
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void TxtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -915,118 +936,167 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         }
 
-        private void btnLlenarData_Click(object sender, EventArgs e)
-        {
-            List<Membresia> list = new List<Membresia>();
-            List<Pago> listPago = new List<Pago>();
-            List<Asistence> listAsis = new List<Asistence>();
-            List<Cuota> listCuota = new List<Cuota>();
-            List<Incidencia> listIncidencia = new List<Incidencia>();
-            list.Add(new Membresia()
-            {
-                NombrePaquete = "paquete 01",
-                FCrecionText = "18/07/2023",
-                DesFechaInicio = "18/07/2023",
-                DesFechaFin = "18/07/2023",
-                Costo = 190,
-                MontoTotal = 200,
-                Debe = 100,
-                CantidadFreezing = 12,
-                CantidadFreezingTomados = 1,
-                CantidadAsistencia = 2,
-                NroContrato = "925655458",
-                AsesorComercial = "AMADOR LOPEZ",
-                CodigoSede = 1,
-            });
-            list.Add(new Membresia()
-            {
-                NombrePaquete = "paquete 02",
-                FCrecionText = "18/07/2023",
-                DesFechaInicio = "18/07/2023",
-                DesFechaFin = "18/07/2023",
-                Costo = 190,
-                MontoTotal = 200,
-                Debe = 100,
-                CantidadFreezing = 12,
-                CantidadFreezingTomados = 1,
-                CantidadAsistencia = 2,
-                NroContrato = "925655458",
-                AsesorComercial = "AMADOR CASSANI",
-                CodigoSede = 1,
-            });
-
-            listPago.Add(new Pago()
-            {
-                Estado = 1,
-                desFechaPago = "18/07/2023",
-                Monto = 200,
-                NroComprobante = "545",
-                DesFormaPago = "CONTADO",
-                UsuarioCreacion = "DEMO APPSFIT"
-            });
-
-            listAsis.Add(new Asistence()
-            {
-                FCreacionText = "18/01/2023",
-                HourText = "4",
-                DiaSemana = "1",
-                UsuarioCreacion = "DEMO USUARIO"
-            });
-
-            listCuota.Add(new Cuota()
-            {
-                
-                Monto = 100,
-                UsuarioCreacion = "USUARIO DEMO"
-            });
-
-            listIncidencia.Add(new Incidencia()
-            {
-                
-                UsuarioCreacion = "DEMO USUARIO",
-                Ocurrencia = "Prueba"
-            });
-
-            foreach (Membresia m in list)
-            {
-                dgvMembresias.Rows.Add(
-                  m.NombrePaquete,
-                  m.FCrecionText,
-                  m.DesFechaInicio,
-                  m.DesFechaFin,
-                  m.Costo,
-                  m.MontoTotal,
-                  m.Debe,
-                  m.CantidadFreezing,
-                  m.CantidadFreezingTomados,
-                  m.CantidadAsistencia,
-                  m.NroContrato,
-                  m.AsesorComercial,
-                  m.CodigoSede);
-            }
-
-            foreach (Pago p in listPago)
-            {
-                dgvHpago.Rows.Add(p.Estado, p.desFechaPago, p.Monto, p.NroComprobante, p.DesFormaPago, p.UsuarioCreacion);
-            }
-            foreach (Asistence a in listAsis)
-            {
-                dgvAsistences.Rows.Add(a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion);
-            }
-            foreach (Cuota c in listCuota)
-            {
-                dgvHcuotas.Rows.Add(c.Fecha, c.Monto, c.UsuarioCreacion);
-            }
-            foreach (Incidencia c in listIncidencia)
-            {
-                dgvIncidencias.Rows.Add(c.FechaCreacion, c.UsuarioCreacion, c.Ocurrencia);
-            }
-
-        }
 
         private void rbPersonal_CheckedChanged(object sender, EventArgs e)
         {
+            if (rbTPF.Checked)
+            {
+                stGlobal.TypeRegister = 2;
+            }
+        }
+
+        private void rbTPE_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTPE.Checked)
+            {
+                stGlobal.TypeRegister = 3;
+            }
+        }
+        private void rbTSocio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTSocio.Checked)
+            {
+                stGlobal.TypeRegister = 1;
+            }
+        }
+
+
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            lblPrecicion.Text = $"{tbPrecicion.Value}%";
+        }
+
+        private void tbPrecicion_ValueChanged(object sender, EventArgs e)
+        {
+            int pre = tbPrecicion.Value;
+
+            stGlobal.Precision = pre;
+            DataManagerD dm = new DataManagerD();
+            dm.SaveData(pre.ToString());
+        }
+
+
+
+
+        //******************************************************+search by register+****************************************
+        private async void SearchData(int type)
+        {
+            try
+            {
+                AppsFitService api = new AppsFitService();
+                var body = new
+                {
+                    DefaultKeyEmpresa = DataSession.DKey,
+                    Filtre = TxtSearch.Text,
+                };
+
+                ResponseModel response;
+                switch (type)
+                {
+                    case 1:
+                        response = await api.SearchSocio(body);
+                        break;
+                    case 2:
+                        response = await api.SearchPF(TxtSearch.Text);
+                        break;
+                    default:
+                        response = await api.SearchPEvent(TxtSearch.Text);
+                        break;
+                }
+
+                if (response.Success)
+                {
+                    DataItem item = response.Data;
+                    TxtCode.Text = Convert.ToString(item.code);
+                    TxtName.Text = Convert.ToString(item.name);
+                    TxtSurname.Text = Convert.ToString(item.surnames);
+                    TxtNro.Text = Convert.ToString(item.nro_document);
+
+                    if (!string.IsNullOrEmpty(item.image) && validateHttps(item.image))
+                    {
+                        using (WebClient webClient = new WebClient())
+                        {
+                            byte[] imageData = webClient.DownloadData(item.image);
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                ImageUser.Image = Image.FromStream(ms);
+                            }
+                        }
+                    }
+
+                    managementZk.ResetListenRegister();
+                    ClearRegister();
+                    DataSession.Filtre = TxtSearch.Text;
+                    DataSession.Code = item.code;
+                    stGlobal.SearchRegister = TxtSearch.Text;
+                }
+                else
+                {
+                    DataSession.Filtre = "";
+                    stGlobal.SearchRegister = "";
+                    StatusMessage($"{response.Message1} - {DateTime.Now}", false);
+                    TxtCode.Text = "";
+                    TxtName.Text = "";
+                    TxtSurname.Text = "";
+                    TxtNro.Text = "";
+                    ImageUser.Image = BIOCHECK.Properties.Resources.user1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
+        }
+
+        private void rbTMFijo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTMFijo.Checked)
+            {
+                stGlobal.TypeMatch = 2;
+            }
+        }
+
+        private void rbTMEvent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTMEvent.Checked)
+            {
+                stGlobal.TypeMatch = 3;
+            }
+        }
+
+        private void btnShowLogs_Click(object sender, EventArgs e)
+        {
+            var logs = managementZk.ShowLogs();
+            txtLogs.Text = logs.ToString();
+        }
+
+        private void btnDeleteLogs_Click(object sender, EventArgs e)
+        {
+
+            managementZk.EliminarArchivoLog();
+        }
+
+        private void btnDevLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                throw new Exception("Esto es una excepción intencional para pruebas.");
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreeHome", ex);
+            }
+        }
+
+        private void dgvIncidencias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
+
+        //******************************************************-search by register-****************************************
+
+
     }
 }

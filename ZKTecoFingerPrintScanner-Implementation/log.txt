@@ -1,0 +1,159 @@
+File: ScreeHome (21/07/2023 17:16:42)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:16:54)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:16:58)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:00)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:00)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 566
+
+File: ScreeHome (21/07/2023 17:17:06)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:08)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:13)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:17)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:21)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:24)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:17:27)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 543
+
+File: ScreeHome (21/07/2023 17:18:29)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:29)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:34)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:34)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:35)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:40)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:40)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:40)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:43)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:43)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:46)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:46)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:46)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:49)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:49)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:52)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:18:52)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessage(System.String, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessage(String message, Boolean success) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 545
+
+File: ScreeHome (21/07/2023 17:18:53)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:28:47)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568
+
+File: ScreeHome (21/07/2023 17:28:50)
+Error: Referencia a objeto no establecida como instancia de un objeto.
+Method: Void StatusMessageD(System.String, Boolean, Boolean)
+Linea:    en ZKTecoFingerPrintScanner_Implementation.ScreenHome.StatusMessageD(String message, Boolean success, Boolean reset) en D:\FreeLancers\APPFIT\pjt-huellaFinal\ZKAppsFit\ZKTecoFingerPrintScanner-Implementation\ScreenHome.cs:línea 568

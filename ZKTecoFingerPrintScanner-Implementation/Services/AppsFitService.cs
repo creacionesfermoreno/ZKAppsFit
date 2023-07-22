@@ -18,46 +18,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
             _httpClient = new HttpClient();
 
         }
-        public async Task<ResponseModel> RegHuellaAPI(object body)
-        {
-            ResponseModel resp = new ResponseModel();
-            var content = JsonConvert.SerializeObject(body);
-            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
-            try
-            {
-                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huella-register", httpContent);
-                response.EnsureSuccessStatusCode();
-                var responseContent = await response.Content.ReadAsStringAsync();
-                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
-
-            }
-            catch (HttpRequestException ex)
-            {
-                resp.Message1 = ex.Message;
-            }
-            return resp;
-        }
-
-        public async Task<ResponseModel> SearchSocio(object body)
-        {
-            ResponseModel resp = new ResponseModel();
-            var content = JsonConvert.SerializeObject(body);
-            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
-            try
-            {
-                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/socio", httpContent);
-                response.EnsureSuccessStatusCode();
-                var responseContent = await response.Content.ReadAsStringAsync();
-                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
-
-            }
-            catch (HttpRequestException ex)
-            {
-                resp.Message1 = ex.Message;
-            }
-            return resp;
-        }
-
+        
         public async Task<ResponseModel> SearchSocioByHuella(object body)
         {
             ResponseModel resp = new ResponseModel();
@@ -77,31 +38,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
             return resp;
         }
 
-        public async Task<ResponseFinger> FingerPrintsList(object body)
-        {
-            ResponseFinger resp = new ResponseFinger();
-            var content = JsonConvert.SerializeObject(body);
-            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
-            try
-            {
-                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huellas", httpContent);
-                response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    resp = JsonConvert.DeserializeObject<ResponseFinger>(responseContent);
-                }
-                else
-                {
-                    resp.Success= false;
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                resp.Message1 = ex.Message;
-            }
-            return resp;
-        }
+        
 
         public async Task<ResponseGeneric> MembresiasList(object body)
         {
@@ -233,7 +170,223 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
             return resp;
         }
 
-     
+        //************************************************************ +search+ ***************************************
+        //socio
+        public async Task<ResponseModel> SearchSocio(object body)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/socio", httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
 
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //fijo
+
+        public async Task<ResponseModel> SearchPF(string dni)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(new { });
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/search/pf/" + dni, httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //event
+        public async Task<ResponseModel> SearchPEvent(string dni)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(new { });
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/search/pevent/" + dni, httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+        //************************************************************ -search- ***************************************
+
+
+        //************************************************************ +register huella+ ***************************************
+        //socio
+        public async Task<ResponseModel> RegHuellaAPI(object body)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huella-register", httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+        
+        //fijo
+        public async Task<ResponseModel> RegHuellaAPIFijo(object body)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/pf/huella-register", httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //event
+        public async Task<ResponseModel> RegHuellaAPIFEvent(object body)
+        {
+            ResponseModel resp = new ResponseModel();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/pevent/huella-register", httpContent);
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                resp = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //************************************************************ -register huella- ***************************************
+
+
+
+        //************************************************************ +lst huella+ ***************************************
+        //socios
+        public async Task<ResponseFinger> FingerPrintsList(object body)
+        {
+            ResponseFinger resp = new ResponseFinger();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huellas", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseFinger>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //fijos
+        public async Task<ResponseFinger> FingerPrintsListFijo(object body)
+        {
+            ResponseFinger resp = new ResponseFinger();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huellas/pfijo", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseFinger>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+
+        //event
+        public async Task<ResponseFinger> FingerPrintsListEvent(object body)
+        {
+            ResponseFinger resp = new ResponseFinger();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/huellas/pevents", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseFinger>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+
+        //************************************************************ -lst huella- ***************************************
     }
 }
