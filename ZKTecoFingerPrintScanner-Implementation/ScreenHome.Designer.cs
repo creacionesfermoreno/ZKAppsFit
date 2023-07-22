@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenHome));
             this.lblSerie = new MaterialSkin.Controls.MaterialLabel();
             this.btnMarkAsistence = new System.Windows.Forms.Button();
@@ -68,24 +65,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtMFecha = new System.Windows.Forms.TextBox();
             this.txtMPromo = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDeudaProductos = new System.Windows.Forms.Label();
             this.lblDeudaMembresia = new System.Windows.Forms.Label();
             this.lblMessageMem = new System.Windows.Forms.Label();
-            this.dgvMembresias = new System.Windows.Forms.DataGridView();
-            this.NombrePaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FCrecionText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DesFechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DesFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadFreezing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadFreezingTomados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadAsistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AsesorComercial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoSede = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblFullName_ = new System.Windows.Forms.Label();
@@ -178,7 +160,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.PicCLogo = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pDev = new System.Windows.Forms.Panel();
             this.label49 = new System.Windows.Forms.Label();
             this.panelAPTurno2 = new System.Windows.Forms.Panel();
             this.lblMST2 = new System.Windows.Forms.Label();
@@ -202,13 +183,8 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.btnMarcarEntradaT1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pDev2 = new System.Windows.Forms.Panel();
             this.panelCAUser = new System.Windows.Forms.Panel();
             this.pbAPFoto = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.panelAPHuella = new System.Windows.Forms.Panel();
             this.gbAPTipoUser = new System.Windows.Forms.GroupBox();
             this.rbTMEvent = new System.Windows.Forms.RadioButton();
@@ -219,6 +195,20 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.dgvMembresias = new System.Windows.Forms.DataGridView();
+            this.NombrePaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FCrecionText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DesFechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DesFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadFreezing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadFreezingTomados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadAsistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AsesorComercial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoSede = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblGym = new System.Windows.Forms.Label();
             this.lblRubro = new System.Windows.Forms.Label();
             this.picGymLogo = new System.Windows.Forms.PictureBox();
@@ -245,10 +235,12 @@
             this.timerNow = new System.Windows.Forms.Timer(this.components);
             this.statusBar1 = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.lblMessage = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tableLayoutPanel18.SuspendLayout();
-         
             this.panel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -289,12 +281,12 @@
             this.panel1.SuspendLayout();
             this.panelCAUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).BeginInit();
-            this.tableLayoutPanel7.SuspendLayout();
             this.panelAPHuella.SuspendLayout();
             this.gbAPTipoUser.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).BeginInit();
             this.panelDeviseConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -308,6 +300,7 @@
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSerie
@@ -378,7 +371,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.lblDeudaProductos);
             this.tabPage1.Controls.Add(this.statusBar1);
+            this.tabPage1.Controls.Add(this.lblDeudaMembresia);
             this.tabPage1.Controls.Add(this.listBox2);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.label51);
@@ -409,9 +404,7 @@
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.txtMFecha);
             this.tabPage1.Controls.Add(this.txtMPromo);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel18);
             this.tabPage1.Controls.Add(this.lblMessageMem);
-            
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -687,22 +680,6 @@
             this.txtMPromo.Size = new System.Drawing.Size(160, 20);
             this.txtMPromo.TabIndex = 32;
             // 
-            // tableLayoutPanel18
-            // 
-            this.tableLayoutPanel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.tableLayoutPanel18.ColumnCount = 2;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Controls.Add(this.lblDeudaProductos, 1, 0);
-            this.tableLayoutPanel18.Controls.Add(this.lblDeudaMembresia, 0, 0);
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(310, 0);
-            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 1;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(888, 41);
-            this.tableLayoutPanel18.TabIndex = 31;
-            // 
             // lblDeudaProductos
             // 
             this.lblDeudaProductos.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -710,10 +687,10 @@
             this.lblDeudaProductos.BackColor = System.Drawing.Color.White;
             this.lblDeudaProductos.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeudaProductos.ForeColor = System.Drawing.Color.Gray;
-            this.lblDeudaProductos.Location = new System.Drawing.Point(491, 0);
+            this.lblDeudaProductos.Location = new System.Drawing.Point(814, 46);
             this.lblDeudaProductos.Name = "lblDeudaProductos";
             this.lblDeudaProductos.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDeudaProductos.Size = new System.Drawing.Size(349, 41);
+            this.lblDeudaProductos.Size = new System.Drawing.Size(349, 46);
             this.lblDeudaProductos.TabIndex = 11;
             this.lblDeudaProductos.Text = "DEUDA DE PRODUCTOS";
             this.lblDeudaProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -725,10 +702,10 @@
             this.lblDeudaMembresia.BackColor = System.Drawing.Color.White;
             this.lblDeudaMembresia.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeudaMembresia.ForeColor = System.Drawing.Color.Gray;
-            this.lblDeudaMembresia.Location = new System.Drawing.Point(72, 0);
+            this.lblDeudaMembresia.Location = new System.Drawing.Point(368, 41);
             this.lblDeudaMembresia.Name = "lblDeudaMembresia";
             this.lblDeudaMembresia.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDeudaMembresia.Size = new System.Drawing.Size(299, 41);
+            this.lblDeudaMembresia.Size = new System.Drawing.Size(299, 46);
             this.lblDeudaMembresia.TabIndex = 12;
             this.lblDeudaMembresia.Text = "DEUDA MEMBRESIA";
             this.lblDeudaMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -740,15 +717,13 @@
             this.lblMessageMem.BackColor = System.Drawing.Color.Transparent;
             this.lblMessageMem.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessageMem.ForeColor = System.Drawing.Color.White;
-            this.lblMessageMem.Location = new System.Drawing.Point(565, 50);
+            this.lblMessageMem.Location = new System.Drawing.Point(570, 98);
             this.lblMessageMem.Name = "lblMessageMem";
             this.lblMessageMem.Padding = new System.Windows.Forms.Padding(5);
             this.lblMessageMem.Size = new System.Drawing.Size(312, 46);
             this.lblMessageMem.TabIndex = 10;
             this.lblMessageMem.Text = "ESTADO MEMBRESIA";
             this.lblMessageMem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-           
-         
             // 
             // panel3
             // 
@@ -1932,8 +1907,8 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.pDev);
             this.tabPage4.Controls.Add(this.label49);
+            this.tabPage4.Controls.Add(this.tableLayoutPanel7);
             this.tabPage4.Controls.Add(this.panelAPTurno2);
             this.tabPage4.Controls.Add(this.label39);
             this.tabPage4.Controls.Add(this.panelAPTurno1);
@@ -1944,15 +1919,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Asistencia personal";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // pDev
-            // 
-            this.pDev.BackColor = System.Drawing.Color.White;
-            this.pDev.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDev.Location = new System.Drawing.Point(304, 0);
-            this.pDev.Name = "pDev";
-            this.pDev.Size = new System.Drawing.Size(888, 884);
-            this.pDev.TabIndex = 30;
             // 
             // label49
             // 
@@ -2259,7 +2225,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.panel1.Controls.Add(this.pDev2);
             this.panel1.Controls.Add(this.panelCAUser);
             this.panel1.Controls.Add(this.panelAPHuella);
             this.panel1.Controls.Add(this.label35);
@@ -2272,21 +2237,11 @@
             this.panel1.Size = new System.Drawing.Size(304, 884);
             this.panel1.TabIndex = 0;
             // 
-            // pDev2
-            // 
-            this.pDev2.BackColor = System.Drawing.Color.White;
-            this.pDev2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDev2.Location = new System.Drawing.Point(0, 0);
-            this.pDev2.Name = "pDev2";
-            this.pDev2.Size = new System.Drawing.Size(304, 884);
-            this.pDev2.TabIndex = 8;
-            // 
             // panelCAUser
             // 
             this.panelCAUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelCAUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
             this.panelCAUser.Controls.Add(this.pbAPFoto);
-            this.panelCAUser.Controls.Add(this.tableLayoutPanel7);
             this.panelCAUser.Location = new System.Drawing.Point(33, 543);
             this.panelCAUser.Name = "panelCAUser";
             this.panelCAUser.Size = new System.Drawing.Size(227, 283);
@@ -2301,65 +2256,6 @@
             this.pbAPFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAPFoto.TabIndex = 0;
             this.pbAPFoto.TabStop = false;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.69036F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.30965F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
-            this.tableLayoutPanel7.Controls.Add(this.label38, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.label36, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label37, 1, 1);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 157);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 3;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(224, 126);
-            this.tableLayoutPanel7.TabIndex = 1;
-            // 
-            // label38
-            // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label38.Location = new System.Drawing.Point(3, 70);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(1, 15);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Nro. Doc";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label36
-            // 
-            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(3, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(1, 17);
-            this.label36.TabIndex = 1;
-            this.label36.Text = "NOMBRES, APELLIDOS";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label37
-            // 
-            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label37.Location = new System.Drawing.Point(3, 42);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(1, 15);
-            this.label37.TabIndex = 2;
-            this.label37.Text = "Cargo";
-            this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panelAPHuella
             // 
@@ -2478,6 +2374,65 @@
             this.label33.TabIndex = 0;
             this.label33.Text = "Control de Asistencia \nPersonal";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvMembresias
+            // 
+            this.dgvMembresias.Location = new System.Drawing.Point(0, 0);
+            this.dgvMembresias.Name = "dgvMembresias";
+            this.dgvMembresias.Size = new System.Drawing.Size(240, 150);
+            this.dgvMembresias.TabIndex = 0;
+            // 
+            // NombrePaquete
+            // 
+            this.NombrePaquete.Name = "NombrePaquete";
+            // 
+            // FCrecionText
+            // 
+            this.FCrecionText.Name = "FCrecionText";
+            // 
+            // DesFechaInicio
+            // 
+            this.DesFechaInicio.Name = "DesFechaInicio";
+            // 
+            // DesFechaFin
+            // 
+            this.DesFechaFin.Name = "DesFechaFin";
+            // 
+            // Costo
+            // 
+            this.Costo.Name = "Costo";
+            // 
+            // MontoTotal
+            // 
+            this.MontoTotal.Name = "MontoTotal";
+            // 
+            // Debe
+            // 
+            this.Debe.Name = "Debe";
+            // 
+            // CantidadFreezing
+            // 
+            this.CantidadFreezing.Name = "CantidadFreezing";
+            // 
+            // CantidadFreezingTomados
+            // 
+            this.CantidadFreezingTomados.Name = "CantidadFreezingTomados";
+            // 
+            // CantidadAsistencia
+            // 
+            this.CantidadAsistencia.Name = "CantidadAsistencia";
+            // 
+            // NroContrato
+            // 
+            this.NroContrato.Name = "NroContrato";
+            // 
+            // AsesorComercial
+            // 
+            this.AsesorComercial.Name = "AsesorComercial";
+            // 
+            // CodigoSede
+            // 
+            this.CodigoSede.Name = "CodigoSede";
             // 
             // lblGym
             // 
@@ -2728,7 +2683,7 @@
             // lblHour
             // 
             this.lblHour.AutoSize = true;
-            this.lblHour.Location = new System.Drawing.Point(1027, 70);
+            this.lblHour.Location = new System.Drawing.Point(1085, 68);
             this.lblHour.Name = "lblHour";
             this.lblHour.Size = new System.Drawing.Size(30, 13);
             this.lblHour.TabIndex = 2;
@@ -2737,7 +2692,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(1039, 28);
+            this.lblDate.Location = new System.Drawing.Point(1085, 28);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(37, 13);
             this.lblDate.TabIndex = 1;
@@ -2817,7 +2772,7 @@
             // 
             this.statusBar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusBar1.Location = new System.Drawing.Point(696, 585);
-            this.statusBar1.Message = "label1";
+            this.statusBar1.Message = "Estado membresia";
             this.statusBar1.MessageType = false;
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Size = new System.Drawing.Size(488, 46);
@@ -2828,14 +2783,73 @@
             // lblMessage
             // 
             this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(392, 18);
-            this.lblMessage.Message = "label1";
+            this.lblMessage.Location = new System.Drawing.Point(484, 18);
+            this.lblMessage.Message = "Estado socio ";
             this.lblMessage.MessageType = false;
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(435, 23);
             this.lblMessage.StatusBarBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.lblMessage.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMessage.TabIndex = 0;
+            // 
+            // label37
+            // 
+            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label37.Location = new System.Drawing.Point(3, 42);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(1, 15);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "Cargo";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label36
+            // 
+            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(3, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(1, 17);
+            this.label36.TabIndex = 1;
+            this.label36.Text = "NOMBRES, APELLIDOS";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label38
+            // 
+            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label38.Location = new System.Drawing.Point(3, 70);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(1, 15);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Nro. Doc";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 3;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.69036F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.30965F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
+            this.tableLayoutPanel7.Controls.Add(this.label38, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label36, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label37, 1, 1);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(399, 669);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(224, 126);
+            this.tableLayoutPanel7.TabIndex = 1;
             // 
             // ScreenHome
             // 
@@ -2851,9 +2865,6 @@
             this.TabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.tableLayoutPanel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -2911,14 +2922,13 @@
             this.panel1.PerformLayout();
             this.panelCAUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).EndInit();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             this.panelAPHuella.ResumeLayout(false);
             this.gbAPTipoUser.ResumeLayout(false);
             this.gbAPTipoUser.PerformLayout();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).EndInit();
             this.panelDeviseConnect.ResumeLayout(false);
             this.panelDeviseConnect.PerformLayout();
@@ -2936,6 +2946,8 @@
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3061,10 +3073,6 @@
         private System.Windows.Forms.PictureBox pbAPHuella;
         private System.Windows.Forms.Panel panelCAUser;
         private System.Windows.Forms.PictureBox pbAPFoto;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Panel panelAPTurno1;
         private System.Windows.Forms.Button btnMarcarEntradaT1;
@@ -3102,10 +3110,7 @@
         private System.Windows.Forms.Button btnShowLogs;
         private System.Windows.Forms.RichTextBox txtLogs;
         private System.Windows.Forms.Button btnDevLog;
-        private System.Windows.Forms.Panel pDev;
-        private System.Windows.Forms.Panel pDev2;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.Label lblDeudaProductos;
         private System.Windows.Forms.Label lblDeudaMembresia;
         private System.Windows.Forms.Label lblMessageMem;
@@ -3157,5 +3162,9 @@
         private Controls.StatusBar statusBar1;
         private System.Windows.Forms.Label lblHour;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
     }
 }

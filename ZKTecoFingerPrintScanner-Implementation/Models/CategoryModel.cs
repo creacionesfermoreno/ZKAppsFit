@@ -33,6 +33,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string MessageExtra { get; set; }
         public decimal DeudaSuplemento { get; set; }
         public string DNI { get; set; }
+        public string Codigo { get; set; }
 
 
     }
