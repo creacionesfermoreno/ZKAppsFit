@@ -245,6 +245,15 @@
     <Content Include="libzkfpcsharp.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\logo_empresas.png" />
+    <None Include="Resources\devices.png" />
+    <None Include="Resources\person.png" />
+    <None Include="Resources\iconhome.png" />
+    <None Include="Resources\iconuser.png" />
+    <None Include="Resources\signodolar.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\calendart.png" />
+    <None Include="Resources\rights.png" />
     <None Include="Resources\left.png" />
     <None Include="Resources\bgtime.png" />
     <None Include="Resources\right.png" />
