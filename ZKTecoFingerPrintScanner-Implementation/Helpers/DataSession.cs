@@ -93,5 +93,50 @@ namespace ZKTecoFingerPrintScanner_Implementation.Helpers
     }
 
 
+
+    public sealed class HorarioSigleton
+    {
+        private static readonly Lazy<HorarioSigleton> lazyInstance = new Lazy<HorarioSigleton>(() => new HorarioSigleton());
+
+        private HorarioSigleton()
+        {
+            HorarioProfesional = new List<HorarioProfesional>();
+            HorarioFijo = new HorarioFijo();
+            Personal = new SocioModel();
+            Personal = new SocioModel();
+            SelectedPersonal = false;
+        }
+
+        public static HorarioSigleton Instance => lazyInstance.Value;
+
+        public string Message { get; set; }
+        public bool SelectedPersonal { get; set; }
+
+
+        private SocioModel personal = new SocioModel();
+        public SocioModel Personal
+        {
+            get => personal;
+            set => personal = value ?? new SocioModel();
+        }
+
+        
+
+        private HorarioFijo horario_fijo = new HorarioFijo();
+        public HorarioFijo HorarioFijo
+        {
+            get => horario_fijo;
+            set => horario_fijo = value ?? new HorarioFijo();
+        }
+
+        private List<HorarioProfesional> horario_pro = new List<HorarioProfesional>();
+        public List<HorarioProfesional> HorarioProfesional
+        {
+            get => horario_pro;
+            set => horario_pro = value ?? new List<HorarioProfesional>();
+        }
+
+    }
+
 }
 

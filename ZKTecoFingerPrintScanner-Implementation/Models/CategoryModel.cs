@@ -12,6 +12,13 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public string Name { get; set; }
         public string Huella { get; set; }
     }
+
+    public class Category
+    {
+        
+        public string Name { get; set; }
+        public bool Status { get; set; }
+    }
     public class UserModel
     {
         public string Name { get; set; }
@@ -124,6 +131,50 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
 
     }
 
+    public class HorarioFijo
+    {
+        public string CodigoPersonal { get; set; }
+        public string CodigoPersonalAsistencia { get; set; }
+        public int tipoTurno { get; set; }
+        public DateTime? FechaHoraIngreso { get; set; } 
+        public string FechaHoraIngresoTexto { get; set; }
+        public DateTime? FechaHoraSalida { get; set; }
+        public string FechaHoraSalidaTexto { get; set; }
+        public DateTime? FechaHoraRefrigerioSalida { get; set; }
+        public string FechaHoraRefrigerioSalidaTexto { get; set; }
+        public DateTime? FechaHoraRefrigerioRetorno { get; set; }
+        public string FechaHoraRefrigerioRetornoTexto { get; set; }
+        public DateTime? FechaHoraIngreso_TurnoTarde { get; set; }
+        public string FechaHoraIngreso_TurnoTardeTexto { get; set; }
+        public DateTime? FechaHoraSalida_TurnoTarde { get; set; }
+        public string FechaHoraSalida_TurnoTardeTexto { get; set; }
+        public DateTime? FechaHoraRefrigerioSalida_TurnoTarde { get; set; }
+        public string FechaHoraRefrigerioSalida_TurnoTardeTexto { get; set; }
+        public DateTime? FechaHoraRefrigerioRetorno_TurnoTarde { get; set; }
+        public string FechaHoraRefrigerioRetorno_TurnoTardeTexto { get; set; }
+    }
+
+    public class HorarioProfesional
+    {
+        public string CodigoHorarioClasesConfiguracion { get; set; }
+        public string CodigoHorarioClasesTiempoReal { get; set; }
+        public string Disciplina { get; set; }
+        public string DesSala { get; set; }
+        public string CodigoProfesional { get; set; }
+        public string HoraInicioTexto { get; set; }
+        public string HoraFinTexto { get; set; }
+        public int CapacidadPermitida { get; set; }
+        public int CantidadAsistencias { get; set; }
+        public DateTime FechaHoraIngreso { get; set; }
+        public string FechaHoraIngresoTxt { get; set; }
+        public DateTime FechaHoraSalida { get; set; }
+        public string FechaHoraSalidaTxt { get; set; }
+        public int DiaNumero { get; set; }
+        public string CodigoPersonalAsistencia { get; set; }
+       
+
+
+    }
 
     public sealed class HuellaData
     {
@@ -165,7 +216,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public static bool IsChecked { get; set; }
     }
 
-  
+
 
     public sealed class STGlobal
     {
@@ -178,6 +229,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
             SearchRegister = string.Empty;
             TypeMatch = 1;
             CheackAutomatic = false;
+            KeyEmpresa = "";
         }
 
         public static STGlobal Instance => lazyInstance.Value;
@@ -187,6 +239,7 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         public int TypeMatch { get; set; }
         public string SearchRegister { get; set; }
         public bool CheackAutomatic { get; set; }
+        public string KeyEmpresa { get; set; }
     }
 
 

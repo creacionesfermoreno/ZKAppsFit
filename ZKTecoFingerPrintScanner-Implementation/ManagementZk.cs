@@ -52,14 +52,17 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
 
         Thread captureThread = null;
-        public delegate void FingerprintCapturedEventHandler(Bitmap bmp, string message, string message2);
-        public event FingerprintCapturedEventHandler FingerprintCaptured;
+
+
+        //*************************************************** EVENTS ***************************************************
 
         public delegate void EventHandleGeneral(string type, dynamic value);
         public event EventHandleGeneral EventGeneral;
 
-        public delegate void AlertaEventHandler(string mensaje);
-        public event AlertaEventHandler AlertaEvent;
+        public delegate void EventHandlerPersonal(string type);
+        public event EventHandlerPersonal EventPersonal;
+
+        //**************************************************************************************************************
 
         private ScreenHome myForm;
         private DataSocioAll dataSocioAll;
@@ -69,7 +72,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             myForm = screenHome;
             dataSocioAll = DataSocioAll.Instance;
             stGlobal = STGlobal.Instance;
-            
+
         }
 
         public void SetIsRegister(bool value)
@@ -287,25 +290,77 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     if (MatchSearch)
                     {
                         HuellaData huellaData = HuellaData.Instance;
+                        HorarioSigleton hinstance = HorarioSigleton.Instance;
                         bool match = false;
-                        foreach (SocioModel socio in huellaData.Socios)
+                        if (stGlobal.TypeMatch == 1)
                         {
-                            var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
-                            int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
-
-                            if (ret > stGlobal.Precision)
+                            foreach (SocioModel socio in huellaData.Socios)
                             {
-                                match = true;
-                                string fullName = socio.Nombre + " " + socio.Apellidos;
-                                dataSocioAll.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
-                                await DataMembresia(socio);
+                                var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
+                                int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
+
+                                if (ret > stGlobal.Precision)
+                                {
+                                    match = true;
+                                    string fullName = socio.Nombre + " " + socio.Apellidos;
+                                    dataSocioAll.MessageGenericD = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
+                                    await DataMembresia(socio);
+                                    return;
+                                }
+                            }
+                            if (!match)
+                            {
+                                EventGeneral.Invoke("MA-F", true);
                                 return;
                             }
                         }
-                        if (!match)
+                        else if (stGlobal.TypeMatch == 2)
                         {
-                            EventGeneral.Invoke("MA-F", true);
-                            return;
+                            foreach (SocioModel socio in huellaData.Fijos)
+                            {
+                                var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
+                                int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
+
+                                if (ret > stGlobal.Precision)
+                                {
+                                    match = true;
+                                    string fullName = socio.Nombre + " " + socio.Apellidos;
+
+                                    hinstance.Message = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
+                                    await DataHorariosPersonalFijo(socio);
+                                    return;
+                                }
+                            }
+                            if (!match)
+                            {
+                                hinstance.SelectedPersonal = false;
+                                EventPersonal.Invoke("LHF-F");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            foreach (SocioModel socio in huellaData.Profesionales)
+                            {
+                                var storedTemplateBytes = zkfp.Base64String2Blob(socio.Huella.ToString());
+                                int ret = fpInstance.Match(CapTmp, storedTemplateBytes);
+
+                                if (ret > stGlobal.Precision)
+                                {
+                                    match = true;
+                                    string fullName = socio.Nombre + " " + socio.Apellidos;
+
+                                    hinstance.Message = $"puntuación de éxito : {ret}/100 - ({socio.CodigoSocio}) {fullName.ToUpper()}";
+                                    await DataHorariosProfesional(socio);
+                                    return;
+                                }
+                            }
+                            if (!match)
+                            {
+                                hinstance.SelectedPersonal = false;
+                                EventPersonal.Invoke("LHPROF-F");
+                                return;
+                            }
                         }
                     }
 
@@ -317,6 +372,8 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+
+        //data membresia match
         public async Task DataMembresia(SocioModel socio)
         {
             try
@@ -347,11 +404,11 @@ namespace ZKTecoFingerPrintScanner_Implementation
                         Membresia = resp.Data[0].CodigoMenbresia
                     });
 
-                    dataSocioAll.Membresias = resp.Data.Count > 0? new List<Membresia>() { resp.Data[0] }: new List<Membresia>();
-                    dataSocioAll.Asistences = respHistorial.Data.Count > 0? respHistorial.Data : new List<Asistence>();
+                    dataSocioAll.Membresias = resp.Data.Count > 0 ? new List<Membresia>() { resp.Data[0] } : new List<Membresia>();
+                    dataSocioAll.Asistences = respHistorial.Data.Count > 0 ? respHistorial.Data : new List<Asistence>();
                     //dataSocioAll.Pagos = HPC.Data.Pagos;
                     //dataSocioAll.Cuotas = HPC.Data.Cuotas;
-                    dataSocioAll.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias: new List<Incidencia>();
+                    dataSocioAll.Incidencias = HPC.Data.Incidencias.Count > 0 ? HPC.Data.Incidencias : new List<Incidencia>();
 
                     EventGeneral.Invoke("MA-T", 1);
                 }
@@ -366,6 +423,123 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+        //data horarios personal fijo match
+        public async Task DataHorariosPersonalFijo(SocioModel socio)
+        {
+            try
+            {
+                AppsFitService serv = new AppsFitService();
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+                hinstance.Personal = socio;
+                var resp = await serv.HorarioFijo(new
+                {
+                    DefaultKeyEmpresa = stGlobal.KeyEmpresa ?? "",
+                    Code = socio.Codigo ?? "",
+                });
+
+                if (resp.Success)
+                {
+                    hinstance.HorarioFijo = resp.Data;
+                    hinstance.SelectedPersonal = true;
+                    EventPersonal.Invoke("LHF");
+                }
+                else
+                {
+                    hinstance.SelectedPersonal = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
+        }
+
+
+        public async Task DataHorariosPersonalFijoReload()
+        {
+            try
+            {
+                AppsFitService serv = new AppsFitService();
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+
+                var resp = await serv.HorarioFijo(new
+                {
+                    DefaultKeyEmpresa = stGlobal.KeyEmpresa ?? "",
+                    Code = hinstance.Personal.Codigo ?? "",
+                });
+
+                if (resp.Success)
+                {
+                    hinstance.HorarioFijo = resp.Data;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
+        }
+
+
+        //data horarios personal profesionals match
+        public async Task DataHorariosProfesional(SocioModel socio)
+        {
+            try
+            {
+                AppsFitService serv = new AppsFitService();
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+                hinstance.Personal = socio;
+                var resp = await serv.HorarioProfesional(new
+                {
+                    DefaultKeyEmpresa = stGlobal.KeyEmpresa ?? "",
+                    Code = socio.Codigo ?? "",
+                });
+
+                if (resp.Success)
+                {
+                  
+                    hinstance.HorarioProfesional = resp.Data;
+                    EventPersonal.Invoke("LHPROF");
+                }
+                else
+                {
+                    hinstance.SelectedPersonal = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
+        }
+
+        public async Task DataHorariosProfesionalReload()
+        {
+            try
+            {
+                AppsFitService serv = new AppsFitService();
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+                var resp = await serv.HorarioProfesional(new
+                {
+                    DefaultKeyEmpresa = stGlobal.KeyEmpresa ?? "",
+                    Code = hinstance.Personal.Codigo ?? "",
+                });
+                if (resp.Success)
+                {
+                    hinstance.HorarioProfesional = resp.Data;
+                }
+            }
+            catch (Exception ex)
+            {
+                createFileLog("Management", ex);
+            }
+        }
+
+
+
+
         //reload detail membresia
         public async Task ReloadDataAsistence()
         {
@@ -374,7 +548,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 SocioModel socio = dataSocioAll.Socio;
                 Membresia membresia = dataSocioAll.MembresiasSelected;
-               
+
                 AppsFitService serv = new AppsFitService();
 
                 if (socio.CodigoUnidadNegocio > 0 && membresia.CodigoMenbresia > 0)
@@ -472,7 +646,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 }
                 iFid = 1;
             }
-            catch (Exception ex){ createFileLog("Management", ex); }
+            catch (Exception ex) { createFileLog("Management", ex); }
 
         }
 
@@ -506,13 +680,18 @@ namespace ZKTecoFingerPrintScanner_Implementation
             try
             {
                 MemoryStream ms = new MemoryStream();
+
                 BitmapFormat.GetBitmap(FPBuffer, mfpWidth, mfpHeight, ref ms);
                 Bitmap bmp = new Bitmap(ms);
 
                 PictureBox pasistence = myForm.picHuellaMA_;
                 PictureBox pregister = myForm.PicRegister_;
+                PictureBox personal = myForm.PicImagePersonal_;
                 pasistence.Image = bmp;
                 pregister.Image = bmp;
+                personal.Image = bmp;
+
+                ms.Close();
             }
             catch (Exception ex)
             {
@@ -562,7 +741,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
         public void createFileLog(string page, Exception err)
         {
 
-            
+
 
             try
             {

@@ -8,6 +8,15 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
     public class Requests
     {
     }
+
+    public class ResponseObject
+    {
+
+        public string Message1 { get; set; }
+        public bool Success { get; set; }
+        [JsonProperty("Date")]
+        public Object Data { get; set; }
+    }
     public class ResponseModel
     {
         
@@ -47,6 +56,23 @@ namespace ZKTecoFingerPrintScanner_Implementation.Models
         [JsonProperty("Date")]
         public List<Membresia> Data { get; set; }
     }
+
+    public class ResponseHFijo
+    {
+        public string Message1 { get; set; }
+        public bool Success { get; set; }
+        [JsonProperty("Date")]
+        public HorarioFijo Data { get; set; }
+    }
+
+    public class ResponseHProfesional
+    {
+        public string Message1 { get; set; }
+        public bool Success { get; set; }
+        [JsonProperty("Date")]
+        public List<HorarioProfesional> Data { get; set; }
+    }
+
     public class ResponseAsistence
     {
         public string Message1 { get; set; }

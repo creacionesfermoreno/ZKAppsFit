@@ -10,8 +10,8 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
     public class AppsFitService
     {
         private readonly HttpClient _httpClient;
-        private readonly string apiUrl = "https://webapiappsfit-cliente.azurewebsites.net/api";
-        //private readonly string apiUrl = "https://localhost:44386/api";
+        //private readonly string apiUrl = "https://webapiappsfit-cliente.azurewebsites.net/api";
+        private readonly string apiUrl = "https://localhost:44386/api";
 
         public AppsFitService()
         {
@@ -388,5 +388,125 @@ namespace ZKTecoFingerPrintScanner_Implementation.Services
 
 
         //************************************************************ -lst huella- ***************************************
+
+
+
+        //************************************************************ horarios ***************************************
+        //Fijos
+        public async Task<ResponseHFijo> HorarioFijo(object body)
+        {
+            ResponseHFijo resp = new ResponseHFijo();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/horarios/fijo", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseHFijo>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+
+        //profesional
+        public async Task<ResponseHProfesional> HorarioProfesional(object body)
+        {
+            ResponseHProfesional resp = new ResponseHProfesional();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/horarios/profesionales", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseHProfesional>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //************************************************************ -horarios- ***************************************
+
+
+        //*************************************************** MARK ASISTENCE PERSONAL ***************************************************
+
+        //fijos
+        public async Task<ResponseObject> MarcarPersonalFijo(object body)
+        {
+            ResponseObject resp = new ResponseObject();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/asistences/mark/fijo", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseObject>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+
+        //profesionales
+        public async Task<ResponseObject> MarcarPersonalProfesional(object body)
+        {
+            ResponseObject resp = new ResponseObject();
+            var content = JsonConvert.SerializeObject(body);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync(apiUrl + "/home/bios/asistences/profesional/mark", httpContent);
+                response.EnsureSuccessStatusCode();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    resp = JsonConvert.DeserializeObject<ResponseObject>(responseContent);
+                }
+                else
+                {
+                    resp.Success = false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                resp.Message1 = ex.Message;
+            }
+            return resp;
+        }
+
+        //********************************************************************************************************************
     }
 }

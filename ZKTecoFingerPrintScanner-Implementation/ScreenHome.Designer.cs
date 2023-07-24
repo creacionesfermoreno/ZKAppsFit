@@ -35,6 +35,8 @@
             this.TabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblDeudaProductos = new System.Windows.Forms.Label();
+            this.lblDeudaMembresia = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label51 = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtMFecha = new System.Windows.Forms.TextBox();
             this.txtMPromo = new System.Windows.Forms.TextBox();
-            this.lblDeudaProductos = new System.Windows.Forms.Label();
-            this.lblDeudaMembresia = new System.Windows.Forms.Label();
             this.lblMessageMem = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -160,31 +160,35 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.PicCLogo = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panelPFijoContent = new System.Windows.Forms.Panel();
             this.label49 = new System.Windows.Forms.Label();
-            this.panelAPTurno2 = new System.Windows.Forms.Panel();
-            this.lblMST2 = new System.Windows.Forms.Label();
-            this.lblMFBT2 = new System.Windows.Forms.Label();
-            this.lblMIBT2 = new System.Windows.Forms.Label();
-            this.lblMET2 = new System.Windows.Forms.Label();
+            this.pTurno1 = new System.Windows.Forms.Panel();
+            this.lblT1M4 = new System.Windows.Forms.Label();
+            this.lblT1M3 = new System.Windows.Forms.Label();
+            this.lblT1M2 = new System.Windows.Forms.Label();
+            this.lblT1M1 = new System.Windows.Forms.Label();
+            this.btnMarcarSalidaT1 = new System.Windows.Forms.Button();
+            this.btnMarcarFBT1 = new System.Windows.Forms.Button();
+            this.btnMarcarIBT1 = new System.Windows.Forms.Button();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.btnMarcarEntradaT1 = new System.Windows.Forms.Button();
+            this.pTurno2 = new System.Windows.Forms.Panel();
+            this.lblT2M4 = new System.Windows.Forms.Label();
+            this.lblT2M3 = new System.Windows.Forms.Label();
+            this.lblT2M2 = new System.Windows.Forms.Label();
+            this.lblT2M1 = new System.Windows.Forms.Label();
             this.btnMarcarSalidaT2 = new System.Windows.Forms.Button();
             this.btnMarcarFBT2 = new System.Windows.Forms.Button();
             this.btnMarcarIBT2 = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btnMarcarEntradaT2 = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
-            this.panelAPTurno1 = new System.Windows.Forms.Panel();
-            this.lblMST1 = new System.Windows.Forms.Label();
-            this.lblMFBT1 = new System.Windows.Forms.Label();
-            this.lblMIBT1 = new System.Windows.Forms.Label();
-            this.lblMET1 = new System.Windows.Forms.Label();
-            this.btnMarcarSalidaT1 = new System.Windows.Forms.Button();
-            this.btnMarcarFBT1 = new System.Windows.Forms.Button();
-            this.btnMarcarIBT1 = new System.Windows.Forms.Button();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.btnMarcarEntradaT1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelCAUser = new System.Windows.Forms.Panel();
-            this.pbAPFoto = new System.Windows.Forms.PictureBox();
+            this.lblPPhone = new System.Windows.Forms.Label();
+            this.pboxPImage = new System.Windows.Forms.PictureBox();
+            this.lblPCargo = new System.Windows.Forms.Label();
+            this.lblPName = new System.Windows.Forms.Label();
             this.panelAPHuella = new System.Windows.Forms.Panel();
             this.gbAPTipoUser = new System.Windows.Forms.GroupBox();
             this.rbTMEvent = new System.Windows.Forms.RadioButton();
@@ -195,6 +199,13 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.panelPProfeContent = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lboxProfesionales = new System.Windows.Forms.ListBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.btnMSalidaProf = new System.Windows.Forms.Button();
+            this.btnMIngresoProf = new System.Windows.Forms.Button();
             this.dgvMembresias = new System.Windows.Forms.DataGridView();
             this.NombrePaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FCrecionText = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -220,6 +231,7 @@
             this.lblCountFijo = new System.Windows.Forms.Label();
             this.lblCountEvent = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
+            this.lblDev = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.BtnDisconnectionNew = new System.Windows.Forms.Button();
@@ -235,10 +247,6 @@
             this.timerNow = new System.Windows.Forms.Timer(this.components);
             this.statusBar1 = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
             this.lblMessage = new ZKTecoFingerPrintScanner_Implementation.Controls.StatusBar();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -274,18 +282,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicCLogo)).BeginInit();
             this.tabPage4.SuspendLayout();
-            this.panelAPTurno2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panelAPTurno1.SuspendLayout();
+            this.panelPFijoContent.SuspendLayout();
+            this.pTurno1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            this.pTurno2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelCAUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxPImage)).BeginInit();
             this.panelAPHuella.SuspendLayout();
             this.gbAPTipoUser.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panelPProfeContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).BeginInit();
             this.panelDeviseConnect.SuspendLayout();
@@ -300,7 +311,6 @@
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSerie
@@ -372,7 +382,6 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.lblDeudaProductos);
-            this.tabPage1.Controls.Add(this.statusBar1);
             this.tabPage1.Controls.Add(this.lblDeudaMembresia);
             this.tabPage1.Controls.Add(this.listBox2);
             this.tabPage1.Controls.Add(this.listBox1);
@@ -414,6 +423,36 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Asistencia cliente";
             // 
+            // lblDeudaProductos
+            // 
+            this.lblDeudaProductos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDeudaProductos.AutoSize = true;
+            this.lblDeudaProductos.BackColor = System.Drawing.Color.White;
+            this.lblDeudaProductos.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeudaProductos.ForeColor = System.Drawing.Color.Gray;
+            this.lblDeudaProductos.Location = new System.Drawing.Point(814, 46);
+            this.lblDeudaProductos.Name = "lblDeudaProductos";
+            this.lblDeudaProductos.Padding = new System.Windows.Forms.Padding(5);
+            this.lblDeudaProductos.Size = new System.Drawing.Size(349, 46);
+            this.lblDeudaProductos.TabIndex = 11;
+            this.lblDeudaProductos.Text = "DEUDA DE PRODUCTOS";
+            this.lblDeudaProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDeudaMembresia
+            // 
+            this.lblDeudaMembresia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDeudaMembresia.AutoSize = true;
+            this.lblDeudaMembresia.BackColor = System.Drawing.Color.White;
+            this.lblDeudaMembresia.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeudaMembresia.ForeColor = System.Drawing.Color.Gray;
+            this.lblDeudaMembresia.Location = new System.Drawing.Point(368, 41);
+            this.lblDeudaMembresia.Name = "lblDeudaMembresia";
+            this.lblDeudaMembresia.Padding = new System.Windows.Forms.Padding(5);
+            this.lblDeudaMembresia.Size = new System.Drawing.Size(299, 46);
+            this.lblDeudaMembresia.TabIndex = 12;
+            this.lblDeudaMembresia.Text = "DEUDA MEMBRESIA";
+            this.lblDeudaMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
@@ -427,10 +466,11 @@
             this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(310, 649);
+            this.listBox1.Location = new System.Drawing.Point(696, 249);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(874, 56);
+            this.listBox1.Size = new System.Drawing.Size(464, 329);
             this.listBox1.TabIndex = 63;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label51
             // 
@@ -680,36 +720,6 @@
             this.txtMPromo.Size = new System.Drawing.Size(160, 20);
             this.txtMPromo.TabIndex = 32;
             // 
-            // lblDeudaProductos
-            // 
-            this.lblDeudaProductos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDeudaProductos.AutoSize = true;
-            this.lblDeudaProductos.BackColor = System.Drawing.Color.White;
-            this.lblDeudaProductos.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeudaProductos.ForeColor = System.Drawing.Color.Gray;
-            this.lblDeudaProductos.Location = new System.Drawing.Point(814, 46);
-            this.lblDeudaProductos.Name = "lblDeudaProductos";
-            this.lblDeudaProductos.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDeudaProductos.Size = new System.Drawing.Size(349, 46);
-            this.lblDeudaProductos.TabIndex = 11;
-            this.lblDeudaProductos.Text = "DEUDA DE PRODUCTOS";
-            this.lblDeudaProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDeudaMembresia
-            // 
-            this.lblDeudaMembresia.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDeudaMembresia.AutoSize = true;
-            this.lblDeudaMembresia.BackColor = System.Drawing.Color.White;
-            this.lblDeudaMembresia.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeudaMembresia.ForeColor = System.Drawing.Color.Gray;
-            this.lblDeudaMembresia.Location = new System.Drawing.Point(368, 41);
-            this.lblDeudaMembresia.Name = "lblDeudaMembresia";
-            this.lblDeudaMembresia.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDeudaMembresia.Size = new System.Drawing.Size(299, 46);
-            this.lblDeudaMembresia.TabIndex = 12;
-            this.lblDeudaMembresia.Text = "DEUDA MEMBRESIA";
-            this.lblDeudaMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblMessageMem
             // 
             this.lblMessageMem.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -717,7 +727,7 @@
             this.lblMessageMem.BackColor = System.Drawing.Color.Transparent;
             this.lblMessageMem.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessageMem.ForeColor = System.Drawing.Color.White;
-            this.lblMessageMem.Location = new System.Drawing.Point(570, 98);
+            this.lblMessageMem.Location = new System.Drawing.Point(583, 141);
             this.lblMessageMem.Name = "lblMessageMem";
             this.lblMessageMem.Padding = new System.Windows.Forms.Padding(5);
             this.lblMessageMem.Size = new System.Drawing.Size(312, 46);
@@ -1907,18 +1917,26 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label49);
-            this.tabPage4.Controls.Add(this.tableLayoutPanel7);
-            this.tabPage4.Controls.Add(this.panelAPTurno2);
-            this.tabPage4.Controls.Add(this.label39);
-            this.tabPage4.Controls.Add(this.panelAPTurno1);
+            this.tabPage4.Controls.Add(this.panelPFijoContent);
             this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.panelPProfeContent);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1192, 884);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Asistencia personal";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panelPFijoContent
+            // 
+            this.panelPFijoContent.Controls.Add(this.label49);
+            this.panelPFijoContent.Controls.Add(this.pTurno1);
+            this.panelPFijoContent.Controls.Add(this.pTurno2);
+            this.panelPFijoContent.Controls.Add(this.label39);
+            this.panelPFijoContent.Location = new System.Drawing.Point(325, 3);
+            this.panelPFijoContent.Name = "panelPFijoContent";
+            this.panelPFijoContent.Size = new System.Drawing.Size(848, 611);
+            this.panelPFijoContent.TabIndex = 31;
             // 
             // label49
             // 
@@ -1927,74 +1945,216 @@
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label49.ForeColor = System.Drawing.Color.Black;
-            this.label49.Location = new System.Drawing.Point(350, 324);
+            this.label49.Location = new System.Drawing.Point(31, 304);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(66, 18);
             this.label49.TabIndex = 29;
             this.label49.Text = "Turno 2";
             // 
-            // panelAPTurno2
+            // pTurno1
             // 
-            this.panelAPTurno2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pTurno1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelAPTurno2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAPTurno2.Controls.Add(this.lblMST2);
-            this.panelAPTurno2.Controls.Add(this.lblMFBT2);
-            this.panelAPTurno2.Controls.Add(this.lblMIBT2);
-            this.panelAPTurno2.Controls.Add(this.lblMET2);
-            this.panelAPTurno2.Controls.Add(this.btnMarcarSalidaT2);
-            this.panelAPTurno2.Controls.Add(this.btnMarcarFBT2);
-            this.panelAPTurno2.Controls.Add(this.btnMarcarIBT2);
-            this.panelAPTurno2.Controls.Add(this.pictureBox10);
-            this.panelAPTurno2.Controls.Add(this.btnMarcarEntradaT2);
-            this.panelAPTurno2.Location = new System.Drawing.Point(338, 335);
-            this.panelAPTurno2.Name = "panelAPTurno2";
-            this.panelAPTurno2.Size = new System.Drawing.Size(667, 258);
-            this.panelAPTurno2.TabIndex = 28;
+            this.pTurno1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pTurno1.Controls.Add(this.lblT1M4);
+            this.pTurno1.Controls.Add(this.lblT1M3);
+            this.pTurno1.Controls.Add(this.lblT1M2);
+            this.pTurno1.Controls.Add(this.lblT1M1);
+            this.pTurno1.Controls.Add(this.btnMarcarSalidaT1);
+            this.pTurno1.Controls.Add(this.btnMarcarFBT1);
+            this.pTurno1.Controls.Add(this.btnMarcarIBT1);
+            this.pTurno1.Controls.Add(this.pictureBox12);
+            this.pTurno1.Controls.Add(this.btnMarcarEntradaT1);
+            this.pTurno1.Location = new System.Drawing.Point(34, 33);
+            this.pTurno1.Name = "pTurno1";
+            this.pTurno1.Size = new System.Drawing.Size(782, 258);
+            this.pTurno1.TabIndex = 27;
             // 
-            // lblMST2
+            // lblT1M4
             // 
-            this.lblMST2.AutoSize = true;
-            this.lblMST2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMST2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMST2.Location = new System.Drawing.Point(346, 196);
-            this.lblMST2.Name = "lblMST2";
-            this.lblMST2.Size = new System.Drawing.Size(44, 20);
-            this.lblMST2.TabIndex = 8;
-            this.lblMST2.Text = "0:00";
+            this.lblT1M4.AutoSize = true;
+            this.lblT1M4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT1M4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT1M4.Location = new System.Drawing.Point(346, 196);
+            this.lblT1M4.Name = "lblT1M4";
+            this.lblT1M4.Size = new System.Drawing.Size(44, 20);
+            this.lblT1M4.TabIndex = 8;
+            this.lblT1M4.Text = "0:00";
             // 
-            // lblMFBT2
+            // lblT1M3
             // 
-            this.lblMFBT2.AutoSize = true;
-            this.lblMFBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMFBT2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMFBT2.Location = new System.Drawing.Point(346, 142);
-            this.lblMFBT2.Name = "lblMFBT2";
-            this.lblMFBT2.Size = new System.Drawing.Size(44, 20);
-            this.lblMFBT2.TabIndex = 7;
-            this.lblMFBT2.Text = "0:00";
+            this.lblT1M3.AutoSize = true;
+            this.lblT1M3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT1M3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT1M3.Location = new System.Drawing.Point(346, 142);
+            this.lblT1M3.Name = "lblT1M3";
+            this.lblT1M3.Size = new System.Drawing.Size(44, 20);
+            this.lblT1M3.TabIndex = 7;
+            this.lblT1M3.Text = "0:00";
             // 
-            // lblMIBT2
+            // lblT1M2
             // 
-            this.lblMIBT2.AutoSize = true;
-            this.lblMIBT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMIBT2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMIBT2.Location = new System.Drawing.Point(346, 96);
-            this.lblMIBT2.Name = "lblMIBT2";
-            this.lblMIBT2.Size = new System.Drawing.Size(44, 20);
-            this.lblMIBT2.TabIndex = 6;
-            this.lblMIBT2.Text = "0:00";
+            this.lblT1M2.AutoSize = true;
+            this.lblT1M2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT1M2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT1M2.Location = new System.Drawing.Point(346, 96);
+            this.lblT1M2.Name = "lblT1M2";
+            this.lblT1M2.Size = new System.Drawing.Size(44, 20);
+            this.lblT1M2.TabIndex = 6;
+            this.lblT1M2.Text = "0:00";
             // 
-            // lblMET2
+            // lblT1M1
             // 
-            this.lblMET2.AutoSize = true;
-            this.lblMET2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMET2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMET2.Location = new System.Drawing.Point(346, 35);
-            this.lblMET2.Name = "lblMET2";
-            this.lblMET2.Size = new System.Drawing.Size(44, 20);
-            this.lblMET2.TabIndex = 5;
-            this.lblMET2.Text = "0:00";
+            this.lblT1M1.AutoSize = true;
+            this.lblT1M1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT1M1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(89)))), ((int)(((byte)(98)))));
+            this.lblT1M1.Location = new System.Drawing.Point(346, 35);
+            this.lblT1M1.Name = "lblT1M1";
+            this.lblT1M1.Size = new System.Drawing.Size(44, 20);
+            this.lblT1M1.TabIndex = 5;
+            this.lblT1M1.Text = "0:00";
+            // 
+            // btnMarcarSalidaT1
+            // 
+            this.btnMarcarSalidaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarSalidaT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarSalidaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarSalidaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarSalidaT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarSalidaT1.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarSalidaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarSalidaT1.Location = new System.Drawing.Point(14, 187);
+            this.btnMarcarSalidaT1.Name = "btnMarcarSalidaT1";
+            this.btnMarcarSalidaT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarSalidaT1.TabIndex = 4;
+            this.btnMarcarSalidaT1.Text = "Marcar Salida";
+            this.btnMarcarSalidaT1.UseVisualStyleBackColor = false;
+            this.btnMarcarSalidaT1.Click += new System.EventHandler(this.btnMarcarSalidaT1_Click);
+            // 
+            // btnMarcarFBT1
+            // 
+            this.btnMarcarFBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarFBT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarFBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarFBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarFBT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarFBT1.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarFBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarFBT1.Location = new System.Drawing.Point(14, 133);
+            this.btnMarcarFBT1.Name = "btnMarcarFBT1";
+            this.btnMarcarFBT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarFBT1.TabIndex = 3;
+            this.btnMarcarFBT1.Text = "Marcar Fin Break";
+            this.btnMarcarFBT1.UseVisualStyleBackColor = false;
+            this.btnMarcarFBT1.Click += new System.EventHandler(this.btnMarcarFBT1_Click);
+            // 
+            // btnMarcarIBT1
+            // 
+            this.btnMarcarIBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarIBT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarIBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarIBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarIBT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarIBT1.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMarcarIBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarIBT1.Location = new System.Drawing.Point(14, 80);
+            this.btnMarcarIBT1.Name = "btnMarcarIBT1";
+            this.btnMarcarIBT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarIBT1.TabIndex = 2;
+            this.btnMarcarIBT1.Text = "Marcar Inicio Break";
+            this.btnMarcarIBT1.UseVisualStyleBackColor = false;
+            this.btnMarcarIBT1.Click += new System.EventHandler(this.btnMarcarIBT1_Click);
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox12.Image = global::BIOCHECK.Properties.Resources.bgtime;
+            this.pictureBox12.Location = new System.Drawing.Point(564, 35);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(192, 192);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 1;
+            this.pictureBox12.TabStop = false;
+            // 
+            // btnMarcarEntradaT1
+            // 
+            this.btnMarcarEntradaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMarcarEntradaT1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarEntradaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarEntradaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarEntradaT1.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarEntradaT1.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMarcarEntradaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMarcarEntradaT1.Location = new System.Drawing.Point(14, 26);
+            this.btnMarcarEntradaT1.Name = "btnMarcarEntradaT1";
+            this.btnMarcarEntradaT1.Size = new System.Drawing.Size(209, 40);
+            this.btnMarcarEntradaT1.TabIndex = 0;
+            this.btnMarcarEntradaT1.Text = "Marcar Entrada";
+            this.btnMarcarEntradaT1.UseVisualStyleBackColor = false;
+            this.btnMarcarEntradaT1.Click += new System.EventHandler(this.btnMarcarEntradaT1_Click);
+            // 
+            // pTurno2
+            // 
+            this.pTurno2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pTurno2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pTurno2.Controls.Add(this.lblT2M4);
+            this.pTurno2.Controls.Add(this.lblT2M3);
+            this.pTurno2.Controls.Add(this.lblT2M2);
+            this.pTurno2.Controls.Add(this.lblT2M1);
+            this.pTurno2.Controls.Add(this.btnMarcarSalidaT2);
+            this.pTurno2.Controls.Add(this.btnMarcarFBT2);
+            this.pTurno2.Controls.Add(this.btnMarcarIBT2);
+            this.pTurno2.Controls.Add(this.pictureBox10);
+            this.pTurno2.Controls.Add(this.btnMarcarEntradaT2);
+            this.pTurno2.Location = new System.Drawing.Point(34, 325);
+            this.pTurno2.Name = "pTurno2";
+            this.pTurno2.Size = new System.Drawing.Size(782, 258);
+            this.pTurno2.TabIndex = 28;
+            // 
+            // lblT2M4
+            // 
+            this.lblT2M4.AutoSize = true;
+            this.lblT2M4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT2M4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT2M4.Location = new System.Drawing.Point(346, 196);
+            this.lblT2M4.Name = "lblT2M4";
+            this.lblT2M4.Size = new System.Drawing.Size(44, 20);
+            this.lblT2M4.TabIndex = 8;
+            this.lblT2M4.Text = "0:00";
+            // 
+            // lblT2M3
+            // 
+            this.lblT2M3.AutoSize = true;
+            this.lblT2M3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT2M3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT2M3.Location = new System.Drawing.Point(346, 142);
+            this.lblT2M3.Name = "lblT2M3";
+            this.lblT2M3.Size = new System.Drawing.Size(44, 20);
+            this.lblT2M3.TabIndex = 7;
+            this.lblT2M3.Text = "0:00";
+            // 
+            // lblT2M2
+            // 
+            this.lblT2M2.AutoSize = true;
+            this.lblT2M2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT2M2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT2M2.Location = new System.Drawing.Point(346, 89);
+            this.lblT2M2.Name = "lblT2M2";
+            this.lblT2M2.Size = new System.Drawing.Size(44, 20);
+            this.lblT2M2.TabIndex = 6;
+            this.lblT2M2.Text = "0:00";
+            // 
+            // lblT2M1
+            // 
+            this.lblT2M1.AutoSize = true;
+            this.lblT2M1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT2M1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.lblT2M1.Location = new System.Drawing.Point(346, 35);
+            this.lblT2M1.Name = "lblT2M1";
+            this.lblT2M1.Size = new System.Drawing.Size(44, 20);
+            this.lblT2M1.TabIndex = 5;
+            this.lblT2M1.Text = "0:00";
             // 
             // btnMarcarSalidaT2
             // 
@@ -2011,6 +2171,7 @@
             this.btnMarcarSalidaT2.TabIndex = 4;
             this.btnMarcarSalidaT2.Text = "Marcar Salida";
             this.btnMarcarSalidaT2.UseVisualStyleBackColor = false;
+            this.btnMarcarSalidaT2.Click += new System.EventHandler(this.btnMarcarSalidaT2_Click);
             // 
             // btnMarcarFBT2
             // 
@@ -2027,6 +2188,7 @@
             this.btnMarcarFBT2.TabIndex = 3;
             this.btnMarcarFBT2.Text = "Marcar Fin Break";
             this.btnMarcarFBT2.UseVisualStyleBackColor = false;
+            this.btnMarcarFBT2.Click += new System.EventHandler(this.btnMarcarFBT2_Click);
             // 
             // btnMarcarIBT2
             // 
@@ -2043,12 +2205,13 @@
             this.btnMarcarIBT2.TabIndex = 2;
             this.btnMarcarIBT2.Text = "Marcar Inicio Break";
             this.btnMarcarIBT2.UseVisualStyleBackColor = false;
+            this.btnMarcarIBT2.Click += new System.EventHandler(this.btnMarcarIBT2_Click);
             // 
             // pictureBox10
             // 
             this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox10.Image = global::BIOCHECK.Properties.Resources.bgtime;
-            this.pictureBox10.Location = new System.Drawing.Point(449, 35);
+            this.pictureBox10.Location = new System.Drawing.Point(564, 35);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(192, 192);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2070,6 +2233,7 @@
             this.btnMarcarEntradaT2.TabIndex = 0;
             this.btnMarcarEntradaT2.Text = "Marcar Entrada";
             this.btnMarcarEntradaT2.UseVisualStyleBackColor = false;
+            this.btnMarcarEntradaT2.Click += new System.EventHandler(this.btnMarcarEntradaT2_Click);
             // 
             // label39
             // 
@@ -2078,149 +2242,11 @@
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label39.ForeColor = System.Drawing.Color.Black;
-            this.label39.Location = new System.Drawing.Point(350, 33);
+            this.label39.Location = new System.Drawing.Point(31, 12);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(66, 18);
             this.label39.TabIndex = 28;
             this.label39.Text = "Turno 1";
-            // 
-            // panelAPTurno1
-            // 
-            this.panelAPTurno1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelAPTurno1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAPTurno1.Controls.Add(this.lblMST1);
-            this.panelAPTurno1.Controls.Add(this.lblMFBT1);
-            this.panelAPTurno1.Controls.Add(this.lblMIBT1);
-            this.panelAPTurno1.Controls.Add(this.lblMET1);
-            this.panelAPTurno1.Controls.Add(this.btnMarcarSalidaT1);
-            this.panelAPTurno1.Controls.Add(this.btnMarcarFBT1);
-            this.panelAPTurno1.Controls.Add(this.btnMarcarIBT1);
-            this.panelAPTurno1.Controls.Add(this.pictureBox12);
-            this.panelAPTurno1.Controls.Add(this.btnMarcarEntradaT1);
-            this.panelAPTurno1.Location = new System.Drawing.Point(338, 48);
-            this.panelAPTurno1.Name = "panelAPTurno1";
-            this.panelAPTurno1.Size = new System.Drawing.Size(667, 258);
-            this.panelAPTurno1.TabIndex = 27;
-            // 
-            // lblMST1
-            // 
-            this.lblMST1.AutoSize = true;
-            this.lblMST1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMST1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMST1.Location = new System.Drawing.Point(346, 196);
-            this.lblMST1.Name = "lblMST1";
-            this.lblMST1.Size = new System.Drawing.Size(44, 20);
-            this.lblMST1.TabIndex = 8;
-            this.lblMST1.Text = "0:00";
-            // 
-            // lblMFBT1
-            // 
-            this.lblMFBT1.AutoSize = true;
-            this.lblMFBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMFBT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMFBT1.Location = new System.Drawing.Point(346, 142);
-            this.lblMFBT1.Name = "lblMFBT1";
-            this.lblMFBT1.Size = new System.Drawing.Size(44, 20);
-            this.lblMFBT1.TabIndex = 7;
-            this.lblMFBT1.Text = "0:00";
-            // 
-            // lblMIBT1
-            // 
-            this.lblMIBT1.AutoSize = true;
-            this.lblMIBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMIBT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
-            this.lblMIBT1.Location = new System.Drawing.Point(346, 96);
-            this.lblMIBT1.Name = "lblMIBT1";
-            this.lblMIBT1.Size = new System.Drawing.Size(44, 20);
-            this.lblMIBT1.TabIndex = 6;
-            this.lblMIBT1.Text = "0:00";
-            // 
-            // lblMET1
-            // 
-            this.lblMET1.AutoSize = true;
-            this.lblMET1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMET1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(89)))), ((int)(((byte)(98)))));
-            this.lblMET1.Location = new System.Drawing.Point(308, 35);
-            this.lblMET1.Name = "lblMET1";
-            this.lblMET1.Size = new System.Drawing.Size(110, 20);
-            this.lblMET1.TabIndex = 5;
-            this.lblMET1.Text = "10:48:32 AM";
-            // 
-            // btnMarcarSalidaT1
-            // 
-            this.btnMarcarSalidaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.btnMarcarSalidaT1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcarSalidaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcarSalidaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcarSalidaT1.ForeColor = System.Drawing.Color.White;
-            this.btnMarcarSalidaT1.Image = global::BIOCHECK.Properties.Resources.left;
-            this.btnMarcarSalidaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarSalidaT1.Location = new System.Drawing.Point(14, 187);
-            this.btnMarcarSalidaT1.Name = "btnMarcarSalidaT1";
-            this.btnMarcarSalidaT1.Size = new System.Drawing.Size(209, 40);
-            this.btnMarcarSalidaT1.TabIndex = 4;
-            this.btnMarcarSalidaT1.Text = "Marcar Salida";
-            this.btnMarcarSalidaT1.UseVisualStyleBackColor = false;
-            // 
-            // btnMarcarFBT1
-            // 
-            this.btnMarcarFBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.btnMarcarFBT1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcarFBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcarFBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcarFBT1.ForeColor = System.Drawing.Color.White;
-            this.btnMarcarFBT1.Image = global::BIOCHECK.Properties.Resources.right;
-            this.btnMarcarFBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarFBT1.Location = new System.Drawing.Point(14, 133);
-            this.btnMarcarFBT1.Name = "btnMarcarFBT1";
-            this.btnMarcarFBT1.Size = new System.Drawing.Size(209, 40);
-            this.btnMarcarFBT1.TabIndex = 3;
-            this.btnMarcarFBT1.Text = "Marcar Fin Break";
-            this.btnMarcarFBT1.UseVisualStyleBackColor = false;
-            // 
-            // btnMarcarIBT1
-            // 
-            this.btnMarcarIBT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.btnMarcarIBT1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcarIBT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcarIBT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcarIBT1.ForeColor = System.Drawing.Color.White;
-            this.btnMarcarIBT1.Image = global::BIOCHECK.Properties.Resources.left;
-            this.btnMarcarIBT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarIBT1.Location = new System.Drawing.Point(14, 80);
-            this.btnMarcarIBT1.Name = "btnMarcarIBT1";
-            this.btnMarcarIBT1.Size = new System.Drawing.Size(209, 40);
-            this.btnMarcarIBT1.TabIndex = 2;
-            this.btnMarcarIBT1.Text = "Marcar Inicio Break";
-            this.btnMarcarIBT1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox12.Image = global::BIOCHECK.Properties.Resources.bgtime;
-            this.pictureBox12.Location = new System.Drawing.Point(449, 35);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(192, 192);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 1;
-            this.pictureBox12.TabStop = false;
-            // 
-            // btnMarcarEntradaT1
-            // 
-            this.btnMarcarEntradaT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(89)))), ((int)(((byte)(98)))));
-            this.btnMarcarEntradaT1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcarEntradaT1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcarEntradaT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcarEntradaT1.ForeColor = System.Drawing.Color.White;
-            this.btnMarcarEntradaT1.Image = global::BIOCHECK.Properties.Resources.right;
-            this.btnMarcarEntradaT1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarEntradaT1.Location = new System.Drawing.Point(14, 26);
-            this.btnMarcarEntradaT1.Name = "btnMarcarEntradaT1";
-            this.btnMarcarEntradaT1.Size = new System.Drawing.Size(209, 40);
-            this.btnMarcarEntradaT1.TabIndex = 0;
-            this.btnMarcarEntradaT1.Text = "Marcar Entrada";
-            this.btnMarcarEntradaT1.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -2241,21 +2267,56 @@
             // 
             this.panelCAUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelCAUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
-            this.panelCAUser.Controls.Add(this.pbAPFoto);
+            this.panelCAUser.Controls.Add(this.lblPPhone);
+            this.panelCAUser.Controls.Add(this.pboxPImage);
+            this.panelCAUser.Controls.Add(this.lblPCargo);
+            this.panelCAUser.Controls.Add(this.lblPName);
             this.panelCAUser.Location = new System.Drawing.Point(33, 543);
             this.panelCAUser.Name = "panelCAUser";
             this.panelCAUser.Size = new System.Drawing.Size(227, 283);
             this.panelCAUser.TabIndex = 7;
             // 
-            // pbAPFoto
+            // lblPPhone
             // 
-            this.pbAPFoto.Image = global::BIOCHECK.Properties.Resources.user2;
-            this.pbAPFoto.Location = new System.Drawing.Point(35, 18);
-            this.pbAPFoto.Name = "pbAPFoto";
-            this.pbAPFoto.Size = new System.Drawing.Size(152, 133);
-            this.pbAPFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAPFoto.TabIndex = 0;
-            this.pbAPFoto.TabStop = false;
+            this.lblPPhone.AutoSize = true;
+            this.lblPPhone.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPPhone.Location = new System.Drawing.Point(33, 214);
+            this.lblPPhone.Name = "lblPPhone";
+            this.lblPPhone.Size = new System.Drawing.Size(60, 17);
+            this.lblPPhone.TabIndex = 32;
+            this.lblPPhone.Text = "CELULAR";
+            // 
+            // pboxPImage
+            // 
+            this.pboxPImage.Image = global::BIOCHECK.Properties.Resources.user2;
+            this.pboxPImage.Location = new System.Drawing.Point(35, 18);
+            this.pboxPImage.Name = "pboxPImage";
+            this.pboxPImage.Size = new System.Drawing.Size(152, 133);
+            this.pboxPImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxPImage.TabIndex = 0;
+            this.pboxPImage.TabStop = false;
+            // 
+            // lblPCargo
+            // 
+            this.lblPCargo.AutoSize = true;
+            this.lblPCargo.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPCargo.Location = new System.Drawing.Point(32, 188);
+            this.lblPCargo.Name = "lblPCargo";
+            this.lblPCargo.Size = new System.Drawing.Size(51, 17);
+            this.lblPCargo.TabIndex = 31;
+            this.lblPCargo.Text = "CARGO";
+            // 
+            // lblPName
+            // 
+            this.lblPName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPName.AutoSize = true;
+            this.lblPName.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPName.Location = new System.Drawing.Point(32, 161);
+            this.lblPName.Name = "lblPName";
+            this.lblPName.Size = new System.Drawing.Size(175, 21);
+            this.lblPName.TabIndex = 30;
+            this.lblPName.Text = "NOMBRE, APELLIDOS";
             // 
             // panelAPHuella
             // 
@@ -2282,6 +2343,7 @@
             // rbTMEvent
             // 
             this.rbTMEvent.AutoSize = true;
+            this.rbTMEvent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbTMEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbTMEvent.Location = new System.Drawing.Point(6, 60);
             this.rbTMEvent.Name = "rbTMEvent";
@@ -2295,6 +2357,7 @@
             // rbTMFijo
             // 
             this.rbTMFijo.AutoSize = true;
+            this.rbTMFijo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbTMFijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbTMFijo.Location = new System.Drawing.Point(6, 29);
             this.rbTMFijo.Name = "rbTMFijo";
@@ -2374,6 +2437,103 @@
             this.label33.TabIndex = 0;
             this.label33.Text = "Control de Asistencia \nPersonal";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelPProfeContent
+            // 
+            this.panelPProfeContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPProfeContent.Controls.Add(this.label13);
+            this.panelPProfeContent.Controls.Add(this.lboxProfesionales);
+            this.panelPProfeContent.Controls.Add(this.pictureBox11);
+            this.panelPProfeContent.Controls.Add(this.label36);
+            this.panelPProfeContent.Controls.Add(this.btnMSalidaProf);
+            this.panelPProfeContent.Controls.Add(this.btnMIngresoProf);
+            this.panelPProfeContent.Location = new System.Drawing.Point(325, 641);
+            this.panelPProfeContent.Name = "panelPProfeContent";
+            this.panelPProfeContent.Size = new System.Drawing.Size(848, 225);
+            this.panelPProfeContent.TabIndex = 32;
+            this.panelPProfeContent.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(30, 68);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(221, 17);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Selecionar una clase para marcar";
+            // 
+            // lboxProfesionales
+            // 
+            this.lboxProfesionales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lboxProfesionales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lboxProfesionales.FormattingEnabled = true;
+            this.lboxProfesionales.Location = new System.Drawing.Point(33, 102);
+            this.lboxProfesionales.Name = "lboxProfesionales";
+            this.lboxProfesionales.ScrollAlwaysVisible = true;
+            this.lboxProfesionales.Size = new System.Drawing.Size(782, 108);
+            this.lboxProfesionales.TabIndex = 30;
+            this.lboxProfesionales.SelectedIndexChanged += new System.EventHandler(this.lboxProfesionales_SelectedIndexChanged);
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::BIOCHECK.Properties.Resources.advertencia;
+            this.pictureBox11.Location = new System.Drawing.Point(33, 25);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 9;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label36
+            // 
+            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label36.Location = new System.Drawing.Point(81, 38);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(95, 13);
+            this.label36.TabIndex = 8;
+            this.label36.Text = "INDICACIONES";
+            // 
+            // btnMSalidaProf
+            // 
+            this.btnMSalidaProf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMSalidaProf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMSalidaProf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMSalidaProf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMSalidaProf.ForeColor = System.Drawing.Color.White;
+            this.btnMSalidaProf.Image = global::BIOCHECK.Properties.Resources.left;
+            this.btnMSalidaProf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMSalidaProf.Location = new System.Drawing.Point(646, 49);
+            this.btnMSalidaProf.Name = "btnMSalidaProf";
+            this.btnMSalidaProf.Size = new System.Drawing.Size(169, 40);
+            this.btnMSalidaProf.TabIndex = 9;
+            this.btnMSalidaProf.Text = "Marcar Salida";
+            this.btnMSalidaProf.UseVisualStyleBackColor = false;
+            this.btnMSalidaProf.Click += new System.EventHandler(this.btnMSalidaProf_Click);
+            // 
+            // btnMIngresoProf
+            // 
+            this.btnMIngresoProf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.btnMIngresoProf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMIngresoProf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMIngresoProf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMIngresoProf.ForeColor = System.Drawing.Color.White;
+            this.btnMIngresoProf.Image = global::BIOCHECK.Properties.Resources.right;
+            this.btnMIngresoProf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMIngresoProf.Location = new System.Drawing.Point(471, 49);
+            this.btnMIngresoProf.Name = "btnMIngresoProf";
+            this.btnMIngresoProf.Size = new System.Drawing.Size(169, 40);
+            this.btnMIngresoProf.TabIndex = 9;
+            this.btnMIngresoProf.Text = "Marcar Ingreso";
+            this.btnMIngresoProf.UseVisualStyleBackColor = false;
+            this.btnMIngresoProf.Click += new System.EventHandler(this.btnMIngresoProf_Click);
             // 
             // dgvMembresias
             // 
@@ -2528,6 +2688,7 @@
             this.tableLayoutPanel8.Controls.Add(this.lblCountFijo, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.lblCountEvent, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.lblCount, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.lblDev, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(327, 0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -2573,6 +2734,19 @@
             this.lblCount.Size = new System.Drawing.Size(210, 23);
             this.lblCount.TabIndex = 31;
             this.lblCount.Text = "CANTIDAD REGISTROS : 0";
+            // 
+            // lblDev
+            // 
+            this.lblDev.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDev.AutoSize = true;
+            this.lblDev.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDev.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDev.Location = new System.Drawing.Point(219, 0);
+            this.lblDev.Name = "lblDev";
+            this.lblDev.Size = new System.Drawing.Size(212, 25);
+            this.lblDev.TabIndex = 36;
+            this.lblDev.Text = "label12";
             // 
             // tableLayoutPanel10
             // 
@@ -2671,6 +2845,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.panel4.Controls.Add(this.lblHour);
+            this.panel4.Controls.Add(this.statusBar1);
             this.panel4.Controls.Add(this.lblDate);
             this.panel4.Controls.Add(this.lblMessage);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2771,7 +2946,7 @@
             // statusBar1
             // 
             this.statusBar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusBar1.Location = new System.Drawing.Point(696, 585);
+            this.statusBar1.Location = new System.Drawing.Point(433, 16);
             this.statusBar1.Message = "Estado membresia";
             this.statusBar1.MessageType = false;
             this.statusBar1.Name = "statusBar1";
@@ -2783,7 +2958,7 @@
             // lblMessage
             // 
             this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(484, 18);
+            this.lblMessage.Location = new System.Drawing.Point(444, 82);
             this.lblMessage.Message = "Estado socio ";
             this.lblMessage.MessageType = false;
             this.lblMessage.Name = "lblMessage";
@@ -2791,65 +2966,6 @@
             this.lblMessage.StatusBarBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.lblMessage.StatusBarForeColor = System.Drawing.SystemColors.ControlText;
             this.lblMessage.TabIndex = 0;
-            // 
-            // label37
-            // 
-            this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label37.Location = new System.Drawing.Point(3, 42);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(1, 15);
-            this.label37.TabIndex = 2;
-            this.label37.Text = "Cargo";
-            this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label36
-            // 
-            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(3, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(1, 17);
-            this.label36.TabIndex = 1;
-            this.label36.Text = "NOMBRES, APELLIDOS";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label38
-            // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label38.Location = new System.Drawing.Point(3, 70);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(1, 15);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Nro. Doc";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.69036F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.30965F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
-            this.tableLayoutPanel7.Controls.Add(this.label38, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.label36, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label37, 1, 1);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(399, 669);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 3;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(224, 126);
-            this.tableLayoutPanel7.TabIndex = 1;
             // 
             // ScreenHome
             // 
@@ -2911,23 +3027,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicCLogo)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.panelAPTurno2.ResumeLayout(false);
-            this.panelAPTurno2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.panelAPTurno1.ResumeLayout(false);
-            this.panelAPTurno1.PerformLayout();
+            this.panelPFijoContent.ResumeLayout(false);
+            this.panelPFijoContent.PerformLayout();
+            this.pTurno1.ResumeLayout(false);
+            this.pTurno1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            this.pTurno2.ResumeLayout(false);
+            this.pTurno2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelCAUser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAPFoto)).EndInit();
+            this.panelCAUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxPImage)).EndInit();
             this.panelAPHuella.ResumeLayout(false);
             this.gbAPTipoUser.ResumeLayout(false);
             this.gbAPTipoUser.PerformLayout();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAPHuella)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.panelPProfeContent.ResumeLayout(false);
+            this.panelPProfeContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGymLogo)).EndInit();
             this.panelDeviseConnect.ResumeLayout(false);
@@ -2946,8 +3067,6 @@
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3072,18 +3191,18 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.PictureBox pbAPHuella;
         private System.Windows.Forms.Panel panelCAUser;
-        private System.Windows.Forms.PictureBox pbAPFoto;
+        private System.Windows.Forms.PictureBox pboxPImage;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Panel panelAPTurno1;
+        private System.Windows.Forms.Panel pTurno1;
         private System.Windows.Forms.Button btnMarcarEntradaT1;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Button btnMarcarIBT1;
         private System.Windows.Forms.Button btnMarcarSalidaT1;
         private System.Windows.Forms.Button btnMarcarFBT1;
-        private System.Windows.Forms.Label lblMIBT1;
-        private System.Windows.Forms.Label lblMET1;
-        private System.Windows.Forms.Label lblMST1;
-        private System.Windows.Forms.Label lblMFBT1;
+        private System.Windows.Forms.Label lblT1M2;
+        private System.Windows.Forms.Label lblT1M1;
+        private System.Windows.Forms.Label lblT1M4;
+        private System.Windows.Forms.Label lblT1M3;
         private System.Windows.Forms.RadioButton rbTPF;
         private System.Windows.Forms.RadioButton rbTSocio;
         private System.Windows.Forms.GroupBox gboxTypeReg;
@@ -3091,11 +3210,11 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Panel panelAPTurno2;
-        private System.Windows.Forms.Label lblMST2;
-        private System.Windows.Forms.Label lblMFBT2;
-        private System.Windows.Forms.Label lblMIBT2;
-        private System.Windows.Forms.Label lblMET2;
+        private System.Windows.Forms.Panel pTurno2;
+        private System.Windows.Forms.Label lblT2M4;
+        private System.Windows.Forms.Label lblT2M3;
+        private System.Windows.Forms.Label lblT2M2;
+        private System.Windows.Forms.Label lblT2M1;
         private System.Windows.Forms.Button btnMarcarSalidaT2;
         private System.Windows.Forms.Button btnMarcarFBT2;
         private System.Windows.Forms.Button btnMarcarIBT2;
@@ -3162,9 +3281,17 @@
         private Controls.StatusBar statusBar1;
         private System.Windows.Forms.Label lblHour;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label lblDev;
+        private System.Windows.Forms.Label lblPPhone;
+        private System.Windows.Forms.Label lblPCargo;
+        private System.Windows.Forms.Label lblPName;
+        private System.Windows.Forms.ListBox lboxProfesionales;
+        private System.Windows.Forms.Button btnMSalidaProf;
+        private System.Windows.Forms.Button btnMIngresoProf;
+        private System.Windows.Forms.Panel panelPFijoContent;
+        private System.Windows.Forms.Panel panelPProfeContent;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
     }
 }

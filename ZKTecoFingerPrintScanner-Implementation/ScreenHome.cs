@@ -35,9 +35,12 @@ namespace ZKTecoFingerPrintScanner_Implementation
         // public StatusBar lblMessage_ { get; set; }
         public PictureBox picHuellaMA_ { get; set; }
         public PictureBox PicRegister_ { get; set; }
+        public PictureBox PicImagePersonal_ { get; set; }
 
         private DataSocioAll dataSocioAll;
         private STGlobal stGlobal;
+
+        private int SelectedIndexPersonal = 0;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -57,6 +60,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             lblSerie_ = lblSerie;
             picHuellaMA_ = picHuellaMA;
             PicRegister_ = PicRegister;
+            PicImagePersonal_ = pbAPHuella;
             lblIntents_ = lblIntents;
 
             dataSocioAll = DataSocioAll.Instance;
@@ -122,6 +126,245 @@ namespace ZKTecoFingerPrintScanner_Implementation
         }
 
 
+
+        //*************************************************** OnEventPersonal ***************************************************
+        public void TOneControl(HorarioFijo hfijo, bool clear = false)
+        {
+            lblT1M1.Text = clear ? "0:00" : hfijo.FechaHoraIngresoTexto ?? "0:00";
+            lblT1M2.Text = clear ? "0:00" : hfijo.FechaHoraRefrigerioSalidaTexto ?? "0:00";
+            lblT1M3.Text = clear ? "0:00" : hfijo.FechaHoraRefrigerioRetornoTexto ?? "0:00";
+            lblT1M4.Text = clear ? "0:00" : hfijo.FechaHoraSalidaTexto ?? "0:00";
+
+        }
+        public void TTwoControl(HorarioFijo hfijo, bool clear = false)
+        {
+            lblT2M1.Text = clear ? "0:00" : hfijo.FechaHoraIngreso_TurnoTardeTexto ?? "0:00";
+            lblT2M2.Text = clear ? "0:00" : hfijo.FechaHoraRefrigerioSalida_TurnoTardeTexto ?? "0:00";
+            lblT2M3.Text = clear ? "0:00" : hfijo.FechaHoraRefrigerioRetorno_TurnoTardeTexto ?? "0:00";
+            lblT2M4.Text = clear ? "0:00" : hfijo.FechaHoraSalida_TurnoTardeTexto ?? "0:00";
+        }
+        public void InfoPersonal(SocioModel socio, bool clear = false)
+        {
+            lblPName.Text = clear ? "NOMBRE, APELLIDOS" : $"{socio.Nombre} {socio.Apellidos}".ToUpper();
+            lblPCargo.Text = clear ? "CARGO" : $"{socio.Descripcion}".ToUpper();
+            lblPPhone.Text = clear ? "CELULAR" : $"{socio.Celular}".ToUpper();
+
+            if (clear == false)
+            {
+                if (string.IsNullOrEmpty(socio.ImagenUrl) == false && validateHttps(socio.ImagenUrl) == true)
+                {
+                    using (WebClient webClient = new WebClient())
+                    {
+                        byte[] imageData = webClient.DownloadData(socio.ImagenUrl);
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            pboxPImage.Image = Image.FromStream(ms);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                pboxPImage.Image = BIOCHECK.Properties.Resources.user2;
+            }
+        }
+
+        //Render Horario profesional
+        private void RenderLViewProfesionales()
+        {
+            try
+            {
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+                var HorariosProfesionales = hinstance.HorarioProfesional;
+
+                if (HorariosProfesionales != null && HorariosProfesionales.Count > 0)
+                {
+                    lboxProfesionales.Items.Clear();
+                    lboxProfesionales.Items.Add(string.Format("{0,-150} {1,-20} {2,-20}", "CLASE", "INGRESO", "SALIDA"));
+                    lboxProfesionales.Items.Add(new string('-', 300));
+
+                    foreach (HorarioProfesional p in HorariosProfesionales)
+                    {
+                        String clase = $"{p.DesSala} - {p.Disciplina} {p.HoraInicioTexto} - {p.HoraFinTexto} AFORO {p.CantidadAsistencias} DE {p.CapacidadPermitida}";
+                        string claseAlineada = clase.PadRight(120);
+                        string ingresoAlineado = string.IsNullOrEmpty(p.FechaHoraIngresoTxt) ? "--:--" : p.FechaHoraIngresoTxt.PadRight(20);
+                        string salidaAlineada = string.IsNullOrEmpty(p.FechaHoraSalidaTxt) ? "--:--" : p.FechaHoraSalidaTxt.PadRight(20);
+                        lboxProfesionales.Items.Add($"{claseAlineada} {ingresoAlineado} {salidaAlineada}");
+                    }
+                }
+                else
+                {
+                    lboxProfesionales.Items.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreenHome", ex);
+            }
+        }
+
+        //Render Horario fijo
+        public void renderHorarioFijo(HorarioFijo hfijo)
+        {
+            if (hfijo.tipoTurno == 1)
+            {
+                // T1
+                pTurno1.Visible = true;
+                pTurno2.Visible = false;
+                TOneControl(hfijo);
+            }
+            else if (hfijo.tipoTurno == 2)
+            {
+                // T2
+                pTurno2.Visible = true;
+                pTurno1.Visible = false;
+                TTwoControl(hfijo);
+            }
+            else if (hfijo.tipoTurno == 3)
+            {
+                //T1 and T2
+                pTurno1.Visible = true;
+                pTurno2.Visible = true;
+                TOneControl(hfijo);
+                TTwoControl(hfijo);
+            }
+            else
+            {
+                Console.WriteLine("");
+            }
+        }
+
+
+        //mark fijo
+        public async Task MarckPersonalFijoAsync(int operation)
+        {
+            try
+            {
+                AppsFitService api = new AppsFitService();
+                HorarioSigleton inst = HorarioSigleton.Instance;
+                if (inst.SelectedPersonal)
+                {
+                    var body = new
+                    {
+                        CodigoUnidadNegocio = DataSession.Unidad,
+                        CodigoSede = DataSession.Sede,
+                        NumeroDocumento = inst.Personal.DNI,
+                        OperacionMarcacion = operation
+                    };
+                    var resp = await api.MarcarPersonalFijo(body);
+
+                    if (resp.Success)
+                    {
+                        await managementZk.DataHorariosPersonalFijoReload();
+                        renderHorarioFijo(inst.HorarioFijo);
+                        StatusMessageD($"ASISTENCIA REGISTRADA", true, false);
+                        inst.SelectedPersonal = false;
+                    }
+                    else
+                    {
+                        StatusMessageD($"{resp.Message1}", false, false);
+                    }
+                }
+                else
+                {
+                    StatusMessageD($"", false, true);
+                    MessageBox.Show("PARA MARCAR DEBE BUSCAR UN PERSONAL VÁLIDO");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                managementZk.createFileLog("ScreenHome", ex);
+            }
+        }
+
+
+        public async Task MarkPersonalProfesional(int type)
+        {
+            try
+            {
+                AppsFitService api = new AppsFitService();
+                HorarioSigleton hsgt = HorarioSigleton.Instance;
+                var Horario = hsgt.HorarioProfesional[SelectedIndexPersonal];
+                var body = new
+                {
+                    CodigoUnidadNegocio = DataSession.Unidad,
+                    CodigoSede = DataSession.Sede,
+                    CodigoHorarioClasesConfiguracion = Horario.CodigoHorarioClasesConfiguracion,
+                    CodigoHorarioClasesTiempoReal = Horario.CodigoHorarioClasesTiempoReal,
+                    CodigoProfesional = Horario.CodigoProfesional,
+                    CodigoPersonalAsistencia = Horario.CodigoPersonalAsistencia,
+                    DiaNumero = Horario.DiaNumero,
+                    TipoAsistencia = type
+                };
+                var resp = await api.MarcarPersonalProfesional(body);
+                if (resp.Success)
+                {
+                    await managementZk.DataHorariosProfesionalReload();
+                    RenderLViewProfesionales();
+                    StatusMessageD($"ASISTENCIA REGISTRADA", true, false);
+                    hsgt.SelectedPersonal = false;
+                }
+                else { StatusMessageD($"{resp.Message1}", false, false); }
+            }
+            catch (Exception ex)
+            {
+                managementZk.createFileLog("ScreenHome", ex);
+            }
+        }
+
+        //*************************************************** *** ***************************************************
+
+
+        public void OnEventPersonal(string type)
+        {
+            try
+            {
+                HorarioSigleton hinstance = HorarioSigleton.Instance;
+
+                switch (type)
+                {
+                    case "LHF":
+                        HorarioFijo hfijo = hinstance.HorarioFijo;
+                        renderHorarioFijo(hfijo);
+                        InfoPersonal(hinstance.Personal);
+                        StatusMessage(hinstance.Message, true);
+                        StatusMessageD($"", false, true);
+
+                        break;
+                    case "LHF-F":
+                        TOneControl(new HorarioFijo(), true);
+                        TTwoControl(new HorarioFijo(), true);
+                        InfoPersonal(new SocioModel(), true);
+                        StatusMessage("NO SE ENCONTRO PERSONAL", false);
+                        StatusMessageD($"", false, true);
+                        break;
+
+                    //profesionales
+                    case "LHPROF":
+                        RenderLViewProfesionales();
+                        InfoPersonal(hinstance.Personal);
+                        StatusMessage(hinstance.Message, true);
+                        StatusMessageD($"", false, true);
+                        break;
+
+                    case "LHPROF-F":
+                        lboxProfesionales.Items.Clear();
+                        StatusMessage("NO SE ENCONTRO PERSONAL", false);
+                        StatusMessageD($"", false, true);
+                        break;
+
+                    default:
+                        Console.WriteLine("");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                managementZk.createFileLog("ScreenHome", ex);
+            }
+        }
 
         public void OnEventGeneral(string message, dynamic message2)
         {
@@ -212,7 +455,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             txtMContrato.Text = "";
             txtMResponsable.Text = "";
             txtMSede.Text = "";
-            
+
         }
 
         private void LoadDataToGrids()
@@ -230,7 +473,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     {
                         listBox1.Items.Add(string.Format("{0,-25} {1,-25} {2,-25} {3,-30}", a.FCreacionText, a.HourText, a.DiaSemana, a.UsuarioCreacion));
                     }
-                    
+
                 }
 
                 if (dataSocioAll.Incidencias != null && dataSocioAll.Incidencias.Count > 0)
@@ -406,6 +649,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 rbTSocio.Checked = true;
                 stGlobal.TypeRegister = 1;
                 stGlobal.TypeMatch = 1;
+                stGlobal.KeyEmpresa = DataSession.DKey;
             }
             catch (Exception ex)
             {
@@ -489,6 +733,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
             {
                 managementZk.Initialize();
                 managementZk.EventGeneral += OnEventGeneral;
+                managementZk.EventPersonal += OnEventPersonal;
             }
             catch (Exception ex)
             {
@@ -651,12 +896,16 @@ namespace ZKTecoFingerPrintScanner_Implementation
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            {
+            { 
+                HorarioSigleton hinstnc = HorarioSigleton.Instance;
+
                 if (TabControl.SelectedTab == tabPage1)
                 {
                     managementZk.SetMatchSearch(true);
                     managementZk.SetIsRegister(false);
+                    stGlobal.TypeMatch = 1;
                     clearMA();
+                    lblDev.Text = stGlobal.TypeMatch.ToString();
                 }
                 if (TabControl.SelectedTab == tabPage2)
                 {
@@ -670,6 +919,19 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     managementZk.SetMatchSearch(false);
                     getConfiguration();
                 }
+                if (TabControl.SelectedTab == tabPage4)
+                {
+                    managementZk.SetMatchSearch(true);
+                    managementZk.SetIsRegister(false);
+                    rbTMFijo.Checked = true;
+                    stGlobal.TypeMatch = 2;
+                    lblDev.Text = stGlobal.TypeMatch.ToString();
+                    hinstnc.SelectedPersonal = false;
+                    TOneControl(new HorarioFijo(), true);
+                    TTwoControl(new HorarioFijo(), true);
+                    StatusMessageD("", false, true);
+                    InfoPersonal(new SocioModel(),true);
+                }
             }
             catch (Exception ex)
             {
@@ -677,10 +939,13 @@ namespace ZKTecoFingerPrintScanner_Implementation
             }
         }
 
+       
+
         private void BtnDisconnection_Click(object sender, EventArgs e)
         {
             managementZk.Disconnect();
             managementZk.EventGeneral -= OnEventGeneral;
+            managementZk.EventPersonal -= OnEventPersonal;
         }
 
 
@@ -730,6 +995,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
                     form.Dispose();
                 }
                 managementZk.EventGeneral -= OnEventGeneral;
+                managementZk.EventPersonal -= OnEventPersonal;
             }
             catch (Exception ex)
             {
@@ -739,7 +1005,7 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
 
 
-      
+
 
 
 
@@ -1049,12 +1315,22 @@ namespace ZKTecoFingerPrintScanner_Implementation
                 managementZk.createFileLog("ScreeHome", ex);
             }
         }
-
+        //******************************************************-search by register-****************************************
         private void rbTMFijo_CheckedChanged(object sender, EventArgs e)
         {
             if (rbTMFijo.Checked)
             {
                 stGlobal.TypeMatch = 2;
+                panelPFijoContent.Visible = true;
+                panelPProfeContent.Visible = false;
+                pbAPHuella.Image = BIOCHECK.Properties.Resources.huell;
+                HorarioSigleton hsigleton = HorarioSigleton.Instance;
+                hsigleton.SelectedPersonal = false;
+                TOneControl(new HorarioFijo(), true);
+                TTwoControl(new HorarioFijo(), true);
+                StatusMessageD("", false,true);
+                InfoPersonal(new SocioModel(), true);
+
             }
         }
 
@@ -1063,6 +1339,14 @@ namespace ZKTecoFingerPrintScanner_Implementation
             if (rbTMEvent.Checked)
             {
                 stGlobal.TypeMatch = 3;
+                panelPFijoContent.Visible = false;
+                panelPProfeContent.Visible = true;
+                pbAPHuella.Image = BIOCHECK.Properties.Resources.huell;
+                lboxProfesionales.Items.Clear();
+                HorarioSigleton hsigleton = HorarioSigleton.Instance;
+                hsigleton.SelectedPersonal= false;
+                StatusMessageD("", false, true);
+                InfoPersonal(new SocioModel(), true);
             }
         }
 
@@ -1095,8 +1379,101 @@ namespace ZKTecoFingerPrintScanner_Implementation
 
         }
 
-        //******************************************************-search by register-****************************************
 
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (listBox1.SelectedIndex != -1 && listBox1.SelectedIndex > 1)
+            //{
+            //    int selectedIndex = listBox1.SelectedIndex;
+
+            //}
+        }
+
+        private void lboxProfesionales_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HorarioSigleton inst = HorarioSigleton.Instance;
+            if (lboxProfesionales.SelectedIndex != -1 && lboxProfesionales.SelectedIndex > 1)
+            {
+                int selectedIndex = lboxProfesionales.SelectedIndex;
+                SelectedIndexPersonal = selectedIndex - 2;
+                inst.SelectedPersonal = true;
+            }
+            else
+            {
+                inst.SelectedPersonal = false;
+                SelectedIndexPersonal = 0;
+            }
+        }
+
+        private async void btnMIngresoProf_Click(object sender, EventArgs e)
+        {
+            HorarioSigleton hsgt = HorarioSigleton.Instance;
+
+            if (hsgt.SelectedPersonal)
+            {
+                await MarkPersonalProfesional(1);
+            }
+            else
+            {
+                StatusMessageD($"", false, true);
+                MessageBox.Show("DEBE SELECIONAR UNA CLASE");
+            }
+        }
+
+        private async void btnMSalidaProf_Click(object sender, EventArgs e)
+        {
+            HorarioSigleton hsgt = HorarioSigleton.Instance;
+
+            if (hsgt.SelectedPersonal)
+            {
+                await MarkPersonalProfesional(2);
+            }
+            else
+            {
+                StatusMessageD($"", false, true);
+                MessageBox.Show("DEBE SELECIONAR UNA CLASE");
+            }
+        }
+
+        private void btnMarcarEntradaT1_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(1);
+        }
+
+        private void btnMarcarIBT1_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(2);
+        }
+
+        private void btnMarcarFBT1_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(3);
+        }
+        private void btnMarcarSalidaT1_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(4);
+        }
+        private void btnMarcarEntradaT2_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(5);
+        }
+
+        private void btnMarcarIBT2_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(6);
+        }
+
+        private void btnMarcarFBT2_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(7);
+        }
+
+        private void btnMarcarSalidaT2_Click(object sender, EventArgs e)
+        {
+            _ = MarckPersonalFijoAsync(8);
+        }
+
+       
     }
 }
